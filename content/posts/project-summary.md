@@ -1,0 +1,66 @@
+---
+title: "项目总结"
+date: "2019-09-26T10:00:31+08:00"
+tags: ["项目"]
+discripion: "记录自2019年7月1日工作以来大大小小的项目实战"
+categories: ["Tech"]
+keywords: ["项目总结"]
+dropCap: false
+images: ["http://blog.xuezenghui.com/hello.jpg"]
+---
+
+<iframe frameborder="no" width=100% height=86 src="//music.163.com/outchain/player?type=2&id=492833245&auto=1&height=66"></iframe>
+***
+<center>2019.07.01--至今  北京百星电子系统有限公司</center>
+***
+## 百星公司官网项目
+- **开发周期**：2019.07.04——2019.07.18
+- **项目简介**：公司官方网站，包含HOME页、技术/服务/案例模块及登录注册模块。
+- **项目链接**：[暂未上线]()
+- **技术架构**：Vue.js、Stylus
+- **相关工具**：VSCode、蓝湖、Sketch、GitLab
+- **难点攻克**：
+    1. [页面小三角](https://img-blog.csdnimg.cn/20190710153454163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1h1ZV96ZW5naHVp,size_16,color_FFFFFF,t_70)问题
+    ```stylus
+    .arrow
+        position: absolute
+        top: 18px
+        right: -47px
+        width: 8px
+        height: 8px
+        border-top: 1px solid #e0e0e0
+        border-right: 1px solid #e0e0e0
+        transform: rotate(225deg)
+    ```
+- **项目总结**：作为工作后第一个练手的项目，难度较小。完全的静态页面，暂时不需要连接后台获取数据，也不需要自适应布局，而且给自己分配的开发任务也比较简单，只是在细节上有几个点需注意：
+    1. 组件的拆分要合理
+    2. git上传代码的步骤要清晰
+    3. vue-router滚动行为
+    ```js
+    // 文件位置： /router/index.js
+    export default new Router({
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+        }
+    });
+    ```
+
+## ePortal项目
+- **开发周期**：2019.07.22——2019.
+
+- **项目简介**：公司门户网站，将薪资系统、物流系统、项目管理系统、勋章系统等几大系统整合重构，是对公司内部员工管理、员工薪资创建与管理、项目管理及点数发放、勋章申请与查询等众多具体功能的实现。
+- **项目链接**：[暂未上线]()
+- **技术架构**：Vue.js、Vuetify、Node.js、Express、MongoDB、Mongoose
+- **相关工具**：VSCode、Sketch、GitLab、Robo 3T、Postman
+- **难点攻克**：
+    1. 异步问题
+- **项目总结**：一次真正的锻炼机会。因为公司是做自用系统，开发任务并不重，也有着培养人才的想法，项目采用分组合作开发、模块分配至个人的方式，每个人分配的小模块都是前台后台数据库一把抓。所以技术角度上是从零开始学习Node.js、Express、MongoDB的知识点并直接应用于项目中，遇到问题也几乎都是自主解决，项目开发过程也基本遵循Git Flow工作流，可惜的是还是不能完完整整体验上线项目从无到有的过程，比如需求分析、项目打包构建、部署上线等(吃不到猪肉看猪跑也行😂)。觉得项目中**表单下载为Excel到本地**和**物流信息显示在页地图上**(参考淘宝中查看物流功能)是难点，但是技术点没有分配到自己这里，待遇到实际需求时再深入研究。
+
+## 生产管理微信小程序完善及优化
+- **开发周期**：2019.07.22——2019.
+
+- **项目简介**：与ePortal项目生产管理模块搭配使用并依托其进行上线，主要功能是用户根据其权限录入对应制作中心内打印机器的打印量，录入方式分为小程序内录入和扫描小程序码带参进入小程序录入页面录入，且可查看权限内制作中心里所有机器的录入历史记录。
+- **技术架构**：小程序开发语言、Node.js、Express、MongoDB
+- **相关工具**：VSCode、微信开发者工具、GitLab
+- **难点攻克**：
+- **项目总结**：起初与ePortal同步开发，由组内其它成员负责，后协助进行历史记录界面的完善及整体逻辑和细节的修改优化。第一次接触小程序开发，在熟悉Vue语法的基础下摸清小程序的目录结构后进行得还是比较顺利的。唯一要提的就是微信小程序的官方文档写的真不咋地，API用法和参数说的含糊不清让人走了不少弯路，不是崇洋媚外，这点还是要多向国外技术文档学习的。

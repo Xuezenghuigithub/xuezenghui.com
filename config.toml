@@ -1,5 +1,5 @@
 baseURL = "https://xuezenghui.com/"
-title = "ZaNdeR"
+title = "Zander Hsueh"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 # 版权信息（支持 Markdown）
@@ -272,7 +272,7 @@ uglyURLs = false
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
-    siteDescription = "MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。"
+    siteDescription = "技术, 分享, 独处时光"
     # 说明：用于 HTML 的头部元数据、JSON-LD、
     #      Open Graph、Atom、RSS
 
@@ -475,7 +475,7 @@ uglyURLs = false
 
     jsonLD = true
     openGraph = true
-    twitterCards = true
+    twitterCards = false
     # 注意：如果你设置 twitterCards 为 `true`，
     #      请务必开启 openGraph。否则，网页的
     #      Twitter Cards 信息将会不完整。
@@ -889,7 +889,7 @@ uglyURLs = false
     #      的的优先级高于此处
 
     # 仓库地址
-    repoURL = ""
+    repoURL = "https://github.com/Xuezenghuigithub/xuezenghui.com"
     # 编辑地址
     repoEditURL = ""
 
@@ -1003,18 +1003,18 @@ uglyURLs = false
     # 年份与作者之间的图标
     iconBetweenYearAndAuthor = "heart"
     # 图标颜色
-    iconColor = "#f06292"
+    iconColor = "yellow"
     # 是否开启图标的跳动效果
     iconAnimation = true
 
     # 是否显示 Hugo 和 MemE 的链接
-    displayPoweredBy = true
+    displayPoweredBy = false
 
     # 是否显示站点的版权信息
     displaySiteCopyright = true
 
     # 自定义页脚（支持 Markdown）
-    customFooter = ""
+    customFooter = "🤨"
 
 
     ######################################
