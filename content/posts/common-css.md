@@ -6,6 +6,7 @@ discripion: "常用CSS样式总结"
 keywords: ["CSS", "常用样式"]
 categories: ["Tech"]
 dropCap: false
+toc: true
 ---
 ## 标题左右横线
 
