@@ -1,0 +1,29 @@
+{
+  "name": "xuezenghui.com",
+  "version": "1.0.0",
+  "description": "blog of mine",
+  "keywords": [
+    "Web",
+    "Blog",
+    "Code"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "hugo --gc --minify --cleanDestinationDir",
+    "ipfs-deploy": "./node_modules/ipfs-deploy/bin/ipfs-deploy.js -p infura public -p pinata public -u pinata -d cloudflare -C -O"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xuezenghuigithub/xuezenghui.com.git"
+  },
+  "author": "Zander Xue",
+  "license": "CC-BY-NC-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/Xuezenghuigithub/xuezenghui.com/issues"
+  },
+  "homepage": "https://github.com/Xuezenghuigithub/xuezenghui.com#readme",
+  "devDependencies": {
+    "ipfs-deploy": "^7.12.0"
+  }
+}
