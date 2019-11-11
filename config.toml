@@ -1057,3 +1057,11 @@ uglyURLs = false
     fofVideoWebm = ""
     fofVideoMp4 = ""
     # 说明：视频地址可留空
+    
+    ######################################
+    #  Front Matter说明
+    # slug      文章url     String
+    # toc       目录        Boolean
+    # gitinfo   文章Git信息  Boolean
+    # dropCap   首字下沉     Boolean
+    # 

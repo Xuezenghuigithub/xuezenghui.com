@@ -7,6 +7,7 @@ keywords: ["小程序", "PDF上传", "PDF下载", "multer"]
 categories: ["Tech"]
 dropCap: false
 toc: true
+slug: "upload-pdf"
 ---
 
 <iframe frameborder="no" width=100% height=86 src="//music.163.com/outchain/player?type=2&id=552594869&auto=1&height=66"></iframe>

@@ -1,10 +1,11 @@
 ---
-title: mac OS升级Catalina后根目录无权限问题
+title: "macOS升级Catalina后根目录无权限问题"
 date: 2019-10-30T13:31:18+08:00
 tags: [macOS]
 discripion: "macOS升级Catalina后根目录无法创建文件和文件夹，权限为Read-only file system。"
 keywords: [macOS,Catalina,权限]
 categories: ["Debug"]
+slug: "update-Catalina-bug"
 ---
 ## Bug复现
 ![Catalina.png](http://blog.xuezenghui.com/cataline_bug/cataline.png "Catalina")

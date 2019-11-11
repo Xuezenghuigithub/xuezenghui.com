@@ -6,6 +6,7 @@ discripion: "踩坑MongoDB条件查询$gt"
 keywords: ["MongoDB", "条件查询", "$gt"]
 categories: ["Tech"]
 dropCap: false
+slug: "MongoDB-query-$gt"
 ---
 ## Bug复现
 

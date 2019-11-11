@@ -7,6 +7,7 @@ keywords: ["CSS", "常用样式"]
 categories: ["Tech"]
 dropCap: false
 toc: true
+slug: "common-css"
 ---
 ## 标题左右横线
 

@@ -5,6 +5,7 @@ tags: ["Netlify", "Hexo"]
 discripion: "将基于Hexo搭建的个人博客部署到Netlify中。"
 keywords: ["Netlify", "Hexo", "个人博客"]
 categories: ["Tech"]
+slug: "Hexo-deploy-Netlify"
 ---
 
 ## 前言
