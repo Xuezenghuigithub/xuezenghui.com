@@ -8,6 +8,7 @@ categories: ["Tech"]
 dropCap: false
 toc: true
 slug: "common-css"
+gitinfo: true
 ---
 ## 标题左右横线
 

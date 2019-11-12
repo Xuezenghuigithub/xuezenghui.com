@@ -912,7 +912,7 @@ uglyURLs = false
     feedbackText = "Feedback"
 
     # 是否显示编辑链接
-    displayEditLink = true
+    displayEditLink = false
     # 编辑链接的图标
     editIcon = "edit"
     # 编辑链接的文本
