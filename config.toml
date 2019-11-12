@@ -528,7 +528,18 @@ uglyURLs = false
     enableDisqus = true
     disqusShortname = ""
 
-
+    ## Valine
+    enableValine = true
+    valineAppId = 'WOGsi7UjLASjAxr91Rx1og8E-gzGzoHsz'
+    valineAppKey = 'fEB3S9O1FdXgYII2pWyyydiB'
+    valineNotify = false # 邮件通知
+    valineVerify = false # 评论验证码
+    valineAvatar = 'monsterid' # 用户头像
+    valinePlaceholder = '能饮一杯无？'
+    valineGuest_info = "nick,mail,link"
+    valineVisitor = true # 文章阅读数
+    valinePageSize = 10
+    valineRecordIP = true # 记录评论者IP
     ######################################
     # Google Analytics
 
@@ -1059,20 +1070,6 @@ uglyURLs = false
     fofVideoMp4 = ""
     # 说明：视频地址可留空
 
-    ######################################
-    # valine评论
-    [params.valine]
-    enable = true
-    appId = 'WOGsi7UjLASjAxr91Rx1og8E-gzGzoHsz'
-    appKey = 'fEB3S9O1FdXgYII2pWyyydiB'
-    notify = false # 邮件通知
-    verify = false # 评论验证码
-    avatar = 'monsterid' # 用户头像
-    placeholder = '能饮一杯无？'
-    guest_info = "nick,mail,link"
-    visitor = true # 文章阅读数
-    pageSize = 10
-    recordIP = true # 记录评论者IP
     ######################################
     #  Front Matter说明
     # slug      文章url     String
