@@ -525,7 +525,7 @@ uglyURLs = false
     #      的优先级高于此处
 
     ## Disqus
-    enableDisqus = false
+    enableDisqus = true
     disqusShortname = ""
 
 
