@@ -525,7 +525,7 @@ uglyURLs = false
     #      的优先级高于此处
 
     ## Disqus
-    enableDisqus = true
+    enableDisqus = false
     disqusShortname = ""
 
     ## Valine
@@ -551,7 +551,7 @@ uglyURLs = false
     trackingCodeType = "gtag"
     # 说明：gtag 或 analytics
 
-    trackingID = ""
+    trackingID = "UA-152540707-1"
 
 
     ######################################

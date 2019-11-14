@@ -6,7 +6,6 @@ discripion: "微信小程序中将PDF文件上传至后台Node.js服务器进行
 keywords: ["小程序", "PDF上传", "PDF下载", "multer"]
 categories: ["Tech"]
 dropCap: false
-toc: true
 slug: "upload-pdf"
 gitinfo: true
 ---
@@ -219,4 +218,4 @@ export default {
 ***
 至此，**小程序上传文件**➡️**后台存储PDF文件**➡️**后台管理系统下载存储的文件**的整个流程已经走通😏，具体的业务需求就任君发挥了，比如将后台存储的所有文件名渲染在页面中，点击对应文件名将文件下载到本地、文件名多选再下载到本地等。
 
-🎱项目Github地址：[小程序中PDF文件的上传及下载](https://github.com/Xuezenghuigithub/miniProgram_upload-download)
+🎱案例Github地址：[小程序中PDF文件的上传及下载](https://github.com/Xuezenghuigithub/miniProgram_upload-download)
