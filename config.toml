@@ -545,7 +545,7 @@ uglyURLs = false
 
     # 说明：仅在生产环境（production）下渲染
 
-    enableGoogleAnalytics = false
+    enableGoogleAnalytics = true
 
     # 跟踪代码的类型
     trackingCodeType = "gtag"
