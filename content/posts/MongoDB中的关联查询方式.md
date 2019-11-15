@@ -1,12 +1,11 @@
 ---
 title: "MongoDB中的关联查询"
 date: "2019-11-14T13:25:10+08:00"
-tags: [Mongoose]
+tags: ["MongoDB", "Mongoose"]
 discripion: "MongoDB中的关联查询方式aggregate和populate的用法及适用场景"
 keywords: ["MongoDB", "Mongoose", "populate", "aggregate"]
 categories: ["Tech"]
 slug: "aggregation&&population"
-gitinfo: true
 toc: true
 ---
 ## 前言
@@ -178,7 +177,7 @@ const bookSchma = new Schema({
 <img src="http://blog.xuezenghui.com/agg&popu/populateAPI.png" width=400>
 
 #### 性能方面
-看完了外表再说说内在——查询性能，populate实际是`DBRef`[^4]的引用方式，相当于多构造了一层查询。比如有10条数据，在`find()`查询到了主集合内的10条数据后会再进行`populate()`引用的额外10条数据的查询，性能也相对的大打折扣了。而[这里](https://blog.csdn.net/rcjjian/article/details/81512762)有位大佬对aggregate和find进行了性能的对比，结论也显而易见——比find查询速度都快的aggregate比populate定是有过之而无不及了。
+看完了外表再说说内在——查询性能，populate实际是`DBRef`[^4]的引用方式，相当于多构造了一层查询。比如有10条数据，在`find()`查询到了主集合内的10条数据后会再进行`populate()`引用的额外10条数据的查询，性能也相对的大打折扣了。而[这里](https://blog.csdn.net/rcjjian/article/details/81512762)有位大佬对aggregate和find进行了性能的对比，结论也显而易见——比find查询速度都快的aggregate比关联查询的find+populate定是有过之而无不及了。
 
 ## 总结
 ||aggregation|populate|
@@ -196,7 +195,7 @@ const bookSchma = new Schema({
 **技术的使用无不建立在需求和场景之上，不抱令守律，不因噎废食，知变通，知择优，毕竟技术只是工具，目的才是关键。**
 
 ---
-[^1]: [BSON Documents¶](https://docs.mongodb.com/manual/reference/limits/#bson-documents)
+[^1]: 详情请参阅MongoDB官方文档关于[BSON Documents¶](https://docs.mongodb.com/manual/reference/limits/#bson-documents)的说明。
 [^2]: 来源：[https://docs.mongodb.com/manual/core/data-model-design/index.html](https://docs.mongodb.com/manual/core/data-model-design/index.html)
 [^3]: 来源：[http://www.mongoosejs.net/docs/guide.html](http://www.mongoosejs.net/docs/guide.html)
 [^4]: [MongoDB的一种引用方式](https://docs.mongodb.com/manual/reference/database-references/index.html#dbrefs)
