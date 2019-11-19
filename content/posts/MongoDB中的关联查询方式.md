@@ -197,5 +197,5 @@ const bookSchma = new Schema({
 ---
 [^1]: 详情请参阅MongoDB官方文档关于[BSON Documents¶](https://docs.mongodb.com/manual/reference/limits/#bson-documents)的说明。
 [^2]: 来源：[https://docs.mongodb.com/manual/core/data-model-design/index.html](https://docs.mongodb.com/manual/core/data-model-design/index.html)
-[^3]: 来源：[http://www.mongoosejs.net/docs/guide.html](http://www.mongoosejs.net/docs/guide.html)
+[^3]: 来源：[https://mongoosejs.com/docs/guide.html#definition](https://mongoosejs.com/docs/guide.html#definition)
 [^4]: [MongoDB的一种引用方式](https://docs.mongodb.com/manual/reference/database-references/index.html#dbrefs)
