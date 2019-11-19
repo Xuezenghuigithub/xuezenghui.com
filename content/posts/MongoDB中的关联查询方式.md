@@ -5,7 +5,7 @@ tags: ["MongoDB", "Mongoose"]
 discripion: "MongoDB中的关联查询方式aggregate和populate的用法及适用场景"
 keywords: ["MongoDB", "Mongoose", "populate", "aggregate"]
 categories: ["Tech"]
-slug: "aggregation&&population"
+slug: "aggregation_population"
 toc: true
 ---
 ## 前言
