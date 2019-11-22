@@ -1,0 +1,1084 @@
+baseURL = "https://xuezenghui.com/"
+title = "Zander Hsueh"
+languageCode = "zh-CN"
+hasCJKLanguage = true
+# 版权信息（支持 Markdown）
+copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"
+relativeURLs = true
+
+# 主题选择
+theme = "meme"
+
+# i18n
+defaultContentLanguage = "zh-cn"
+defaultContentLanguageInSubdir = false
+
+# 是否复数化列表页面的标题
+pluralizeListTitles = false
+
+# 摘要的字数限制
+summaryLength = 42
+
+# 是否开启 GitHub 风格的 Emoji 书写方式
+enableEmoji = false
+
+# 脚注的返回链接中的文本
+footnoteReturnLinkContents = "↩"
+
+# 是否启用 Git 版本信息
+enableGitInfo = true
+
+# 是否生成 robots.txt 文件
+enableRobotsTXT = true
+
+# 每一分页的文章数（仅对「文章摘要」首页布局有效）
+paginate = 5
+
+# 代码高亮
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsOptions = "linenos=table"
+
+# URL 相关
+disablePathToLower = false
+uglyURLs = false
+
+# URL 结构
+[permalinks]
+    categories = "/categories/:slug/"
+    tags = "/tags/:slug/"
+
+# 类别
+[taxonomies]
+    category = "categories"
+    tag = "tags"
+
+# 修改时间
+[frontmatter]
+    lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
+
+# Markdown 渲染器
+[blackfriday]
+    # 是否开启智能标点符号替换
+    smartypants = false
+    # 是否在新标签页打开外链
+    hrefTargetBlank = true
+    # 屏蔽的扩展
+    extensionsmask = ["hardLineBreak", "backslashLineBreak"]
+
+# 作者信息
+[author]
+    # 名字
+    name = "Zander Xue"
+    # 邮箱
+    email = "xuezenghui6@gmail.com"
+    # 座右铭或简介
+    motto = "F**k being normal"
+    # 头像
+    avatar = "/icons/favicon.ico"
+    # 网站（默认值：baseURL）
+    website = "https://xuezenghui.com/"
+    # 推特
+    # twitter = "reuixiy"
+
+# 相关文章
+[related]
+    threshold = 80
+    includeNewer = true
+    toLower = true
+    [[related.indices]]
+        name = "categories"
+        weight = 100
+    [[related.indices]]
+        name = "tags"
+        weight = 95
+    [[related.indices]]
+        name = "date"
+        weight = 10
+        pattern = "2006"
+
+# Atom 文件格式的媒体类型
+[mediaTypes."application/atom+xml"]
+    suffixes = ["xml"]
+
+# MemE 主题自定义的 Atom 模板
+[outputFormats.SectionsAtom]
+    mediaType = "application/atom+xml"
+    baseName = "atom"
+
+# MemE 主题自定义的 RSS 模板
+[outputFormats.SectionsRSS]
+    mediaType = "application/rss+xml"
+    baseName = "rss"
+
+# Hugo 的输出控制
+[outputs]
+    page = ["HTML"]
+    home = ["HTML", "SectionsAtom", "SectionsRSS"]
+    section = ["HTML"]
+    # 类别
+    taxonomyTerm = ["HTML"]
+    # 类别项
+    taxonomy = ["HTML"]
+    # 说明：https://github.com/gohugoio/hugo/issues/4528#issuecomment-508488859
+
+# RSS & Atom 文章数限制
+[services.rss]
+    limit = -1
+
+
+
+##########################################
+# 菜单配置
+
+# MemE 主题支持以下四种菜单：
+# 1. main       顶栏下方的菜单栏
+# 2. home       首页的底部链接（适用于「诗意
+#               人生」和「视频片段」布局）
+# 3. socials    社交栏（关于页面的极简页脚）
+# 4. links      链接栏（关于页面的极简页脚）
+
+# 菜单内的配置说明如下：
+# url           链接地址
+# name          文本（留空（""）则无）
+# weight        位置
+# pre           内链或外链
+# post          图标（留空（""）则无）
+# identifier    图标的 Class 名（菜单栏无效）
+
+[menu]
+    ## 菜单栏
+    [[menu.main]]
+        url = "/"
+        name = "首页"
+        weight = 1
+        pre = "internal"
+        post = "home"
+    [[menu.main]]
+        url = "/posts/"
+        name = "文章"
+        weight = 2
+        pre = "internal"
+        post = "archive"
+    [[menu.main]]
+        url = "/categories/"
+        name = "分类"
+        weight = 3
+        pre = "internal"
+        post = "th"
+    [[menu.main]]
+        url = "/tags/"
+        name = "标签"
+        weight = 4
+        pre = "internal"
+        post = "tags"
+    [[menu.main]]
+        url = "/about/"
+        name = "关于"
+        weight = 5
+        pre = "internal"
+        post = "user-circle"
+
+
+
+##########################################
+# 主题配置
+
+[params]
+    ######################################
+    # 顶栏
+
+    # 是否开启
+    enableHeader = true
+
+    # 是否在首页显示
+    displayHeaderInHome = true
+
+
+    ######################################
+    # 品牌栏（在顶栏内）
+
+    # 是否使用 SVG 图片
+    siteBrandSVG = false
+    # 如果是，请将你的 SVG 放到 `SVG.toml` 文
+    # 件内，并配置以下项。单位：px。
+    siteBrandSVGWidth = 250
+    siteBrandSVGHeight = 100
+    siteBrandSVGFill = "#fff"
+    # 如果否，则会使用你的站点标题作为默认值，并
+    # 以文字的形式显示，下方可配置字号和字色。字
+    # 体请到底部的字体部分配置。单位：em。
+    siteBrandFontSize = 5
+    siteBrandFontColor = "#fff"
+
+    # 背景色
+    # siteBrandBackgroundColor = "hsl(240, 8%, 12%)"
+    # 背景图片
+    siteBrandBackgroundImage = "linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%)"
+    # 注意：背景色和背景图片只能二选一
+
+
+    ######################################
+    # 菜单栏
+
+    # 是否开启
+    enableMenu = true
+
+    # 是否在首页显示
+    displayMenuInHome = true
+
+    # 是否按文章分区高亮当前菜单项
+    activeInSection = false
+    # 说明：如果开启，那么当某一文章的分区名是某
+    #      一菜单项中的 `url` 时，该文章页面中
+    #      的该菜单项也会被高亮
+
+
+    ######################################
+    # 首页布局
+
+    # MemE 主题有以下四种首页布局：
+    # 1. poetry    诗意人生
+    # 2. footage   视频片段
+    # 3. posts     文章摘要
+    # 4. page      普通页面
+
+    homeLayout = "posts"
+
+    ## 「诗意人生」
+    # 诗句，支持 Markdown
+    homePoetry = []
+    # 底部链接的内间距，单位：em
+    homeLinksPadding = 1
+
+    ## 「视频片段」
+    homePoster = ""
+    homeVideoWebm = ""
+    homeVideoMp4 = ""
+    homeLogo = ""
+    homeLogoLink = ""
+    homeTitle = ""
+    homeMotto = ""
+    homeDescription = ""
+    homeKeywords = ""
+    homeLinksDelimiter = ""
+
+
+    ######################################
+    # 站点信息
+
+    # 站点的 LOGO
+    siteLogo = "/icons/favicon.ico"
+    # 说明：用于 JSON-LD、Open Graph
+
+    # 站点的描述
+    siteDescription = "技术, 分享, 独处时光"
+    # 说明：用于 HTML 的头部元数据、JSON-LD、
+    #      Open Graph、Atom、RSS
+
+    # 站点的关键词
+    siteKeywords = ["技术博客", "前端"]
+    # 说明：如果留空（[]），则会取站点的所有类别名、分
+    #      区名（如果按分区分类）作为默认值
+
+    # 站点的创建时间
+    siteCreatedTime = "2019-09-26T10:51:58+00:00"
+    # 注意：请保持此格式，更改数字
+
+    # 站点的推特帐号
+    # siteTwitter = "reuixiy"
+    # 说明：用于 Twitter Cards
+
+
+    ######################################
+    # 分类方式
+
+    # MemE 主题支持以下两种分类方式：
+    # 1. sections       分区
+    # 2. categories     部类
+    # 其中，分区是基于站点的 content 目录下的
+    # 文件夹和子文件夹；部类是基于文章的 Front
+    # Matter。分类即树状分类，Hexo 是基于文章
+    # 的 Front Matter，Hugo 则是基于文件系统
+    # 的结构。由于设计理念的不同，导致了 Hexo
+    # 与 Hugo 的这个差异，故在此设计这个选项，
+    # 以对从 Hexo 过来的用户友好。但是请注意：
+    # Hugo 中无法完全实现基于 Front Matter
+    # 的树状分类，故如需保留树状分类，建议适应
+    # Hugo 的设计理念——分区。
+
+    categoryBy = "categories"
+    # 注意：如果你设置为 `sections`，请务必将
+    #      此配置文件中的类别（taxonomies）中
+    #      的 `categories` 删除，不然分类页
+    #      面会失效。
+
+
+    ######################################
+    # 分类页面
+
+    # 是否开启树状布局
+    enableTree = true
+    # 注意：如果你设置 categoryBy 为
+    # `sections`，则无法关闭树状布局
+
+    # 是否显示文章标题
+    displayPosts = true
+
+    # 是否显示每一分类下的文章数
+    displayPostsCount = true
+
+
+    ######################################
+    # 标签页面
+
+    # 是否开启标签云
+    enableTagCloud = true
+    # 字号单位
+    fontUnit = "em"
+    # 最大字号
+    largestFontSize = 2.5
+    # 最小字号
+    smallestFontSize = 1
+
+
+    ######################################
+    # 列表页面
+
+    # 宽度
+    listWidth = 36
+    # 说明：如果留空（""），则用 42 作为默认值
+    #      单位：em
+
+    # 是否显示列表标题
+    displayListTitle = true
+
+    # 日期的格式
+    listDateFormat = "1 月 2 日"
+    # 注意：请遵循格式 https://gohugo.io/functions/format/
+
+    # 日期的位置
+    listDatePosition = "right"
+    # 说明：left（左边）或 right（右边）
+
+    # 是否按月份分隔列表
+    groupByMonth = true
+
+    # 是否开启十二生肖
+    chineseZodiac = true
+
+    # 是否翻译年份（仅对年份标题有效）
+    i18nYear = true
+    # 是否翻译月份（仅对月份标题有效）
+    i18nMonth = true
+
+
+    ######################################
+    # 类别列表页面
+
+    # 说明：对于分类页面，你可以设置 `enableTree`
+    #      为 false 以得到一个普通的类别列表页
+    #      面；对于标签页面，你可以设置
+    #      `enableTagCloud` 为 false 以得到
+    #      一个普通的类别列表页面。
+
+    # 是否显示每一类别项下的文章数
+    displayTaxonomyTermCount = true
+
+
+    ######################################
+    # 分区范围
+
+    # 说明：分区的名字即站点的 content 目录下
+    #      的文件夹的名字。
+
+    # 文章分区
+    postSections = ["posts"]
+
+    # 主分区
+    mainSections = ["posts"]
+    # 说明：MemE 主题没有使用此项，但 Hugo 的
+    #      一些内建模板（比如 RSS）可能使用了
+    #      此项。故如果你需额外地使用 Hugo 的
+    #      内建模板，请将此项与 postSections
+    #      保持一致。
+
+
+    ######################################
+    # Atom & RSS
+
+    # 订阅的分区范围
+    feedSections = ["posts"]
+
+    # 是否包括全文内容
+    includeContent = true
+    # 说明：如果否，则只会包含文章的摘要。关于摘
+    #      要，Hugo 能按你设置的字数限制自动截
+    #      取，你也可以在文章中通过
+    #      `<!--more-->`（没有空格）手动控制，
+    #      或者在文章的 Front Matter 中通过
+    #      `summary` 手动指定。其中，应用的优
+    #      先级顺序：手动指定 > 手动控制 > 自
+    #      动截取。还需要注意的是，在 MemE 主
+    #      题自定义的 Atom 和 RSS 的模板中，
+    #      有一个比手动指定更高的优先级——
+    #      Front Matter 中的 `description`。
+
+
+    ######################################
+    # 深色模式
+
+    # 是否开启
+    enableDarkMode = true
+
+    # 默认模式
+    defaultTheme = "light"
+    # 说明：light（浅色模式）或 dark（深色模式）
+
+    # 是否隐藏模式切换开关
+    hideThemeToggle = false
+    # 是否在首页隐藏模式切换开关
+    hideThemeToggleInHome = false
+    # 说明：如果开启了深色模式，即使你隐藏了开关，
+    #      你的读者依然可能以深色模式阅读你的博
+    #      客，如果该读者的系统设置为深色模式的
+    #      话。类似，如果你开启深色模式并将默认
+    #      模式修改为它，即使你隐藏开关，你的读
+    #      者依然可能以浅色模式模式阅读你的博客。
+
+
+    ######################################
+    # 网页应用
+
+    # 说明：前往 https://realfavicongenerator.net/
+    #      生成相关图标和文件，下载后解压，仅保留
+    #      android-chrome-512x512.png、
+    #      apple-touch-icon.png、
+    #      mstile-150x150.png、
+    #      safari-pinned-tab.svg、favicon.ico、
+    #      site.webmanifest 这些文件，删除其余。
+    #      然后将这些文件移动到 ~/blog/static/icons/
+    #      目录下，再将 favicon.ico、site.webmanifest
+    #      移动到 ~/blog/static/ 目录下，
+    #      最后将 site.webmanifest 重命名为
+    #      manifest.json，并检查和修改相关内容
+    #      （图标的路径）。
+
+    themeColor = "#fff"
+    themeColorDark = "#1c1c21"
+    safariMaskColor = "#2a6df4"
+    msApplicationTileColor = "#fff"
+
+
+    ######################################
+    # 网页头部元数据、搜索引擎优化（SEO）、社交网络发现
+
+    jsonLD = true
+    openGraph = true
+    twitterCards = false
+    # 注意：如果你设置 twitterCards 为 `true`，
+    #      请务必开启 openGraph。否则，网页的
+    #      Twitter Cards 信息将会不完整。
+
+    # 是否自动探测图片
+    autoDetectImages = true
+    # 说明：建议开启，否则，你必须在文章的 Front
+    #      Matter 中手动指定 `images`，不然，
+    #      你在社交网络或 APP 上分享的链接将无
+    #      法显示带大图的摘要视图。
+
+
+    ######################################
+    # InstantClick
+
+    enableInstantClick = true
+
+
+    ######################################
+    # Service Worker
+
+    # 说明：仅在生产环境（production）下渲染
+
+    enableServiceWorker = false
+    # 说明：需要第三方支持，暂见：
+    #      https://io-oi.me/tech/pwa-via-workbox/
+
+
+    ######################################
+    # KaTeX 公式支持（包括化学方程式）
+
+    # 是否开启（全局设置）
+    enableKaTeX = false
+    # 说明：文章的 Front Matter 中的 `katex`
+    #      的优先级高于此处
+
+
+    ######################################
+    # 评论
+
+    # 说明：仅在生产环境（production）下渲染
+
+    # 是否开启（全局设置）
+    enableComments = true
+    # 说明：文章的 Front Matter 中的 `comments`
+    #      的优先级高于此处
+
+    ## Disqus
+    enableDisqus = false
+    disqusShortname = ""
+
+    ## Valine
+    enableValine = true
+    valineAppId = 'WOGsi7UjLASjAxr91Rx1og8E-gzGzoHsz'
+    valineAppKey = 'fEB3S9O1FdXgYII2pWyyydiB'
+    valineNotify = false # 邮件通知
+    valineVerify = false # 评论验证码
+    valineMeta = ["nick", "mail", "link"]
+    valineAvatar = 'monsterid' # 用户头像
+    valinePlaceholder = '能饮一杯无？'
+    valineGuest_info = "nick,mail,link"
+    valineLang = "zh-cn"
+    valineVisitor = false # 文章阅读数
+    valinePageSize = 10
+    valineHighlight = true
+    avatarForce = false
+    valineRecordIP = true # 记录评论者IP
+    valineServerURLs = "http[s]://[tab/us].avoscloud.com"
+    ######################################
+    # Google Analytics
+
+    # 说明：仅在生产环境（production）下渲染
+
+    enableGoogleAnalytics = true
+
+    # 跟踪代码的类型
+    trackingCodeType = "gtag"
+    # 说明：gtag 或 analytics
+
+    trackingID = "UA-152540707-1"
+
+
+    ######################################
+    # Google Site Verification
+
+    googleSiteVerification = ""
+
+
+    ######################################
+    # 文章设置
+
+    # 超链接的颜色变化持续时间（单位：秒）
+    duration = 0.5
+
+    # 浅色模式的主色
+    primaryColorLight = "220, 90%, 56%"
+    # 深色模式的主色
+    primaryColorDark = "201, 65%, 62%"
+    # 注意：只支持 HSL 颜色值
+
+    # 文章的内容宽度
+    postWidth = 42
+    # 说明：如果留空（""），则用 42 作为默认值
+    #      单位：em
+
+    # 文章是否为原创（全局设置）
+    original = true
+    # 说明：会影响文章的作者信息和版权信息
+    #      文章的 Front Matter 中的 `original`
+    #      的优先级高于此处
+
+
+    ######################################
+    # 文章描述
+
+    # 是否显示
+    displayPostDescription = true
+
+
+    ######################################
+    # 文章元信息
+
+    # 是否开启（全局设置）
+    enablePostMeta = true
+    # 说明：文章的 Front Matter 中的 `meta`
+    #      的优先级高于此处
+
+    # 是否在首页开启
+    enablePostMetaInHome = true
+    # 说明：仅对「文章摘要」和「普通页面」
+    #      首页布局有效
+
+    # 日期格式
+    postMetaDateFormat = "2006/1/2"
+    # 注意：请遵循格式 https://gohugo.io/functions/format/
+
+    # 是否显示发布时间
+    displayPublishedDate = true
+    # 发布时间的图标
+    publishedDateIcon = "calendar-alt"
+
+    # 是否显示修改时间
+    displayModifiedDate = true
+    # 修改时间的图标
+    modifiedDateIcon = "calendar-check"
+
+    # 是否显示过期时间
+    displayExpiredDate = true
+    # 过期时间的图标
+    expiredDateIcon = "calendar-times"
+
+    # 是否显示分类
+    displayCategory = true
+    # 分类的图标
+    categoryIcon = "folder"
+    # 分类之间的分隔符
+    categoryDelimiter = "/"
+
+    # 是否显示字数统计
+    displayWordCount = true
+    # 字数统计的图标
+    wordCountIcon = "pencil-alt"
+
+    # 是否显示阅读时长
+    displayReadingTime = true
+    # 阅读时长的图标
+    readingTimeIcon = "clock"
+
+
+    ######################################
+    # 文章目录
+
+    # 是否开启（全局设置）
+    enableTOC = false
+    # 说明：文章的 Front Matter 中的 `toc`
+    #      的优先级高于此处
+
+    # 是否显示目录标题
+    displayTOCTitle = true
+
+    # 是否链接文章的分节标题到目录
+    linkHeadingsToTOC = true
+
+
+    ######################################
+    # 分节标题锚点
+
+    # 是否开启
+    enableHeadingsAnchor = true
+
+    # 分节标题的级别范围
+    headingsOpt = "1-6"
+    # 说明：正则格式，默认 1-6，即 1|2|3|4|5|6，
+    #      即 h1 到 h6。
+
+    # 锚点符号
+    anchorSymbol = "#"
+    # 说明：锚点图标的优先级高于锚点符号
+    #      默认值：§
+
+    # 锚点图标
+    anchorIcon = "link"
+    # 说明：留空（""）则回退到锚点符号
+
+    # 是否开启锚点链接
+    enableAnchorLink = true
+
+    # 是否自动隐藏锚点
+    enableAnchorAutoHide = true
+
+
+    ######################################
+    # 说明文字
+
+    # 是否开启
+    enableCaption = true
+
+    # 说明文字的前缀
+    captionPrefix = "◎ "
+
+
+    ######################################
+    # 图片外链
+
+    # 说明：仅在生产环境（production）下渲染
+    #
+    #      只支持相对于站点根目录的绝对链接
+    #      比如：/images/meme.jpg
+
+    # 是否开启
+    enableImageHost = false
+
+    # 图片外链地址
+    imageHostURL = "https://example.com/"
+
+    # 是否将 HTML 的头部元数据中的图片链接也替换为外链
+    headAlso = false
+
+
+    ######################################
+    # 视频外链
+
+    # 说明：仅在生产环境（production）下渲染
+    #
+    #      只支持相对于站点根目录的绝对链接
+    #      比如：/videos/meme.mp4
+
+    # 是否开启
+    enableVideoHost = false
+
+    # 视频外链地址
+    videoHostURL = "https://xuezenghui.com/"
+
+
+    ######################################
+    # 脚注
+
+    # 是否用方括号包裹脚注的引用序号
+    squareBrackets = true
+
+    # 替换脚注的返回链接中的文本为图标
+    footnoteReturnLinkIcon = "angle-up"
+    # 说明：如果不为空（""），则会用图标替换
+    #      `footnoteReturnLinkContents`
+
+    # 是否自行插入分隔线
+    insertHrBySelf = true
+    # 说明：如果是，则会将自动生成的分隔线删除。
+    #      实际上，你自己添加的分隔线会被删除。
+    #      如果你喜欢在 Markdown 中手动插入
+    #      `---` 以将文章的正文内容与脚注内容
+    #      分隔开来，那么这项设置将会非常有用。
+
+
+    ######################################
+    # 字体排版
+
+    ######################################
+    ## 字体
+
+    # 说明：任何一项留空，浏览器都会回退到主体字
+    #      体 `fontFamilyBody`，故没必要全部
+    #      设置。此外，如果你的品牌栏用的 SVG，
+    #      则可留空品牌栏字体。
+
+    # 品牌栏
+    fontFamilySiteBrand = ""
+    # 菜单栏
+    fontFamilyMenu = ""
+    # 文章标题、文章副标题、列表标题、列表的年份和月份标题、相关文章标题、文章上下篇标题
+    fontFamilyTitle = "'Noto Serif SC', serif"
+    # 分节标题、目录标题
+    fontFamilyHeadings = "'Noto Serif SC', serif"
+    # 代码、上标、文章元信息、文章更新徽章、文章的 Git 版本信息、极简页脚
+    fontFamilyCode = "'Source Code Pro', 'Noto Serif SC', monospace"
+    # 引用
+    fontFamilyQuote = ""
+    # 文章目录
+    fontFamilyTOC = ""
+    # 说明文字
+    fontFamilyCaption = ""
+    # 页脚
+    fontFamilyFooter = ""
+    # 主体
+    fontFamilyBody = "'EB Garamond', 'Noto Serif SC', serif"
+
+    # 网络字体链接
+    fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,700,700i|Noto+Serif+SC:400,500,700|Source+Code+Pro:400,400i,700,700i&display=swap&subset=chinese-simplified"
+    # 说明：要想读者一定体验到你设置的字体，最好
+    #      采用网络字体。MemE 主题目前仅支持
+    #      Google Fonts 的链接，请前往
+    #      https://fonts.google.com/ 获取。
+    #      此项留空，则不会采用网络字体。
+
+    ######################################
+    ## 字号（单位：px）
+
+    fontSize = 16
+
+    ######################################
+    ## 行间距
+
+    lineHeight = 2
+    # 说明：只会应用到文章的段落和目录
+
+    ######################################
+    ## 段首缩排
+
+    # 是否开启
+    enableParagraphIndent = true
+
+    # 分段样式（全局设置）
+    paragraphStyle = "margin"
+    # 说明：段间距式（margin）或段首缩排（indent）
+    #      文章的 Front Matter 中的 `indent`
+    #      的优先级高于此处
+
+    ######################################
+    ## 两端对齐
+
+    # 是否开启（全局设置）
+    enableJustify = true
+    # 说明：文章的 Front Matter 中的 `align`
+    #      的的优先级高于此处
+
+    ######################################
+    ## 首字下沉
+
+    # 是否开启（全局设置）
+    enableDropCap = true
+    # 说明：文章的 Front Matter 中的 `dropCap`
+    #      的的优先级高于此处
+
+    # 是否在每一分隔线之后首字下沉（全局设置）
+    enableDropCapAfterHr = false
+    # 说明：文章的 Front Matter 中的 `dropCapAfterHr`
+    #      的的优先级高于此处
+
+    # 是否删除首字下沉前的分隔线（全局设置）
+    deleteHrBeforeDropCap = false
+    # 说明：文章的 Front Matter 中的 `deleteHrBeforeDropCap`
+    #      的的优先级高于此处
+
+    ######################################
+    ## 大型小写（英文）
+
+    # 是否开启（全局设置）
+    enableSmallCaps = false
+    # 说明：只会应用到分节标题和目录标题
+    #      文章的 Front Matter 中的 `smallCaps`
+    #      的的优先级高于此处
+
+    ######################################
+    ## 着重号
+
+    # 说明：MemE 主题自创的新 Markdown 语法
+    #      `..文本..`
+
+    # 是否开启
+    enableEmphasisPoint = true
+
+    ######################################
+    ## 中文标点符号字形纠正
+
+    # 是否开启
+    enableChinesePunctuationGlyphCorrection = true
+
+
+    ######################################
+    # 文章版权
+
+    # 是否开启
+    enablePostCopyright = true
+
+    # 是否显示（全局设置）
+    displayPostCopyright = true
+    # 说明：文章的 Front Matter 中的 `displayCopyright`
+    #      的的优先级高于此处
+
+
+    ######################################
+    # 文章更新徽章
+
+    # 是否开启
+    enablePostUpdatedBadge = true
+
+    # 是否显示（全局设置）
+    displayUpdatedBadge = true
+    # 说明：文章的 Front Matter 中的 `badge`
+    #      的的优先级高于此处
+
+    # 是否添加 `title`
+    enableBadgeTitle = true
+    # `title` 的前缀
+    badgeTitlePrefix = "Updated @ "
+
+
+    ######################################
+    # 文章的 Git 版本信息
+
+    # 是否开启
+    enablePostGitInfo = true
+
+    # 是否显示（全局设置）
+    displayPostGitInfo = true
+    # 说明：文章的 Front Matter 中的 `gitinfo`
+    #      的的优先级高于此处
+
+    # 仓库地址
+    repoURL = "https://github.com/Xuezenghuigithub/xuezenghui.com"
+    # 编辑地址
+    repoEditURL = ""
+
+    # Git 的图标
+    gitIcon = "code-branch"
+    # 是否显示改动哈希
+    displayCommitHash = true
+
+    # 是否显示改动信息
+    displayCommitMessage = true
+    # 改动信息的图标
+    msgIcon = "info"
+
+    # 是否显示反馈链接
+    displayFeedback = true
+    # 反馈链接的图标
+    feedbackIcon = "question"
+    # 反馈链接的文本
+    feedbackText = "Feedback"
+
+    # 是否显示编辑链接
+    displayEditLink = false
+    # 编辑链接的图标
+    editIcon = "edit"
+    # 编辑链接的文本
+    editText = "Edit Me?"
+
+
+    ######################################
+    # 相关文章
+
+    # 是否开启
+    enableRelatedPosts = true
+
+    # 是否显示（全局设置）
+    displayRelatedPosts = true
+    # 说明：文章的 Front Matter 中的 `related`
+    #      的的优先级高于此处
+
+    # 相关文章数
+    relatedPostsNumber = 3
+
+    # 相关文章标题右边的图标
+    relatedPostsIcon = "plus-circle"
+
+
+    ######################################
+    # 文章的标签
+
+    # 是否开启
+    enablePostTags = true
+
+    # 标签的图标
+    postTagsIcon = "tag"
+
+
+    ######################################
+    # 文章上下篇
+
+    # 说明：在 MemE 主题中，文章上下篇是从空间
+    #      位置角度设计的，而不是像大多数其它主
+    #      题所做的那样——从时间角度设计。因此，
+    #      如果你点击左边的上篇，跳转的是一篇更
+    #      新的文章；如果你点击右边的下篇，跳转
+    #      的是一篇更旧的文章。
+
+    # 是否开启
+    enablePostNav = true
+
+    # 是否仅限于相同的文章分区
+    postNavInSection = true
+
+
+    ######################################
+    # 极简页脚
+
+    # 是否开启
+    enableMinimalFooter = false
+
+    # 是否开启关于页面的极简页脚
+    enableAboutPageMinimalFooter = false
+
+
+    ######################################
+    # 返回顶部按钮
+
+    # 是否开启
+    enableBackToTop = true
+
+    # 是否在首页显示
+    displayBackToTopInHome = true
+
+    # 按钮图标
+    backToTopIcon = "arrow-up"
+
+
+    ######################################
+    # 页脚
+
+    # 是否开启
+    enableFooter = true
+    # 说明：「诗意人生」和「视频片段」首页布局
+    #      的首页没有页脚
+
+    # 是否显示版权符号（©）
+    displayCopyrightSymbol = true
+
+    # 是否显示站点的创建年份
+    displaySiteCreatedYear = true
+
+    # 年份与作者之间的图标
+    iconBetweenYearAndAuthor = "heart"
+    # 图标颜色
+    iconColor = "yellow"
+    # 是否开启图标的跳动效果
+    iconAnimation = true
+
+    # 是否显示 Hugo 和 MemE 的链接
+    displayPoweredBy = false
+
+    # 是否显示站点的版权信息
+    displaySiteCopyright = true
+
+    # 自定义页脚（支持 Markdown）
+    customFooter = "🤨"
+
+
+    ######################################
+    # 多语言
+
+    # 是否开启多语言按钮
+    enableLangToggle = false
+
+    # 是否在首页隐藏多语言按钮
+    hideLangToggleInHome = false
+
+    # 是否自动隐藏多语言按钮
+    autoHideLangToggle = true
+    # 说明：即仅当该文章有相应的翻译版本时才显
+    #      示按钮
+
+
+    ######################################
+    # 代码高亮
+
+    # 是否开启
+    enableHighlight = true
+
+
+    ######################################
+    # 文件指纹和子资源完整性（SRI）
+
+    # 是否开启
+    enableFingerprint = true
+    # 说明：仅对 MemE 生成的 CSS 和 JS 有效
+
+
+    ######################################
+    # 404 页面
+
+    # 视频封面
+    fofPoster = ""
+
+    # 视频地址
+    fofVideoWebm = ""
+    fofVideoMp4 = ""
+    # 说明：视频地址可留空
+
+    ######################################
+    #  Front Matter说明
+    # slug      文章url     String
+    # toc       目录        Boolean
+    # gitinfo   文章Git信息  Boolean
+    # dropCap   首字下沉     Boolean
+    # 
