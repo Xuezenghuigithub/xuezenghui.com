@@ -1,8 +1,8 @@
 ---
-title: "常用CSS样式总结"
+title: "常用 CSS 样式总结"
 date: "2019-10-09T00:00:00+08:00"
 tags: ["CSS"]
-discripion: "常用CSS样式总结"
+discripion: "常用 CSS 样式总结"
 keywords: ["CSS", "常用样式"]
 categories: ["Tech"]
 dropCap: false
@@ -110,7 +110,7 @@ Page({
 <img src="http://blog.xuezenghui.com/common_css/timeline.png" width="300">
 <center>◎效果图</center>
 
-### timeline组件：
+### timeline 组件：
 ```html
 <!-- timeline.wxml -->
 

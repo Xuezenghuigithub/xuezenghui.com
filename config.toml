@@ -1081,4 +1081,8 @@ uglyURLs = false
     # toc       目录        Boolean
     # gitinfo   文章Git信息  Boolean
     # dropCap   首字下沉     Boolean
-    # 
+    # displayCopyright 版权信息 Boolean
+    # align     位置        String ['normal', 'justify', 'center']
+    # comments  评论        Boolean
+    # badge     更新日期     Boolean
+    # meta      文章信息     Boolean

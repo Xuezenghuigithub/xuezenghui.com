@@ -1,8 +1,8 @@
 ---
-title: "小程序中PDF文件的上传及下载"
+title: "小程序中 PDF 文件的上传及下载"
 date: "2019-09-30T00:00:00+08:00"
 tags: ["小程序", "Node.js", "Vue.js"]
-discripion: "微信小程序中将PDF文件上传至后台Node.js服务器进行数据处理和存储，在Vue中进行后台存储PDF文件的下载。"
+discripion: "微信小程序中将 PDF 文件上传至后台 Node.js 服务器进行数据处理和存储，在 Vue 中进行后台存储 PDF 文件的下载。"
 keywords: ["小程序", "PDF上传", "PDF下载", "multer"]
 categories: ["Tech"]
 dropCap: false
@@ -13,28 +13,28 @@ gitinfo: true
 <iframe frameborder="no" width=100% height=86 src="//music.163.com/outchain/player?type=2&id=552594869&auto=1&height=66"></iframe>
 
 #### 需求
-微信小程序中上传PDF文件（其它格式文件也可）至服务器（Node.js），并可在后台管理系统（Vue.js）中下载存储的PDF文件至本地。
+微信小程序中上传 PDF 文件（其它格式文件也可）至服务器（Node.js），并可在后台管理系统（Vue.js）中下载存储的 PDF 文件至本地。
 
 #### 思路
-1. 微信小程序中利用现有API实现本地文件的上传
+1. 微信小程序中利用现有 API 实现本地文件的上传
 2. 后台处理上传过来的二进制数据
 3. 存储
 4. Vue中发送请求获取后台数据并下载至本地
 
 ## 开搞
 #### 小程序中上传文件
-首先要明确的是小程序中并没有提供可直接选择手机本地资源文件的API，原因主要在于iOS系统出于保护用户隐私的文件系统，APP访问不到系统本地的文件，市值2000亿美金的微信也不例外(辣鸡腾讯???🤨)。
+首先要明确的是小程序中并没有提供可直接选择手机本地资源文件的 API，原因主要在于iOS系统出于保护用户隐私的文件系统，APP 访问不到系统本地的文件，市值2000亿美金的微信也不例外（辣鸡腾讯???🤨）。
 
-但是，微信小程序提供了选择会话中文件的功能，即[`wx.chooseMessageFile()`](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html)接口。什么意思呢？就是比如我从电脑上发了一个文件给`文件传输助手`，那这个API就能在小程序中获取到这个文件的信息。获取到的文件信息包括：
+但是，微信小程序提供了选择会话中文件的功能，即[`wx.chooseMessageFile()`](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html)接口。什么意思呢？就是比如我从电脑上发了一个文件给`文件传输助手`，那这个 API 就能在小程序中获取到这个文件的信息。获取到的文件信息包括：
 
 - `path` 本地临时文件路径(上传时要用到)
 - `size` 文件大小，单位为B
 - `name` 文件名
 - `type` 文件类型
 
-> 这就要求用户上传PDF文件时必须将文件先发送到任何会话中，本质上改变了**上传本地文件**的需求，所以我谨慎地在标题中没有加入..本地..二字。
+> 这就要求用户上传 PDF 文件时必须将文件先发送到任何会话中，本质上改变了**上传本地文件**的需求，所以我谨慎地在标题中没有加入..本地..二字。
 
-拿到了文件的信息后使用[`wx.uploadFile()`](https://developers.weixin.qq.com/miniprogram/dev/api/network/upload/wx.uploadFile.html)接口发送请求上传选择好的PDF文件至后台，但是要注意的是编译运行前要勾选微信开发者工具中编辑器面板的详情中的**不校验合法域名、web-view(业务域名)、TLS版本以及HTTPS证书**，原因请查阅小程序官方文档中的[域名配置说明](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)。
+拿到了文件的信息后使用[`wx.uploadFile()`](https://developers.weixin.qq.com/miniprogram/dev/api/network/upload/wx.uploadFile.html)接口发送请求上传选择好的 PDF 文件至后台，但是要注意的是编译运行前要勾选微信开发者工具中编辑器面板的详情中的**不校验合法域名、web-view (业务域名)、TLS 版本以及 HTTPS 证书**，原因请查阅小程序官方文档中的[域名配置说明](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)。
 
 ```js
 // 小程序页面js文件
@@ -93,11 +93,11 @@ Page({
 ```
 #### 后台处理数据并存储
 
-> 后台使用Node.js + Express
+> 后台使用 Node.js + Express
 
-既然已经知道小程序中上传的是二进制文件了那就好办了，[multer](https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md)中间件是Node.js中处理 `multipart/form-data`类型数据的常用解决方案，中文文档写的也很清晰，建议往下看之前先仔细研读其文档，具体用法这里不再赘述了。
+既然已经知道小程序中上传的是二进制文件了那就好办了，[multer](https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md) 中间件是 Node.js 中处理 `multipart/form-data`类型数据的常用解决方案，中文文档写的也很清晰，建议往下看之前先仔细研读其文档，具体用法这里不再赘述了。
 
-还有一点需要明确——存储PDF文件的方式。我们知道，MongoDB中的[GridFs](https://blog.csdn.net/Xue_zenghui/article/details/100982798)支持文件的存储，但是要考虑项目中具体使用情境的影响如上传的文件数量、文件大小、并发量等，为避免文件数据量过大影响数据库存取效率，建议将PDF文件的二进制数据存储于..硬盘文件夹..中而不直接存入数据库中(有文件服务器另说)，下载的时候使用Node.js的`fs`模块再读取文件的二进制流就可以了，此时Node.js充当的角色就是简单的静态资源服务器。
+还有一点需要明确——存储 PDF 文件的方式。我们知道，MongoDB 中的 [GridFs](https://blog.csdn.net/Xue_zenghui/article/details/100982798) 支持文件的存储，但是要考虑项目中具体使用情境的影响如上传的文件数量、文件大小、并发量等，为避免文件数据量过大影响数据库存取效率，建议将 PDF 文件的二进制数据存储于..硬盘文件夹..中而不直接存入数据库中(有文件服务器另说)，下载的时候使用 Node.js 的`fs`模块再读取文件的二进制流就可以了，此时 Node.js 充当的角色就是简单的静态资源服务器。
 
 ```js
 // uploadFile.js文件
@@ -130,14 +130,14 @@ router.post('/uploadFile', upload.single('file'), (req, res, next) => { // 此�
 module.exports = router;
 ```
 
-此时，小程序中选择好文件后点击上传按钮服务器会把文件的二进制数据存储在代码中指定的uploads文件夹中：
+此时，小程序中选择好文件后点击上传按钮服务器会把文件的二进制数据存储在代码中指定的 uploads 文件夹中：
 
 ![upload_pdf.jpeg](http://blog.xuezenghui.com/blog/upload_pdf.jpeg "存储成功的PDF")
 
-#### 下载存储的PDF文件至本地
-至此，小程序上传PDF文件的需求已经完成了，当然在Vue中上传也是异曲同工，只是需要在POST请求中指定上传的数据类型。
+#### 下载存储的 PDF 文件至本地
+至此，小程序上传 PDF 文件的需求已经完成了。
 
-既然用户上传了文件，我们就要拿到文件的内容，此处使用Vue搭建的的简易后台管理系统(说是个系统显然还不够格儿🤪)完成PDF文件的下载需求。
+既然用户上传了文件，我们就要拿到文件的内容，此处使用 Vue 搭建的的简易后台管理系统(说是个系统显然还不够格儿🤪)完成 PDF 文件的下载需求。
 
 - 先来完成后台接口：
 
@@ -163,7 +163,7 @@ router.post('/downloadFile',(req, res) => { // 返回文件二进制流数据接
 })
 ```
 
-- Vue前台发送请求下载文件到本地：
+- Vue 前台发送请求下载文件到本地：
 
 ```vue
 <!-- 下载文件组件download.vue -->
@@ -216,6 +216,6 @@ export default {
 </script>
 ```
 ***
-至此，**小程序上传文件**➡️**后台存储PDF文件**➡️**后台管理系统下载存储的文件**的整个流程已经走通😏，具体的业务需求就任君发挥了，比如将后台存储的所有文件名渲染在页面中，点击对应文件名将文件下载到本地、文件名多选再下载到本地等。
+至此，**小程序上传文件**➡️**后台存储 PDF 文件**➡️**后台管理系统下载存储的文件**的整个流程已经走通😏，具体的业务需求就任君发挥了，比如将后台存储的所有文件名渲染在页面中，点击对应文件名将文件下载到本地、文件名多选再下载到本地等。
 
-🎱案例Github地址：[小程序中PDF文件的上传及下载](https://github.com/Xuezenghuigithub/miniProgram_upload-download)
+🎱案例 Github 地址：[小程序中PDF文件的上传及下载](https://github.com/Xuezenghuigithub/miniProgram_upload-download)

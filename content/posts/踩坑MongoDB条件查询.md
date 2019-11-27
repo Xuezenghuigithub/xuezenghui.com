@@ -1,8 +1,8 @@
 ---
-title: "踩坑MongoDB条件查询"
+title: "踩坑 MongoDB 条件查询"
 tags: ["MongoDB"]
 date: "2019-10-16T00:00:00+08:00"
-discripion: "踩坑MongoDB条件查询$gt"
+discripion: "踩坑 MongoDB 条件查询$gt"
 keywords: ["MongoDB", "条件查询", "$gt"]
 categories: ["Tech"]
 dropCap: false
@@ -10,9 +10,9 @@ slug: "MongoDB-query-$gt"
 ---
 ## Bug复现
 
-> 后台使用Node.js + Express + Mongoose
+> 后台使用 Node.js + Express + Mongoose
 
-项目中需要用到MongoDB的条件查询`$gt`，用法也很简单：
+项目中需要用到 MongoDB 的条件查询`$gt`，用法也很简单：
 ```js
 SinglePrints.find({
      "last_day_click": {
@@ -50,4 +50,4 @@ router.get('/', async (req, res) => {
 
 那么问题出在哪里呢？当`thisPrint`的值小于1000时，查询的结果是没有任何问题的，但如果大于1000条件筛选就会失效。
 ## Figure out
-这种看似和筛选条件大小有关系的bug实则非也，而是和**数据库中需要比对的字段的类型**有关，也就是上述例子中`last_day_click`存储类型的原因。当类型为`String`时就会发生偶尔失效的状况，这就要求在存储这个字段的时候将它存为`Number`类型，即在Mongoose的`Schema`中将其类型定义为`Number`。
+这种看似和筛选条件大小有关系的 bug 实则非也，而是和**数据库中需要比对的字段的类型**有关，也就是上述例子中`last_day_click`存储类型的原因。当类型为`String`时就会发生偶尔失效的状况，这就要求在存储这个字段的时候将它存为`Number`类型，即在 Mongoose 的`Schema`中将其类型定义为`Number`。
