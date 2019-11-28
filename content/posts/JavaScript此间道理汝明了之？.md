@@ -28,7 +28,7 @@ gitinfo: true
 - 🔗：
     1. [Slow delete of object properties in JS in V8 | Stack Overflow
 ](https://stackoverflow.com/questions/43594092/slow-delete-of-object-properties-in-js-in-v8/44008788)
-    2. [为什么说在 JS 中要避免使用 delete | SementFault](https://segmentfault.com/a/1190000020081647)
+    2. [为什么说在 JS 中要避免使用 delete | SegmentFault](https://segmentfault.com/a/1190000020081647)
 
 ### 最优雅地实现数组去重并排序
 ```js

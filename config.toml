@@ -269,7 +269,7 @@ uglyURLs = false
     # 站点信息
 
     # 站点的 LOGO
-    siteLogo = "/"
+    siteLogo = ""
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
@@ -1046,7 +1046,7 @@ uglyURLs = false
     hideLangToggleInHome = false
 
     # 是否自动隐藏多语言按钮
-    autoHideLangToggle = true
+    autoHideLangToggle = false
     # 说明：即仅当该文章有相应的翻译版本时才显
     #      示按钮
 
