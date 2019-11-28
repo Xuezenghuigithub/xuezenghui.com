@@ -28,7 +28,7 @@ gitinfo: true
 但是，微信小程序提供了选择会话中文件的功能，即[`wx.chooseMessageFile()`](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html)接口。什么意思呢？就是比如我从电脑上发了一个文件给`文件传输助手`，那这个 API 就能在小程序中获取到这个文件的信息。获取到的文件信息包括：
 
 - `path` 本地临时文件路径(上传时要用到)
-- `size` 文件大小，单位为B
+- `size` 文件大小，单位为 B
 - `name` 文件名
 - `type` 文件类型
 
@@ -148,14 +148,14 @@ var fs = require('fs'); // 引入fs模块处理文件
 ...
 router.post('/downloadFile',(req, res) => { // 返回文件二进制流数据接口
     var filename = req.body.filename;
-    var file = './uploads/'+ filename; //请求文件的实际路径
-    res.writeHead(200, { //设置响应头
-        'Content-Type': 'application/octet-stream',//告诉浏览器这是一个二进制文件
-        'Content-Disposition': 'attachment; filename=' + encodeURI(filename),//告诉浏览器这是一个需要下载的文件
+    var file = './uploads/'+ filename; // 请求文件的实际路径
+    res.writeHead(200, { // 设置响应头
+        'Content-Type': 'application/octet-stream',// 告诉浏览器这是一个二进制文件
+        'Content-Disposition': 'attachment; filename=' + encodeURI(filename),// 告诉浏览器这是一个需要下载的文件
     });
-    var readStream = fs.createReadStream(file); //得到文件输入流
+    var readStream = fs.createReadStream(file); // 得到文件输入流
     readStream.on('data', (chunk) => {
-        res.write(chunk, 'binary'); //文档内容以二进制的格式写到response的输出流
+        res.write(chunk, 'binary'); // 文档内容以二进制的格式写到response的输出流
     });
     readStream.on('end', () => {
         res.end();
@@ -169,7 +169,7 @@ router.post('/downloadFile',(req, res) => { // 返回文件二进制流数据接
 <!-- 下载文件组件download.vue -->
 <template>
   <div>
-    <!-- 使用了vuetify UI框架的组件, Markdown的代码高亮好像不识别了... -->
+    <!-- 使用了vuetify UI框架的组件, Markdown的代码高亮好像不识别了= = -->
     <v-btn @click="download">下载pdf到本地</v-btn>
   </div>
 </template>
@@ -218,4 +218,4 @@ export default {
 ***
 至此，**小程序上传文件**➡️**后台存储 PDF 文件**➡️**后台管理系统下载存储的文件**的整个流程已经走通😏，具体的业务需求就任君发挥了，比如将后台存储的所有文件名渲染在页面中，点击对应文件名将文件下载到本地、文件名多选再下载到本地等。
 
-🎱案例 Github 地址：[小程序中PDF文件的上传及下载](https://github.com/Xuezenghuigithub/miniProgram_upload-download)
+🎱案例 Github 地址：[小程序中 PDF 文件的上传及下载](https://github.com/Xuezenghuigithub/miniProgram_upload-download)

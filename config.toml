@@ -61,7 +61,7 @@ uglyURLs = false
 # Markdown 渲染器
 [blackfriday]
     # 是否开启智能标点符号替换
-    smartypants = false
+    smartypants = true
     # 是否在新标签页打开外链
     hrefTargetBlank = true
     # 屏蔽的扩展
@@ -253,12 +253,12 @@ uglyURLs = false
     homeLinksPadding = 1
 
     ## 「视频片段」
-    homePoster = ""
+    homePoster = "Zander"
     homeVideoWebm = ""
     homeVideoMp4 = ""
     homeLogo = ""
     homeLogoLink = ""
-    homeTitle = ""
+    homeTitle = "Zander Hsueh"
     homeMotto = ""
     homeDescription = ""
     homeKeywords = ""
@@ -269,7 +269,7 @@ uglyURLs = false
     # 站点信息
 
     # 站点的 LOGO
-    siteLogo = "/icons/favicon.ico"
+    siteLogo = "/"
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
@@ -532,7 +532,7 @@ uglyURLs = false
     enableValine = true
     valineAppId = 'WOGsi7UjLASjAxr91Rx1og8E-gzGzoHsz'
     valineAppKey = 'fEB3S9O1FdXgYII2pWyyydiB'
-    valineNotify = false # 邮件通知
+    valineNotify = true # 邮件通知
     valineVerify = false # 评论验证码
     valineMeta = ["nick", "mail", "link"]
     valineAvatar = 'monsterid' # 用户头像
@@ -763,13 +763,15 @@ uglyURLs = false
     #      则可留空品牌栏字体。
 
     # 品牌栏
-    fontFamilySiteBrand = ""
+    fontFamilySiteBrand = "Trade Winds"
+    # fontFamilySiteBrand = "Bungee Shade"
+
     # 菜单栏
     fontFamilyMenu = ""
     # 文章标题、文章副标题、列表标题、列表的年份和月份标题、相关文章标题、文章上下篇标题
-    fontFamilyTitle = "'Noto Serif SC', serif"
+    fontFamilyTitle = "'Cinzel Decorative', 'Noto Serif SC', serif"
     # 分节标题、目录标题
-    fontFamilyHeadings = "'Noto Serif SC', serif"
+    fontFamilyHeadings = "'EB Garamond', 'Noto Serif SC', serif"
     # 代码、上标、文章元信息、文章更新徽章、文章的 Git 版本信息、极简页脚
     fontFamilyCode = "'Source Code Pro', 'Noto Serif SC', monospace"
     # 引用
@@ -784,7 +786,7 @@ uglyURLs = false
     fontFamilyBody = "'EB Garamond', 'Noto Serif SC', serif"
 
     # 网络字体链接
-    fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,700,700i|Noto+Serif+SC:400,500,700|Source+Code+Pro:400,400i,700,700i&display=swap&subset=chinese-simplified"
+    fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,700,700i|Bungee+Shade|Trade+Winds|Cinzel+Decorative:700|Noto+Serif+SC:400,500,700|Source+Code+Pro:400,400i,700,700i&display=swap&subset=chinese-simplified"
     # 说明：要想读者一定体验到你设置的字体，最好
     #      采用网络字体。MemE 主题目前仅支持
     #      Google Fonts 的链接，请前往
