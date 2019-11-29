@@ -50,7 +50,7 @@ mkdir: data: Read-only file system
 
 ***
 
-> 因为使用 MongoDB 会更改 /data/db 文件，所以不能重新开启 SIP，否则还是会报错权限问题，而 SIP 一直处于关闭状态实际上会导致电脑有一定的安全隐患，详情请查阅[关于Mac上的系统完整性保护](https://support.apple.com/zh-cn/HT204899)，希望后续能有更好的解决途径吧。
+> 因为使用 MongoDB 会更改 /data/db 文件，所以不能重新开启 SIP，否则还是会报错权限问题，而 SIP 一直处于关闭状态实际上会导致电脑有一定的安全隐患，详情请查阅[关于 Mac 上的系统完整性保护](https://support.apple.com/zh-cn/HT204899)，希望后续能有更好的解决途径吧。
 
 ***
 
