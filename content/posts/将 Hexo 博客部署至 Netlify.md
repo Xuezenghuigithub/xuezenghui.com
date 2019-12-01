@@ -30,7 +30,7 @@ gitinfo: true
 
 虽然 Netlify 没有中文文档，但也别被它的全英文唬住，部署的步骤还是比较简单的，但是它提供的强大功能我也并没有尝试很多，还在持续摸索总结中。
 
-Netlify 支持两种部署方式，直接拖拽站点文件至页面部署和**连接Git方式的持续部署**，因为之前博客是将Hexo生成的`public`文件夹部署至 GitHub Pages 的，为了写博客的便利性我还是选择采用Git方式部署，这样部署成功后还是可以本地`hexo g`➡️`hexo d`实现博客的部署更新。
+Netlify 支持两种部署方式，直接拖拽站点文件至页面部署和**连接 Git 方式的持续部署**，因为之前博客是将 Hexo 生成的`public`文件夹部署至 GitHub Pages 的，为了写博客的便利性我还是选择采用 Git 方式部署，这样部署成功后还是可以本地`hexo g`➡️`hexo d`实现博客的部署更新。
 
 首先直接使用 GitHub 账号登录 Netlify，点击界面中的`New site from Git`按钮：
 
@@ -74,7 +74,7 @@ Netlify 支持两种部署方式，直接拖拽站点文件至页面部署和**�
 ![DNS_server.png](http://blog.xuezenghui.com/deploy_to_netlify/DNS_server.png "域名控制台截图")
 
 ### 设置HTTPS
-上面说到了，Netlify 是支持免费 HTTPS 的，只需要在 Domain setting 的 HTTPS 设置中点击按钮即可为网站添加Netlify提供的免费的[Let's Encrypt](https://letsencrypt.org/)证书，当然，阿里云也提供了免费的 SSL 证书，不嫌麻烦的话也可以使用自定义的证书，但本质上都是为了域名前的那个🔒，区别不大。
+上面说到了，Netlify 是支持免费 HTTPS 的，只需要在 Domain setting 的 HTTPS 设置中点击按钮即可为网站添加 Netlify 提供的免费的[Let's Encrypt](https://letsencrypt.org/)证书，当然，阿里云也提供了免费的 SSL 证书，不嫌麻烦的话也可以使用自定义的证书，但本质上都是为了域名前的那个🔒，区别不大。
 
 ![HTTPS.png](http://blog.xuezenghui.com/deploy_to_netlify/HTTPS.png "HTTPS")
 

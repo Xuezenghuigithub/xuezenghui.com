@@ -1,5 +1,5 @@
 ---
-title: "组件管理工具 Bit"
+title: "Bit——组件管理工具"
 date: "2019-11-19T20:18:00+08:00"
 tags: ["Bit"]
 discripion: "组件管理工具 Bit"
@@ -43,25 +43,25 @@ Bit 用来管理组件，而任何的代码文件、函数、Vue 组件、Angula
 1. 全局安装 Bit
 
 ```s
-npm install bit-bin -g
+$ npm install bit-bin -g
 ```
 
 2. 初始化项目
 
 ```s
-bit init
+$ bit init
 ```
 
 3. 跟踪组件
 
 ```s
-bit add src/components/*    # 跟踪src/components目录下的所有组件
+$ bit add src/components/*    # 跟踪src/components目录下的所有组件
 ```
 
 4. 设置组件版本
 
 ```s
-bit tag --all 1.0.0  # 给跟踪的所有组件设置发布的版本号为1.0.0
+$ bit tag --all 1.0.0  # 给跟踪的所有组件设置发布的版本号为1.0.0
 ```
 
 5. 导出组件
@@ -77,7 +77,7 @@ bit tag --all 1.0.0  # 给跟踪的所有组件设置发布的版本号为1.0.0
 
     - 导出/发布组件：
     ```s
-    bit export user_name.collection_name
+    $ bit export user_name.collection_name
     ```
 
     - 在远程中可查看、管理发布的组件：
@@ -91,13 +91,13 @@ bit tag --all 1.0.0  # 给跟踪的所有组件设置发布的版本号为1.0.0
 1. 配置npm的注册表
 
 ```s
-npm config set '@bit:registry' https://node.bit.dev
+$ npm config set '@bit:registry' https://node.bit.dev
 ```
 
 2. 然后就可以像平常 npm 安装使用第三方包一样使用 Bit 组件：
 
 ```s
-npm i @bit/zander.demo.zander
+$ npm i @bit/zander.demo.zander
 ```
 
 ```vue
