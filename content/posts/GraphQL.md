@@ -130,7 +130,7 @@ module.exports = new GraphQLSchema({
 
 ![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo2.png "查询结果")
 
-### 指定参数实现单条数据查询
+**7. 指定参数实现单条数据查询**
 
 ```js
 // schema.js
