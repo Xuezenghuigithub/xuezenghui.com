@@ -534,6 +534,7 @@ uglyURLs = false
     valineAppKey = 'fEB3S9O1FdXgYII2pWyyydiB'
     valineNotify = true # 邮件通知
     valineVerify = false # 评论验证码
+    valinePath = ""
     valineMeta = ["nick", "mail", "link"]
     valineAvatar = 'monsterid' # 用户头像
     valinePlaceholder = '能饮一杯无？'
@@ -544,7 +545,7 @@ uglyURLs = false
     valineHighlight = true
     avatarForce = false
     valineRecordIP = true # 记录评论者IP
-    valineServerURLs = "http[s]://[tab/us].avoscloud.com"
+    valineServerURLs = ""
     ######################################
     # Google Analytics
 
