@@ -7,6 +7,7 @@ keywords: ["Netlify", "Hexo", "个人博客"]
 categories: ["Tech"]
 slug: "Hexo-deploy-Netlify"
 gitinfo: true
+comments: true
 ---
 
 ## 前言

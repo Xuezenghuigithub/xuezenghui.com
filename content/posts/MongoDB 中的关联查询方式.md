@@ -7,6 +7,7 @@ keywords: ["MongoDB", "Mongoose", "populate", "aggregate"]
 categories: ["Tech"]
 slug: "aggregation_population"
 toc: true
+comments: true
 ---
 ## 前言
 数据库设计中数据之间的关联关系是极其常见的：一对一、一对多、多对多，作为 NoSQL 领头羊的 MongoDB 中常用做法无非「内嵌」和「引用」两种，因为 Document 有 16MB 的大小限制[^1]且「内嵌」不适合复杂的多对多关系，「引用」是用得更广泛的关联方式，所以 MongoDB 官方称其为“Normalized Data Models”——..标准化数据模型..。

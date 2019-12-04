@@ -6,6 +6,7 @@ discripion: "macOS升级Catalina后根目录无法创建文件和文件夹，权
 keywords: [macOS,Catalina,权限]
 categories: ["Debug"]
 slug: "update-Catalina-bug"
+comments: true
 ---
 ## Bug复现
 ![Catalina.png](http://blog.xuezenghui.com/cataline_bug/cataline.png "Catalina")

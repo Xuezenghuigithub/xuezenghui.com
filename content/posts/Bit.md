@@ -8,6 +8,7 @@ categories: ["Tech"]
 dropCap: false
 slug: "Bit"
 gitinfo: true
+comments: true
 ---
 ## 对比 Git 你就知道 Bit 是什么了
 **“Bit loves Git”**—— yep，这是 [Bit 官方文档](https://docs.bit.dev/docs/quick-start)的原话。[Git](https://git-scm.com/) 大家再熟悉不过了，世界上最先进的分布式版本控制系统，且没有之一😏，“近朱者赤”，大概这就是 Bit 喜欢 Git 的原因了吧hhhh～😆

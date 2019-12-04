@@ -9,6 +9,7 @@ dropCap: true
 toc: true
 slug: "GraphQL"
 gitinfo: true
+comments: true
 ---
 
 ## 前言

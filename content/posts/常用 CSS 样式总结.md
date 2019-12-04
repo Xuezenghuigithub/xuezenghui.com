@@ -9,6 +9,7 @@ dropCap: false
 toc: true
 slug: "common-css"
 gitinfo: true
+comments: true
 ---
 ## 标题左右横线
 

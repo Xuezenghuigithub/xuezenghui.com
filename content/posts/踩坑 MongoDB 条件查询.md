@@ -7,6 +7,7 @@ keywords: ["MongoDB", "条件查询", "$gt"]
 categories: ["Tech"]
 dropCap: false
 slug: "MongoDB-query-$gt"
+comments: true
 ---
 ## Bug复现
 
