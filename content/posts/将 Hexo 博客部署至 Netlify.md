@@ -5,7 +5,7 @@ tags: ["Netlify", "Hexo"]
 discripion: "将基于 Hexo 搭建的个人博客部署到 Netlify 中。"
 keywords: ["Netlify", "Hexo", "个人博客"]
 categories: ["Tech"]
-slug: "Hexo-deploy-Netlify"
+slug: "Hexo-deploy-to-Netlify"
 gitinfo: true
 comments: true
 ---
@@ -35,49 +35,49 @@ Netlify 支持两种部署方式，直接拖拽站点文件至页面部署和**�
 
 首先直接使用 GitHub 账号登录 Netlify，点击界面中的`New site from Git`按钮：
 
-![new_site.png](http://blog.xuezenghui.com/deploy_to_netlify/new_site.png "New site from Git")
+![new-site.png](/images/hexo-deploy-to-netlify:new-site.png "New site from Git")
 
 
 第一步，选择连接 GitHub：
 
-![step1.png](http://blog.xuezenghui.com/deploy_to_netlify/step1.png "连接GitHub")
+![contact-github.png](/images/hexo-deploy-to-netlify:contact-github.png "连接 GitHub")
 
 
 > 需要注意的是进行此步骤时尽量关闭所有的科学上网工具，安安分分使用内网，否则..或将..导致网络请求无法连接 GitHub，从而迟迟不跳出授权的页面。鬼知道我当时费了多少周折寻求解决办法结果花费一秒的时间关掉 Shadowsocks 就成了？？？🙃
 
 授权，直接按照默认的选项点击`Install`即可：
 
-![step1.1.png](http://blog.xuezenghui.com/deploy_to_netlify/step1.1.png "GitHub授权")
+![authorization.png](/images/hexo-deploy-to-netlify:auth.png "GitHub 授权")
 
 
 第二步，选择博客的仓库，比如我这里的 Xuezenghuigithub.github.io 仓库：
 
-![step2.png](http://blog.xuezenghui.com/deploy_to_netlify/step2.png "选择仓库")
+![repository.png](/images/hexo-deploy-to-netlify:repository.png "选择仓库")
 
 第三步，配置选项、构建部署：
 
-![step3.png](http://blog.xuezenghui.com/deploy_to_netlify/step3.png "构建部署")
+![deploy.png](/images/hexo-deploy-to-netlify:deploy.png "构建部署")
 
 接着等待片刻就部署成功了🍺，点击笑脸😊选项卡即可访问部署成功的网站：
 
-![deploy_success.png](http://blog.xuezenghui.com/deploy_to_netlify/deploy_success.png "部署成功")
+![success.png](/images/hexo-deploy-to-netlify:success.png "部署成功")
 
 ### 绑定域名，设置 DNS
-首先肯定得申请域名了，很多前辈推荐狗爹[GoDaddy](https://sg.godaddy.com/zh)上购买域名，言之划算且不需要繁琐的域名备案，但是折腾了一番发现中国内地在 GoDaddy 上购买`.com`域名是不能使用支付宝支付的，其它支付方式又很麻烦，故弃之选择在[阿里云](https://www.aliyun.com/)上购买域名，操作方便价格无差——真香！(叮！支付宝到账0.5元！)
+首先肯定得申请域名了，很多前辈推荐在狗爹 [GoDaddy](https://sg.godaddy.com/zh) 上购买域名，言之划算且不需要繁琐的域名备案，但是折腾了一番发现中国内地在 GoDaddy 上购买`.com`域名是不能使用支付宝支付的，其它支付方式又很麻烦，故弃之选择在[阿里云](https://www.aliyun.com/)上购买域名，操作方便价格无差——真香！(叮～支付宝到账0.5元！)
 
 
-有了域名后点击部署项目的 Domain setting，在 Custom domains 内直接输入域名即可，然后去DNS设置面板：
+有了域名后点击部署项目的 Domain setting，在 Custom domains 内直接输入域名即可，然后去 DNS 设置面板：
 
-![domains.png](http://blog.xuezenghui.com/deploy_to_netlify/domains.png "DNS设置入口")
+![domains.png](/images/hexo-deploy-to-netlify:domains.png "DNS 设置入口")
 
 按照面板内步骤在阿里云域名控制台修改域名的 DNS 服务器，修改成功后域名后就有了上图中绿色的`Netlify DNS`标志，这时域名就由 Netlify 管理了，DNS 解析也会自动配置，省事ing。
 
-![DNS_server.png](http://blog.xuezenghui.com/deploy_to_netlify/DNS_server.png "域名控制台截图")
+![DNS_server.png](/images/hexo-deploy-to-netlify:DNS.png "域名控制台截图")
 
 ### 设置HTTPS
-上面说到了，Netlify 是支持免费 HTTPS 的，只需要在 Domain setting 的 HTTPS 设置中点击按钮即可为网站添加 Netlify 提供的免费的[Let's Encrypt](https://letsencrypt.org/)证书，当然，阿里云也提供了免费的 SSL 证书，不嫌麻烦的话也可以使用自定义的证书，但本质上都是为了域名前的那个🔒，区别不大。
+上面说到了，Netlify 是支持免费 HTTPS 的，只需要在 Domain setting 的 HTTPS 设置中点击按钮即可为网站添加 Netlify 提供的免费的 [Let's Encrypt](https://letsencrypt.org/) 证书，当然，阿里云也提供了免费的 SSL 证书，不嫌麻烦的话也可以使用自定义的证书，但本质上都是为了域名前的那个🔒，区别不大。
 
-![HTTPS.png](http://blog.xuezenghui.com/deploy_to_netlify/HTTPS.png "HTTPS")
+![HTTPS.png](/images/hexo-deploy-to-netlify:HTTPS.png "HTTPS")
 
 **要说明的是**，虽然已经有了 HTTPS，但访问博客后域名前是❗️而不是🔒，提示`与网站之间建立的连接并非完全安全`，这是因为网站内包含了其它的非 HTTP 请求，比如七牛云的图片外链等，解决办法就是将博客文章内的 HTTP 链接全部替换为 HTTPS，但说回来这种情况也**并不影响正常的浏览访问**，而且我这个穷鬼不配拥有七牛云的 HTTPS 格式图片外链🌚。
 ### 修改博客相关配置

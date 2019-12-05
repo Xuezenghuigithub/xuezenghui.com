@@ -2,7 +2,6 @@
 title: "小程序中 PDF 文件的上传及下载"
 date: "2019-09-30T00:00:00+08:00"
 tags: ["小程序", "Node.js", "Vue.js"]
-discripion: "微信小程序中将 PDF 文件上传至后台 Node.js 服务器进行数据处理和存储，在 Vue 中进行后台存储 PDF 文件的下载。"
 keywords: ["小程序", "PDF上传", "PDF下载", "multer"]
 categories: ["Tech"]
 dropCap: false
@@ -11,7 +10,7 @@ gitinfo: true
 comments: true
 ---
 
-<iframe frameborder="no" width=100% height=86 src="//music.163.com/outchain/player?type=2&id=552594869&auto=1&height=66"></iframe>
+<iframe frameborder="no" width=100% height=86 src="https://music.163.com/outchain/player?type=2&id=552594869&auto=1&height=66"></iframe>
 
 #### 需求
 微信小程序中上传 PDF 文件（其它格式文件也可）至服务器（Node.js），并可在后台管理系统（Vue.js）中下载存储的 PDF 文件至本地。
@@ -85,8 +84,8 @@ Page({
           'filename': _that.data.filename
         },
         success(res) {
-          const data = res.data
-          console.log("success",data)
+          const data = res.data;
+          ...
         }
       })
   }
@@ -133,7 +132,7 @@ module.exports = router;
 
 此时，小程序中选择好文件后点击上传按钮服务器会把文件的二进制数据存储在代码中指定的 uploads 文件夹中：
 
-![upload_pdf.jpeg](http://blog.xuezenghui.com/blog/upload_pdf.jpeg "存储成功的PDF")
+![upload-pdf.jpeg](/images/upload-pdf.jpeg "存储成功的 PDF")
 
 #### 下载存储的 PDF 文件至本地
 至此，小程序上传 PDF 文件的需求已经完成了。
