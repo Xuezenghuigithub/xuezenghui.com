@@ -13,7 +13,7 @@ comments: true
 ---
 ## 标题左右横线
 
-![title_h.png](http://blog.xuezenghui.com/blog/common_css/title_h.png "效果图")
+![title_h.png](/images/common-css:title-h.png "效果图")
 
 ```html
 <div class="title"></div>
@@ -47,7 +47,7 @@ comments: true
 ```
 ## 微信小程序——多行文本展开/收起
 
-![up&down.gif](http://blog.xuezenghui.com/common_css/up&down.gif "效果图")
+![up&down.gif](/images/common-css:up&down.gif "效果图")
 
 ```html
 <!-- .wxml文件 -->
@@ -106,10 +106,9 @@ Page({
   }
 )}
 ```
-## 小程序——时间轴组件
+## 微信小程序——时间轴组件
 
-<img src="http://blog.xuezenghui.com/common_css/timeline.png" width="300">
-<center>◎效果图</center>
+<img src="/images/common-css:timeline.png" width="300" title="效果图">
 
 ### timeline 组件：
 ```html

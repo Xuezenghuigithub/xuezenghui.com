@@ -80,7 +80,7 @@ uglyURLs = false
     # 网站（默认值：baseURL）
     website = "https://xuezenghui.com/"
     # 推特
-    # twitter = "reuixiy"
+    # twitter = "xuezenghui"
 
 # 相关文章
 [related]
@@ -269,7 +269,7 @@ uglyURLs = false
     # 站点信息
 
     # 站点的 LOGO
-    siteLogo = ""
+    siteLogo = "/static/favicon.ico"
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
@@ -278,7 +278,7 @@ uglyURLs = false
     #      Open Graph、Atom、RSS
 
     # 站点的关键词
-    siteKeywords = ["技术博客", "前端"]
+    siteKeywords = ["技术博客", "前端", "Zander", "Zander Hsueh", "薛增辉"]
     # 说明：如果留空（[]），则会取站点的所有类别名、分
     #      区名（如果按分区分类）作为默认值
 
@@ -578,7 +578,7 @@ uglyURLs = false
     # 注意：只支持 HSL 颜色值
 
     # 文章的内容宽度
-    postWidth = 38
+    postWidth = 34
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
@@ -707,10 +707,10 @@ uglyURLs = false
     #      比如：/images/meme.jpg
 
     # 是否开启
-    enableImageHost = false
+    enableImageHost = true
 
     # 图片外链地址
-    imageHostURL = "https://example.com/"
+    imageHostURL = "https://xuezenghui.com/"
 
     # 是否将 HTML 的头部元数据中的图片链接也替换为外链
     headAlso = false
@@ -725,7 +725,7 @@ uglyURLs = false
     #      比如：/videos/meme.mp4
 
     # 是否开启
-    enableVideoHost = false
+    enableVideoHost = true
 
     # 视频外链地址
     videoHostURL = "https://xuezenghui.com/"
