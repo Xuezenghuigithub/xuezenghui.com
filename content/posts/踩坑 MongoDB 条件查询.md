@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
 })
 ```
 ***
-而且强大的地方还在于无论这里的`thisPrint`类型是`Number`还是`String`，MongDB会自动识别为`Number`类型来和数据库中的字段进行比较。
+而且强大的地方还在于无论这里的`thisPrint`类型是`Number`还是`String`，MongDB 会自动识别为`Number`类型来和数据库中的字段进行比较。
 
 那么问题出在哪里呢？当`thisPrint`的值小于1000时，查询的结果是没有任何问题的，但如果大于1000条件筛选就会失效。
 ## Figure out

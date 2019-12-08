@@ -17,11 +17,11 @@ comments: true
 > 🍽食用方法：正文中的三级标题为用法的简要，..🤔..后是该用法的原理及相关思考，..🔗..为推荐阅读的相关链接。
 
 ## 干货
-### 创建空对象的正确方式——`Object.create(null)`
+### 创建空对象的正确方式—`Object.create(null)`
 - 🤔：JavaScript 编程中的最佳实践，`Object.create(null)`创建的对象不会继承 Object 原型的`toString()`、`hasOwnProperty()`等方法，真正的..空对象..，干净而优雅🤤～而使用`{}`则反之。
 
 - 🔗：
-    1. [详解Object.create(null) | 掘金](https://juejin.im/post/5acd8ced6fb9a028d444ee4e)
+    1. [详解 Object.create(null) | 掘金](https://juejin.im/post/5acd8ced6fb9a028d444ee4e)
 
 ### 慎用`delete`来删除对象的属性
 - 🤔️：JavaScript V8 引擎内部机制导致`delete`操作会先耗费大量时间去检查对象中的各个属性，从而大大影响程序的执行速度。简单的方式是直接将不需要的属性设为`undefined`，但这种方式实际只保证了属性不显示，而不是真正意义上的..删除..（会导致 [ESlint](https://eslint.bootcss.com/) 报错），Lodash 的 [omit()](https://lodash.com/docs/4.17.15#omit) 方法实为最优解。
