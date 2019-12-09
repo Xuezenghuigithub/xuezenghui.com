@@ -125,11 +125,11 @@ module.exports = new GraphQLSchema({
 
 - 查询所有的`flight_number`:
 
-![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo1.png "查询结果")
+![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo1.png)
 
 - 查询想要的更多数据：
 
-![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo2.png "查询结果")
+![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo2.png)
 
 **7. 指定参数实现单条数据查询**
 
@@ -154,38 +154,40 @@ const RootQuery = new GraphQLObjectType({
 });
 ```
 
-![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo3.png "查询结果")
+![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo3.png)
 
 ## GraphQL + NodeJS + MongoDB
 ![graphql&node&mongodb.jpeg](/images/graphql:graphql&node&mongodb.jpeg "GraphQL + NodeJS + MongoDB")
 
 上述实例只是验证了 GraphQL 中的强大查询可以通过 Query 轻松地实现，但还有两件事需要去做：①连接数据库使用自己的数据；②新增、更新、删除操作。下面通过一个综合实例来完成这两点：
 
+> 某些操作上方实例中已涉及到，此处不再赘述😑
+
 ### 设置项目
 **1. 搭建项目目录**
 
 使用 express-generator 搭建项目，添加`/models`目录定义 MongoDB 集合的模型，添加`/graphql/schema.js`目录来完成 GraphQL 相关操作，最终目录结构：
 ```
-/graphql
-  app.js
-  /bin
-    www
-  package.json
-  /node_modules
-  /public
-  /images
-  /javascripts
-  /stylesheets
-    style.css
-  /models
-    author.js
-    book.js
-  /graphql
-    schema.js
-  /views
-    error.pug
-    index.pug
-    layout.pug
+.
+├─ app.js
+├─ bin/
+│   └─ www
+├─ package.json
+├─ node_modules
+├─ public
+├─ images
+├─ javascripts
+├─ stylesheets/
+│   └─ style.css
+├─ models/
+│   ├─ author.js
+│   └─ book.js
+├─ graphql/
+│   └─ schema.js
+└─ views/
+    ├─ error.pug
+    ├─ index.pug
+    └─ layout.pug
 ```
 
 **2. 安装所需依赖项**
@@ -195,7 +197,7 @@ $ npm i express-graphql graphql mongoose --save
 ### 连接数据库并定义集合的模型
 **1. 使用 Mongoose 连接 MongoDB**
 ```js
-// 文件路径：/app.js
+// 文件位置：app.js
 
 const mongoose = require('mongoose');
 
@@ -216,7 +218,7 @@ mongoose.connection.on('disconnected', function () {
 **2. 定义 Mongoose 数据模型**
 
 ```js
-// 文件路径：/models/author.js
+// 文件位置：models/author.js
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -228,7 +230,7 @@ const authorSchema = new Schema({
 module.exports = mongoose.model("Author", authorSchema, 'authors');
 ```
 ```js
-// 文件路径：/models/book.js
+// 文件位置：models/book.js
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -243,7 +245,7 @@ module.exports = mongoose.model("Book", bookSchema, 'books');
 
 ### 在 GraphQL 请求中获取数据
 
-Express 中传统的 RESTful 接口使用`express-router`来管理路由，并在不同路由中完成相应的数据库操作。而 GraphQL 与之类似，使用 GraphQL 中的方法管理所有的 HTTP 请求，然后在 GraphQL 的接口中完成相应的数据库操作。
+Express 中传统的 RESTful 接口使用`express-router`来管理路由，并在不同路由中完成相应的数据库操作，而要结合 GraphQL 就不能使用这种方式了，需要使用 GraphQL 中的方法管理所有的 HTTP 请求，然后在 GraphQL 的接口中完成相应的数据库操作。
 
 **1. 定义请求入口，使用 GraphQL 管理所有的 HTTP 请求**
 
@@ -252,7 +254,7 @@ Express 中传统的 RESTful 接口使用`express-router`来管理路由，并�
 此处的 Schema 才真正决定请求返回的是怎样的数据结构，与 Mongoose 的 Schema 完全不同，后者实际只是为了定义 Model 完成数据库操作，比如`author`集合中本没有`books`字段，而在 GraphQL 的 Schema 中定义以后客户端就可以拿到定义的相应数据。
 
 ```js
-// 文件路径：graphql/schema.js
+// 文件位置：graphql/schema.js
 
 const graphql = require('graphql');
 
@@ -269,7 +271,7 @@ const { // 定义GrapQL中Schema的类型
   GraphQLNonNull
 } = graphql;
 
-// 设置Book的Schema，决定了其可以返回的数据包括哪些
+// 定义Book的Schema，决定了其可以返回的数据包括哪些
 const BookType = new GraphQLObjectType({
   name: 'Book',
   description: "书籍信息",
@@ -284,8 +286,8 @@ const BookType = new GraphQLObjectType({
     // },
     name: {
       type: GraphQLString,
-      name: "书名", // name 用于输入字段时显示
-      description: "书名" // description 用于在文档中显示
+      name: "书名", // 此处的name用于在GraphiQL Query栏输入字段时显示
+      description: "书名" // 此处的description用于在GraphiQL Docs中显示
     },
     page: {
       type: GraphQLInt,
@@ -303,7 +305,7 @@ const BookType = new GraphQLObjectType({
   })
 })
 
-
+// 定义Author的Schema
 const AuthorType = new GraphQLObjectType({
   name: 'Author',
   description: "作者信息",
@@ -336,7 +338,7 @@ const AuthorType = new GraphQLObjectType({
 
 ```
 
-1. 字段的`name`属性和`description`属性可设置在 GraphiQL Query 栏中输入字段时或在 Docs 中显示对应的说明
+1. 字段的`name`属性和`description`属性可设置在 GraphiQL 的 Query 栏中输入字段时或在 Docs 中显示对应的说明
 
 2. `resove()`方法才是掌控返回具体数据的关键，如果不设置则根据字段名对应，`BookType`的`author`字段和`AuthorType`的`books`字段都是通过`resove()`进行了数据的关联，常用参数： 
 	- `parent`：上一级对象，如 `author` 字段`resove()`中的`parent`为 `Book`，`parent.authorId`即为 book 集合中的`authorId`字段
@@ -395,7 +397,7 @@ const Mutation = new GraphQLObjectType({
     addAuthor: {
       type: AuthorType,
       args: {
-        name: { type: new GraphQLNonNull(GraphQLString) }, //GraphQLNonNull作用与Mongoose Schema中的required类似，这里设置参数为必须值
+        name: { type: new GraphQLNonNull(GraphQLString) }, //GraphQLNonNull作用与Mongoose Schema中的required类似，设置参数为必须值
         age: { type: new GraphQLNonNull(GraphQLInt) }
       },
       resolve(parent, args){
