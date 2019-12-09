@@ -178,7 +178,7 @@ const bookSchma = new Schema({
 <img src="http://blog.xuezenghui.com/agg&popu/populateAPI.png" width=400 title="正确示例">
 
 #### 性能方面
-看完了外表再说说内在——查询性能，populate 实际是`DBRef`[^4]的引用方式，相当于多构造了一层查询。比如有10条数据，在`find()`查询到了主集合内的10条数据后会再进行`populate()`引用的额外10条数据的查询，性能也相对的大打折扣了。而[这里](https://blog.csdn.net/rcjjian/article/details/81512762)有位大佬对`aggregate()`和`find()`进行了性能上的对比，结论也显而易见——比 find 查询速度都快的 aggregate 比关联查询的 find + populate 定是有过之而无不及了。
+看完了外表再说说内在——查询性能，populate 实际是`DBRef`[^4]的引用方式，相当于多构造了一层查询。比如有10条数据，在`find()`查询到了主集合内的10条数据后会再进行`populate()`引用的额外10条数据的查询，性能也相对的大打折扣了。[这里](https://blog.csdn.net/rcjjian/article/details/81512762)有位大佬对`aggregate()`和`find()`进行了性能上的对比，结论也显而易见——比 find 查询速度都快的 aggregate 比关联查询的 find + populate 定是有过之而无不及了。
 
 ## 总结
 ||aggregation|populate|
