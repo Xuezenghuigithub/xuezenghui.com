@@ -19,16 +19,16 @@ comments: true
 
 🌚看到 [GraphQL 官网](https://graphql.cn/)的这句介绍大概人人都是一脸懵逼的，写过 API、用过数据库查询语言，还就没见过**用于 API 的查询语言**。大概是因为我们平常所见的大多都是 [RESTful API](http://www.ruanyifeng.com/blog/2011/09/restful.html)，而大量 B/S 模式的应用程序也让我们只倾向于「客户端发送请求获取数据，服务端处理请求返回数据」、客户端与服务端交互的方式只能利用 [HTTP 协议](https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE#HTTP/2)中 GET、POST、PUT、DELETE 等 HTTP 动词的传统认知。
 
-而 GraphQL 正是要打破这种认知的技术。在 GraphQL 中，客户端可以..不多不少..地获得其想要的数据，因为 GraphQL 中控制返回数据的是客户端，而不是 RESTful API 中完全取决于服务端（前端出人头地的时候到了😂）。其次，前端与后端交互的方式也由 HTTP 动词转变为 GraphQL 提供的 [Query](https://graphql.cn/learn/queries/) 和 [Mutation](https://graphql.cn/learn/queries/#mutations) 等。
+而 GraphQL 正是要打破这种认知的技术。在 GraphQL 中，客户端可以..不多不少..地获得其想要的数据，因为 GraphQL 中控制返回数据的是客户端，而不是 RESTful API 中完全取决于服务端（前端出人头地的时候到了？🧐）。其次，前端与后端交互的方式也由 HTTP 动词转变为 GraphQL 提供的 [Query](https://graphql.cn/learn/queries/) 和 [Mutation](https://graphql.cn/learn/queries/#mutations) 等。
 
-![graphql_address.png](http://blog.xuezenghui.com/GraphQL/graphql_address.png "GraphQL 在应用中所处的位置")
+![address.png](/images/graphql:address.png "GraphQL 在应用中所处的位置")
 
 ## 实例体验
 
 ---
 
 开始之前先推荐一个开放 API——美国太空探索技术公司 [SpaceX](https://www.spacex.com/) 提供的[开源 REST API](https://github.com/r-spacex/SpaceX-API)，应有尽有的数据，详细完整的文档，还支持一键导入 Postman😏。
-<img src="http://blog.xuezenghui.com/GraphQL/spaceX.jpeg" width=400 title="大火箭🚀">
+<img src="/images/graphql:spaceX.jpeg" width=400 title="大火箭🚀">
 
 ---
 
@@ -125,11 +125,11 @@ module.exports = new GraphQLSchema({
 
 - 查询所有的`flight_number`:
 
-![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo1.png)
+![query-flight-number.png](/images/graphql:query-flight-number.png)
 
 - 查询想要的更多数据：
 
-![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo2.png)
+![query-more.png](/images/graphql:query-more.png)
 
 **7. 指定参数实现单条数据查询**
 
@@ -154,14 +154,14 @@ const RootQuery = new GraphQLObjectType({
 });
 ```
 
-![graphql_demo1.png](http://blog.xuezenghui.com/GraphQL/graphql_demo3.png)
+![query-by-args.png](/images/graphql:query-by-args.png)
 
 ## GraphQL + NodeJS + MongoDB
 ![graphql&node&mongodb.jpeg](/images/graphql:graphql&node&mongodb.jpeg "GraphQL + NodeJS + MongoDB")
 
-上述实例只是验证了 GraphQL 中的强大查询可以通过 Query 轻松地实现，但还有两件事需要去做：①连接数据库使用自己的数据；②新增、更新、删除操作。下面通过一个综合实例来完成这两点：
+上述实例只是验证了 GraphQL 中的强大查询可以通过 Query 轻松地实现，但还有两件事需要去做：①连接数据库使用自己的数据；②新增、更新、删除操作，下面通过一个综合实例来完成。
 
-> 某些操作上方实例中已涉及到，此处不再赘述😑
+> 某些操作上方实例体验中已涉及到，此处不再赘述😑
 
 ### 设置项目
 **1. 搭建项目目录**
@@ -243,13 +243,13 @@ const bookSchema = new Schema({
 module.exports = mongoose.model("Book", bookSchema, 'books');
 ```
 
-### 在 GraphQL 请求中获取数据
+### 定义类型，完成 GraphQL 接口
 
 Express 中传统的 RESTful 接口使用`express-router`来管理路由，并在不同路由中完成相应的数据库操作，而要结合 GraphQL 就不能使用这种方式了，需要使用 GraphQL 中的方法管理所有的 HTTP 请求，然后在 GraphQL 的接口中完成相应的数据库操作。
 
 **1. 定义请求入口，使用 GraphQL 管理所有的 HTTP 请求**
 
-**2. 定义 GraphQL 的 Schema**
+**2. 定义对象类型和字段**
 
 此处的 Schema 才真正决定请求返回的是怎样的数据结构，与 Mongoose 的 Schema 完全不同，后者实际只是为了定义 Model 完成数据库操作，比如`author`集合中本没有`books`字段，而在 GraphQL 的 Schema 中定义以后客户端就可以拿到定义的相应数据。
 
@@ -344,9 +344,9 @@ const AuthorType = new GraphQLObjectType({
 	- `parent`：上一级对象，如 `author` 字段`resove()`中的`parent`为 `Book`，`parent.authorId`即为 book 集合中的`authorId`字段
 	- `args`：请求的参数，通常在 Query 和 Mutation 操作中使用
 
-**3. 定义具体请求方法**
+**3. 定义具体接口，完成数据库操作**
 
-GraphQL 中的 Mutation 操作用于对数据进行新增、更改和删除操作，用法与  Query 类似。
+GraphQL 中的 Mutation 操作用于对数据进行新增、更改和删除操作，用法与 Query 类似。
 
 ```js
 const RootQuery = new GraphQLObjectType({ // 相当于js中定义了一个对象，然后在对象中添加各种方法
