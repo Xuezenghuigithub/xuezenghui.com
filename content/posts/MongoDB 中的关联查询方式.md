@@ -5,8 +5,8 @@ tags: ["MongoDB", "Mongoose"]
 discripion: "MongoDB 中的关联查询方式 aggregate 和 populate 的用法及适用场景"
 keywords: ["MongoDB", "Mongoose", "populate", "aggregate"]
 categories: ["Tech"]
-slug: "aggregation_population"
-toc: true
+slug: "aggregation-population"
+toc: false
 comments: true
 ---
 ## 前言
@@ -21,7 +21,7 @@ comments: true
 
 aggregate 聚合其实是 MongoDB 提供的比较大的功能模块了，而关联多个集合需要用到的是`$lookup`，比如有作者集合 authors 和著作集合 books，作者与著作即为「一对多」的关联关系，使用引用式关联：
 
-![author&book.png](http://blog.xuezenghui.com/agg&popu/author&book.png "集合 authors 与 books")
+![author-book.png](/images/aggregate-populate:author-book.png "集合 authors 与 books")
 
 > 因为技术栈是 Node.js + Express + Mongoose，以下代码示例也以此为基础，使用 express-generator 生成 demo 目录结构。
 
@@ -131,10 +131,12 @@ router.get('/getAuthorInfo_p', async (req, res) => {
 }
 ```
 ### 对比
-#### 灵活性
+**1. 灵活性**
+
 现在可以观察到的就是 aggregate 灵活的点在于可以更改关联查询后返回数据的 key（返回数据中的`bookList`），而 populate 返回数据的 key 只能是原来的字段名（返回数据中的`books`）。值得一提的是 aggregate 更擅长在聚合管道中..对数据进行二次处理..，比如`$unwind`拆分、`$group`分组[等等](https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/)。
 
-#### 功能性
+**2. 功能性**
+
 此外，还有一种情况：依旧是上面的数据，如果要根据著作 name 找到著作信息和作者信息，使用 aggregate 的`$lookup`只需要这样就做到了😏：
 ```js
 $lookup: {
@@ -170,14 +172,16 @@ const bookSchma = new Schema({
 ```
 > populate 是将一个集合的`_id`和另一个集合的非`_id`字段进行关联的，但是 Mongoose 4.5.0版本以后提供了与 aggregate 功能写法都非常类似的[`virtual()`](http://www.mongoosejs.net/docs/populate.html#populate-virtuals)方法，这里不做详述了，有这个需求我用 aggregate 它不香么？🤨
 
-#### 代码简洁度
+**3. 代码简洁度**
+
 大概知道了它们的使用方法和适用场景后再来看看其它方面，比如为什么要重构之前完成的 aggregate 接口🥶。刚入职经验不足拿来别人的代码就依葫芦画瓢，画出来的「瓢」是这样的：
-<img src="http://blog.xuezenghui.com/agg&popu/aggregateAPI.png" width=400 title="错误示例">
+<img src="/images/aggregate-populate:aggregate-api.png" width=400 title="错误示例">
 
 一方面是大量的回调函数，一方面是 aggregate 繁杂的写法，导致代码大量冗余，可读性也极差，现在重构后优雅的「葫芦」：
-<img src="http://blog.xuezenghui.com/agg&popu/populateAPI.png" width=400 title="正确示例">
+<img src="/images/aggregate-populate:populate-api.png" width=400 title="正确示例">
 
-#### 性能方面
+**4. 性能方面**
+
 看完了外表再说说内在——查询性能，populate 实际是`DBRef`[^4]的引用方式，相当于多构造了一层查询。比如有10条数据，在`find()`查询到了主集合内的10条数据后会再进行`populate()`引用的额外10条数据的查询，性能也相对的大打折扣了。[这里](https://blog.csdn.net/rcjjian/article/details/81512762)有位大佬对`aggregate()`和`find()`进行了性能上的对比，结论也显而易见——比 find 查询速度都快的 aggregate 比关联查询的 find + populate 定是有过之而无不及了。
 
 ## 总结
@@ -197,6 +201,6 @@ const bookSchma = new Schema({
 
 ---
 [^1]: [BSON Documents¶](https://docs.mongodb.com/manual/reference/limits/#bson-documents)。
-[^2]: 来源：[https://docs.mongodb.com/manual/core/data-model-design/index.html](https://docs.mongodb.com/manual/core/data-model-design/index.html)
-[^3]: 来源：[https://mongoosejs.com/docs/guide.html#definition](https://mongoosejs.com/docs/guide.html#definition)
+[^2]: [https://docs.mongodb.com/manual/core/data-model-design/index.html](https://docs.mongodb.com/manual/core/data-model-design/index.html)
+[^3]: [https://mongoosejs.com/docs/guide.html#definition](https://mongoosejs.com/docs/guide.html#definition)
 [^4]: [MongoDB 的一种引用方式](https://docs.mongodb.com/manual/reference/database-references/index.html#dbrefs)

@@ -251,7 +251,7 @@ Express 中传统的 RESTful 接口使用`express-router`来管理路由，并�
 
 **2. 定义对象类型和字段**
 
-此处的 Schema 才真正决定请求返回的是怎样的数据结构，与 Mongoose 的 Schema 完全不同，后者实际只是为了定义 Model 完成数据库操作，比如`author`集合中本没有`books`字段，而在 GraphQL 的 Schema 中定义以后客户端就可以拿到定义的相应数据。
+此处的 Schema 才真正决定请求返回的是怎样的数据结构，与 Mongoose 的 Schema 完全不同，后者实际只是为了定义 Model 完成数据库操作，比如`author`集合中本没有`books`字段，而在 GraphQL 的对象类型中定义以后客户端就可以拿到定义的相应数据。
 
 ```js
 // 文件位置：graphql/schema.js

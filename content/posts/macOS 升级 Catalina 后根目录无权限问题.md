@@ -8,10 +8,10 @@ categories: ["Debug"]
 slug: "update-Catalina-bug"
 comments: true
 ---
-## Bug复现
-![Catalina.png](http://blog.xuezenghui.com/cataline_bug/cataline.png "Catalina")
+## Bug 复现
+![Catalina.png](/images/catelina-bug:catalina.png "Catalina")
 
-就在昨天..快快乐乐..升级 macOS Cataline 之后，一切都还是那么舒服，直到刚才需要启动 MongoDB 数据库，就在我自信地在 shell 中输入`mongod`之后报了个错，看都没看就`sudo mongod`，嗯？？？
+就在昨天..快快乐乐..升级 [macOS Cataline](https://www.apple.com/macos/catalina/) 之后，一切都还是那么舒服，直到刚才需要启动 MongoDB 数据库，就在我自信地在 shell 中输入`mongod`之后报了个错，看都没看就`sudo mongod`，嗯？？？
 
 ```
 Data directory /data/db not found., terminating
@@ -20,24 +20,22 @@ Data directory /data/db not found., terminating
 ```
 mkdir: data: Read-only file system
 ```
-遂尝试各种增加权限方法，无效，直到看到了[一篇文章](https://www.v2ex.com/t/605198?p=1)讲到问题出在**新系统Catalina默认不允许往系统分区写文件**，亲试解决方法有效后在此记录下步骤。
+遂尝试各种增加权限方法，无效，直到看到了[一篇文章](https://www.v2ex.com/t/605198?p=1)讲到问题出在**新系统 Catalina 默认不允许往系统分区写文件**，亲试解决方法有效后在此记录下步骤。
 ## Figure out
 ### 关闭本机SIP(系统完整性保护)
-终端中输入`csrutil status`后返回`System Integrity Protection status: enabled.`说明SIP处于开启状态。
+终端中输入`csrutil status`后返回`System Integrity Protection status: enabled.`说明 SIP 处于开启状态。
 
 
 重启电脑，按住`command + R`直至进入系统恢复界面，然后点击**实用工具**选择**终端**：
 
-![open_shell.jpeg](http://blog.xuezenghui.com/cataline_bug/open_shell.jpeg "打开终端")
+![open-shell.jpeg](/images/cateline-bug:open-shell.jpeg "打开终端")
 
 输入`csrutil disable`关闭SIP：
 
-
-![enter_order.jpeg](http://blog.xuezenghui.com/cataline_bug/enter_order.jpeg "打开终端")
+![shut-down-sip.jpeg](/images/catelina-bug:shut-down-sip.jpeg "关闭 SIP")
 
 ### 权限获取
 重新启动电脑，shell 中输入`sudo mount -uw /`，然后就有权限在根目录创建文件夹了，MongoDB 的启动问题得解。
-
 
 如果此时还是报错没有权限，请再尝试以下步骤：
     
@@ -45,14 +43,14 @@ mkdir: data: Read-only file system
     
 2. 右击 Macintosh HD 磁盘选择**显示简介**
     
-3. 在**共享与权限**中添加自己的用户为管理员并设置**读与写**权限
+3. 在**共享与权限**中添加自己的用户为管理员并设置**读与写**权限并应用到包含的项目
     
 4. 重新创建文件夹
 
 ***
 
-> 因为使用 MongoDB 会更改 /data/db 文件，所以不能重新开启 SIP，否则还是会报错权限问题，而 SIP 一直处于关闭状态实际上会导致电脑有一定的安全隐患，详情请查阅[关于 Mac 上的系统完整性保护](https://support.apple.com/zh-cn/HT204899)，希望后续能有更好的解决途径吧。
+> 因为使用 MongoDB 期间会更改 /data/db 文件，所以不能重新开启 SIP，否则还是会报错权限问题，而 SIP 一直处于关闭状态实际上会导致电脑有一定的安全隐患，详情请查阅[关于 Mac 上的系统完整性保护](https://support.apple.com/zh-cn/HT204899)，希望后续能有更好的解决途径吧。
 
 ***
 
-最后，Catalina 真香～
+最后，*Catalina* 真香～

@@ -19,7 +19,7 @@ Just joking，其实是因为 Bit 的工作流和 Git ..很相似..，它也是�
 
 ## 工作流
 
-![bit_workflow.png](http://blog.xuezenghui.com/bit/bit_workflow.png "Bit Workflow")
+![workflow.png](/images/bit:workflow.png "Bit Workflow")
 
 
 Bit 的工作流和 Git 怎么个类似法呢？
@@ -83,7 +83,7 @@ $ bit tag --all 1.0.0  # 给跟踪的所有组件设置发布的版本号为1.0.
 
     - 在远程中可查看、管理发布的组件：
 
-    ![components.png](http://blog.xuezenghui.com/bit/components.png "发布的组件")
+    ![components.png](/images/bit:components.png "发布的组件")
 
 ### 使用组件
 
@@ -118,7 +118,7 @@ export default {
 </script>
 ```
 
-![use_components.png](http://blog.xuezenghui.com/bit/use_components.png "页面成功显示组件内容")
+![use.png](/images/bit:use.png "页面成功显示组件内容")
 
 ### 更新组件
 
