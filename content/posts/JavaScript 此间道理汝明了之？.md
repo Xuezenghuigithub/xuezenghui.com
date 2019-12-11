@@ -24,7 +24,7 @@ comments: true
     1. [详解 Object.create(null) | 掘金](https://juejin.im/post/5acd8ced6fb9a028d444ee4e)
 
 ### 慎用`delete`来删除对象的属性
-- 🤔️：JavaScript V8 引擎内部机制导致`delete`操作会先耗费大量时间去检查对象中的各个属性，从而大大影响程序的执行速度。简单的方式是直接将不需要的属性设为`undefined`，但这种方式实际只保证了属性不显示，而不是真正意义上的..删除..（会导致 [ESlint](https://eslint.bootcss.com/) 报错），Lodash 的 [omit()](https://lodash.com/docs/4.17.15#omit) 方法实为最优解。
+- 🤔️：JavaScript V8 引擎内部机制导致`delete`操作会先耗费大量时间去检查对象中的各个属性，从而大大影响程序的执行速度。简单的方式是直接将不需要的属性设为`undefined`，但这种方式实际只保证了属性不显示，而不是真正意义上的..删除..（会导致 [ESlint](https://eslint.bootcss.com/) 报错），Lodash 的 [pick()](https://www.lodashjs.com/docs/latest#_pickobject-props) 或 [omit()](https://lodash.com/docs/4.17.15#omit) 方法实为最优解。
 
 - 🔗：
     1. [Slow delete of object properties in JS in V8 | Stack Overflow
