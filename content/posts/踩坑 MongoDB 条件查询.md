@@ -9,7 +9,7 @@ dropCap: false
 slug: "MongoDB-query-$gt"
 comments: true
 ---
-## Bug复现
+## Bug 复现
 
 > 后台使用 Node.js + Express + Mongoose
 
