@@ -654,6 +654,6 @@ TODO😇  然而如何去验证成功使用 DataLoader 解决了 N + 1是个问�
 ## References & Resources
 1. [Zero to GraphQL in 30 Minutes | YouTube](https://www.youtube.com/watch?v=UBGzsb2UkeY&feature=youtu.be)
 
-2. [Avoiding-n-1-requests-in-graphql-including-within-subscriptions | Medium](https://medium.com/slite/avoiding-n-1-requests-in-graphql-including-within-subscriptions-f9d7867a257d)
+2. [Avoiding n+1 requests in GraphQL, including within subscriptions | Medium](https://medium.com/slite/avoiding-n-1-requests-in-graphql-including-within-subscriptions-f9d7867a257d)
 
-3. [how-to-use-mongoose-with-graphql-and-dataloader | Stack Overflow](https://stackoverflow.com/questions/52783010/how-to-use-mongoose-with-graphql-and-dataloader)
+3. [How to use Mongoose with GraphQL and DataLoader? | Stack Overflow](https://stackoverflow.com/questions/52783010/how-to-use-mongoose-with-graphql-and-dataloader)
