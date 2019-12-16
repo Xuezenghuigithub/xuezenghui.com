@@ -3,7 +3,7 @@ title: "GraphQL——用于 API 的查询语言"
 date: "2019-11-28T13:04:32+08:00"
 tags: ["GraphQL"]
 discripion: "GraphQL学习笔记"
-keywords: ["GraphQL"]
+keywords: ["GraphQL", "DataLoader", "Mongoose"]
 categories: ["Tech"]
 dropCap: true
 toc: true
@@ -456,5 +456,204 @@ module.exports = new GraphQLSchema({
 - 删除作者：
 ![delete-book.png](/images/graphql:delete-book.png)
 
+## DataLoader
+
+不知你是否发现了惊奇的一点：Mongoose 定义的`authorSchema`中并没有书籍相关的字段，所有操作数据库的方法中也没有用到`populate`及`aggregate`关联数据，但是上方「查询所有作者信息」的接口`authors`返回了..书籍..的所有信息。
+
+没错，这就是 GraphQL 优越所在——在 Type 中自由地定义返回的数据（`AuthorType`的`books`字段）。但是问题也随之来了，这类简单的..关联查询..实际会导致严重的 N + 1查询性能问题。
+
+### N + 1
+一旦你学习完 GraphQL 的基础知识就大概率会看到大家在谈论 N + 1问题，N + 1是什么呢？为了理解起来更简单，我新建了 persons 和 friends 集合，其数据结构如下：
+
+persons 数据：
+```js
+{
+    "_id" : ObjectId("5df49a5856652a298949e313"),
+    "name" : "Zander",
+    "age" : 18,
+    "alive" : true,
+    "friends" : [ 
+        ObjectId("5df49a7556652a298949e31d"), 
+        ObjectId("5df49aa256652a298949e331")
+    ]
+}
+```
+
+friends 数据：
+```js
+{
+    "_id" : ObjectId("5df49a7556652a298949e31d"),
+    "name" : "Tom",
+    "tel" : "120",
+    "email" : "tom@gmail.com"
+}
+{
+    "_id" : ObjectId("5df49aa256652a298949e331"),
+    "name" : "Jerry",
+    "tel" : "110",
+    "email" : "jerry@gmail.com"
+}
+```
+
+接下来是同样的步骤——新建 personType 和 friendType，再建立简单的 personQuery：
+
+```js
+const personQuery = new GraphQLObjectType({
+  name: 'personQueryType',
+  description: '查询人物信息',
+  fields: {
+    person: {
+      type: personType,
+      description: '获取人物及朋友信息',
+      args: {
+          name: {type: GraphQLString}
+      },
+      resolve: (parent, arg) => {
+        return Person.findOne({name: arg.name});
+      }
+    }
+  }
+})
+```
+
+然后在 GraphiQL 中执行这个简单的 Query：
+
+```
+{
+  person(name: "Zander"){
+    id,
+    name,
+    age,
+    alive,
+    friends{
+      name,
+      tel,
+      email
+    }
+  }
+}
+```
+
+按照 GraphQL 的机制会这样执行查询流程：
+
+第一步：先查询 persons 集合中 `name` 为 `Zander` 的信息：
+
+```js
+resolve: (parent, arg) => {
+        return Person.findOne({name: arg.name});
+      }
+```
+
+第二步：对于 Zander 的 friends 数据，GraphQL 会拿着`friends`数组中的 id 去匹配 friends 集合的`_id`字段，执行的查询大概是这样：
+
+```js
+resolve_1: (parent, arg) => {
+        return Friend.find({_id: parent.id_1});
+      }
+
+resolve_2: (parent, arg) => {
+        return Friend.find({_id: parent.id_2});
+      }
+
+...
+
+resolve_n: (parent, arg) => {
+        return Friend.find({_id: parent.id_n});
+      }
+```
+
+如此，便产生了 对数据库的 N + 1次请求。
+
+> 我倒觉得叫1 + N 问题更合适🌚，因为总是先进行1次主集合数据查询，然后再去查询关联的 N 条数据。
+
+ *Whatever!* 先来解决问题吧～
+### 解决问题
+对于 N + 1问题，GraphQL 的开发者 [Facebook](https://zh.wikipedia.org/wiki/Facebook) 提供了 [DataLoader](https://github.com/graphql/dataloader) 来作为通用的解决方案，为什么说是「通用」呢？因为几乎每种语言都有 DataLoader 的实现方式——JavaScript、Java、Python、PHP、Roby......。DataLoader 通过**批处理**和**缓存**来减少 API 对数据库的访问次数。
+
+**批处理**是 DataLoader 的主要功能，作用是如果需要多次访问数据库，则将这些功能类似的请求合并处理。
+
+![batching.png](/images/graphql:batching.png "批处理")
+
+使用 DataLoader 的批处理函数需要满足两点：
+
+- 批处理函数接受一个数组参数，返回的查询结果数组长度与参数数组长度相同且索引对应
+- 返回的数组必须为 Promise 对象
+
+**1. 安装 DataLoader**
+
+```s
+$ npm install dataloader --save
+```
+**2. 引入 Dataloader，定义 Dataloader 对象，将其挂载到所有请求的上下文中**
+
+```js
+const DataLoader = require('dataloader');
+
+app.use('/graphql', graphqlHTTP(req => {
+  const friendLoader = new DataLoader(
+    keys => Friend.find({_id: {$in: keys}})
+  )
+  const loaders = {
+    friend: friendLoader
+  }
+  return {
+    context: {loaders},
+    schema,
+    graphiql: true
+  }
+}));
+```
+
+> 网上很多案例都对返回的查询结果做了`Promise.all()`处理，但是在 Mongoose 中，所有的数据库操作返回的结果都是一个 Mongoose Documents，本身就是一个 Promise 对象，因此不用做相应的处理。
+
+**3. 修改获取 friends 数据的方法**
+
+```js
+const personType = new GraphQLObjectType({
+  name: 'person',
+  description: "人物信息",
+  fields: () => ({
+    id: {
+      type: GraphQLID
+    },
+    name: {
+      type: GraphQLString,
+      name: "姓名",
+      description: "姓名"
+    },
+    age: {
+      type: GraphQLInt,
+      name: '年龄',
+      description: '年龄'
+    },
+    alive: {
+      type: GraphQLBoolean,
+      name: '是否活着',
+      description: '是否活着'
+    },
+    friends: {
+      type: new GraphQLList(friendType),
+      name: '朋友',
+      description: '朋友们的信息',
+      resolve: (parent, args, {loaders}) => {
+        // return Friend.find({_id: {$in: parent.friends}}); // 不使用Dataloader
+        return loaders.friend.loadMany(parent.friends);
+      }
+    }
+  })
+})
+```
+
 ---
-- [DataLoader](https://github.com/graphql/dataloader)
+
+你以为这就完了吗？是的没错🤪然而就这点简单的代码竟花费了我数天的时间，原因是网上竟没有找到完完全全的 Express + Mongoose + MongoDB + GraphQL + DataLoader 实例，完成这个实例确是摸石头过河，报了很多错、踩了很多坑才终取得真经。
+
+TODO😇  然而如何去验证成功使用 DataLoader 解决了 N + 1是个问题，也就是目前还不知道如何监控 MongoDB ..集合..的查询次数、时间等信息，mongostat、mongotop 等监控方法都无法达成此目的。
+
+---
+## References & Resources
+1. [Zero to GraphQL in 30 Minutes | YouTube](https://www.youtube.com/watch?v=UBGzsb2UkeY&feature=youtu.be)
+
+2. [Avoiding-n-1-requests-in-graphql-including-within-subscriptions | Medium](https://medium.com/slite/avoiding-n-1-requests-in-graphql-including-within-subscriptions-f9d7867a257d)
+
+3. [how-to-use-mongoose-with-graphql-and-dataloader | Stack Overflow](https://stackoverflow.com/questions/52783010/how-to-use-mongoose-with-graphql-and-dataloader)

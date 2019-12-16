@@ -51,6 +51,7 @@ uglyURLs = false
 
 # 类别
 [taxonomies]
+    # category = "categories"
     category = "categories"
     tag = "tags"
 
@@ -244,11 +245,12 @@ uglyURLs = false
     # 3. posts     文章摘要
     # 4. page      普通页面
 
-    homeLayout = "posts"
+    homeLayout = "poetry"
 
     ## 「诗意人生」
     # 诗句，支持 Markdown
-    homePoetry = []
+    homePoetry = ["生活残酷地摧毁了她所有的希冀，", "她的梦想在现实的尖石上撞得粉身碎骨。",
+     "但是，", "在她自己的幻想之岛上，", "阳光终日和暖，", "船帆高高飞扬，", "海风围绕着桅杆欢唱。"]
     # 底部链接的内间距，单位：em
     homeLinksPadding = 1
 
@@ -771,7 +773,7 @@ uglyURLs = false
     # 文章标题、文章副标题、列表标题、列表的年份和月份标题、相关文章标题、文章上下篇标题
     fontFamilyTitle = "'Cinzel Decorative', 'Noto Serif SC', serif"
     # 分节标题、目录标题
-    fontFamilyHeadings = "'Noto Serif SC', 'Noto Serif SC', serif"
+    fontFamilyHeadings = "'Noto Serif SC', 'EB Garamond', serif"
     # 代码、上标、文章元信息、文章更新徽章、文章的 Git 版本信息、极简页脚
     fontFamilyCode = "'Source Code Pro', 'Noto Serif SC', monospace"
     # 引用
@@ -786,7 +788,7 @@ uglyURLs = false
     fontFamilyBody = "'EB Garamond', 'Noto Serif SC', serif"
 
     # 网络字体链接
-    fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,700,700i|Bungee+Shade|Trade+Winds|Cinzel+Decorative:700|Noto+Serif+SC:400,500,700|Source+Code+Pro:400,400i,700,700i&display=swap&subset=chinese-simplified"
+    fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,700,700i|Bungee+Shade|Trade+Winds|Cinzel+Decorative:700|Noto+Serif+SC:400,700|Source+Code+Pro:400,400i,700,700i&display=swap&subset=chinese-simplified"
     # 说明：要想读者一定体验到你设置的字体，最好
     #      采用网络字体。MemE 主题目前仅支持
     #      Google Fonts 的链接，请前往
@@ -999,7 +1001,7 @@ uglyURLs = false
     enableBackToTop = true
 
     # 是否在首页显示
-    displayBackToTopInHome = true
+    displayBackToTopInHome = false
 
     # 按钮图标
     backToTopIcon = "arrow-up"
