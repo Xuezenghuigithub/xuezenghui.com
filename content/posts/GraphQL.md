@@ -568,7 +568,7 @@ resolve_n: (parent, arg) => {
 
  *Whatever!* 先来解决问题吧～
 ### 解决问题
-对于 N + 1问题，GraphQL 的开发者 [Facebook](https://zh.wikipedia.org/wiki/Facebook) 提供了 [DataLoader](https://github.com/graphql/dataloader) 来作为通用的解决方案，为什么说是「通用」呢？因为几乎每种语言都有 DataLoader 的实现方式——JavaScript、Java、Python、PHP、Roby......。DataLoader 通过**批处理**和**缓存**来减少 API 对数据库的访问次数。
+对于 N + 1问题，GraphQL 的开发者 [Facebook](https://zh.wikipedia.org/wiki/Facebook) 提供了 [DataLoader](https://github.com/graphql/dataloader) 来作为通用的解决方案，为什么说是「通用」呢？因为几乎每种语言都有 DataLoader 的实现方式——JavaScript、Java、Python、PHP、Ruby......。DataLoader 通过**批处理**和**缓存**来减少 API 对数据库的访问次数。
 
 **批处理**是 DataLoader 的主要功能，作用是如果需要多次访问数据库，则将这些功能类似的请求合并处理。
 
