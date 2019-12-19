@@ -10,7 +10,7 @@ dropCap: false
 comments: true
 ---
 ## 前言
-[Vuelidate](https://vuelidate.js.org/) 是 [Vue.js 2.0](https://cn.vuejs.org/) 的一款表单验证工具，首先要表明的是选择其来做表单验证并是因为其相比于其它 Vue 表单验证工具有多么优秀，而是因为项目用到了一款基于 [Material Design](https://material.io/) 风格的 UI 框架 [Vuetify](https://vuetifyjs.com/en/)，此 UI 框架 **v1.5.x** 版本推荐使用的表单验证方式就是 Vuelidate（说商业胡吹吧 Vuelidate 官网也没提你 Vuetify 啊，是这个原因导致 Vuetify v2.0.x 版本又推荐了 Vee-validate 么？哈哈哈哈😄）。
+[Vuelidate](https://vuelidate.js.org/) 是 [Vue.js 2.0](https://cn.vuejs.org/) 的一款表单验证工具，首先要表明的是选择其来做表单验证并是因为其相比于其它 Vue 表单验证工具有多么优秀，而是因为项目用到了一款基于 [Material Design](https://material.io/) 风格的 UI 框架 [Vuetify](https://vuetifyjs.com/en/)，此 UI 框架 **v1.5.x** 版本推荐使用的表单验证方式就是 Vuelidate（说商业胡吹吧 Vuelidate 官网也没提你 Vuetify 啊，是这个原因导致 Vuetify v2.0.x 版本又推荐了 [Vee-validate](https://logaretm.github.io/vee-validate/) 么？哈哈哈哈😄）。
 
 ## 用法
 ### 安装
@@ -106,9 +106,9 @@ or
 
 ![required&numeric.gif](/images/vuelidate:required-numeric.gif "没有样式的验证反馈")
 
-而至此，我方才明白为什么 Vuetify 推荐使用 Vuelidate 了，看一眼你就明白了：
+而至此，我方才明白为什么 Vuetify 推荐使用 Vuelidate 了：
 
-![vuetify-vuelidate.gif](/images/vuelidate:vuetify-vuelidate.gif "Vuetify 中的验证反馈")
+![vuetify-vuelidate.gif](/images/vuelidate:vuetify-vuelidate.gif "Vuetify 中 Vuelidate 的验证反馈")
 
 项目中每类表单的验证反馈几乎都需要统一的样式、合理的过渡动画，而这些，Vuetify 都替你做了🥰。相对的，在 Vuetify 中设置 Vuelidate 反馈的方式也有所不同了，也更简单了，只需要在给输入框绑定一个错误信息的属性，然后使用计算属性动态地设置验证反馈的具体信息：
 
@@ -243,7 +243,7 @@ export default {
 ```
 ---
 
-Vuelidate 的功能远远不止于此，这里就只列举一些常见的用法和范例了。话说回来，其实项目中整体使用下来觉得 Vuelidate 也没有多么糟糕，具体情境具体考虑嘛！但个人觉得相对而言 [Vee-validate](https://logaretm.github.io/vee-validate/) 更为轻量，且验证的写法也更为简洁（Star 也更多😌）。当然，自身技术允许的话，撸一个 Vue 表单验证针对性地用于具体的项目是最好不过了。
+Vuelidate 的功能远远不止于此，这里就只列举一些常见的用法和范例了。话说回来，其实项目中整体使用下来觉得 Vuelidate 也没有多么糟糕，具体情境具体考虑嘛！但个人觉得相对而言 [Vee-validate](https://logaretm.github.io/vee-validate/) 更为轻量，且验证的写法也更为简洁（Star 也更多😌）。当然，自身技术允许的话，撸一个 Vue 表单验证工具针对性地用于具体的项目是最好不过了。
 
 ---
 [^1]: flag 可以是变量或函数，用于动态地改变是否采用此验证规则。
