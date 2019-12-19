@@ -110,7 +110,7 @@ or
 
 ![vuetify-vuelidate.gif](/images/vuelidate:vuetify-vuelidate.gif "Vuetify 中 Vuelidate 的验证反馈")
 
-项目中每类表单的验证反馈几乎都需要统一的样式、合理的过渡动画，而这些，Vuetify 都替你做了🥰。相对的，在 Vuetify 中设置 Vuelidate 反馈的方式也有所不同了，也更简单了，只需要在给输入框绑定一个错误信息的属性，然后使用计算属性动态地设置验证反馈的具体信息：
+项目中每类表单的验证反馈几乎都需要统一的样式、合理的过渡动画，而这些，Vuetify 都替你做了🥰。相对的，在 Vuetify 中设置 Vuelidate 反馈的方式也有所不同了，也更简单了，只需要在给输入框绑定一个错误信息的属性，然后使用计算属性动态地设置验证反馈的具体文字：
 
 ```v
 <v-text-field v-model="$v.zander.$model" :error-messages="zanderErrors"></v-text-field>
