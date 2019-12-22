@@ -3,7 +3,7 @@ title: "Vuelidate——Vue.js 2.0表单验证工具"
 date: "2019-12-18T20:30:00+08:00"
 tags: ["Vue.js"]
 discripion: "一款基于 Vue.js2.0的表单验证工具 Vuelidate 使用方法总结"
-keywords: ["Vue 表达验证", "Vuelidate"]
+keywords: ["Vue 表单验证", "Vuelidate 教程", "Vuelidate"]
 categories: ["Tech"]
 toc: false
 dropCap: false
