@@ -648,12 +648,242 @@ const personType = new GraphQLObjectType({
 
 你以为这就完了吗？是的没错🤪然而就这点简单的代码竟花费了我数天的时间，原因是网上竟没有找到完完全全的 Express + Mongoose + MongoDB + GraphQL + DataLoader 实例，完成这个实例确是摸石头过河，报了很多错、踩了很多坑才终取得真经。
 
-TODO😇  然而如何去验证成功使用 DataLoader 解决了 N + 1是个问题，也就是目前还不知道如何监控 MongoDB ..集合..的查询次数、时间等信息，mongostat、mongotop 等监控方法都无法达成此目的。
+然而如何去验证成功使用 DataLoader 解决了 N + 1是个问题，也就是目前还不知道如何监控 MongoDB ..集合..的查询次数、时间等信息，使用 mongostat、mongotop 等监控方法都没能达成此目的。
 
----
+## Apollo
+
+[Apollo GraphQL](https://www.apollographql.com/) 是一个用于创建 GraphQL 客户端和服务器的完整独立系统，其完整性和独立性体现在不管你服务端使用的是 Java、Node.js、Python 或其它语言，也不管你客户端运用的是 React，React Native，Vue 还是 Angular，它不依赖于特定语言和框架，能很好地满足你对 GraphQL 的实现，并且是一套成熟完整的生态系统。
+
+![apollo-graphql.png](/images/graphql:apollo-graphql.png "Apollo GraphQL 生态")
+
+### 服务端实现——Apollo Server
+
+Apollo Server 可以与流行的几个 Node.js 框架集成，包括 [Express]()、[Fastify]()、[Koa]()、和 [Hapi]()，下面介绍如何在 Express 中搭建 Apollo Server。
+
+**1. 设置项目**
+
+还是使用 express-generator 搭建项目目录，使用 Mongoose 连接 MongoDB，接下来安装依赖项：
+
+```s
+$ npm i apollo-server-express graphql
+```
+
+**2. 初始化 Apollo Server**
+
+```js
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require('./schema/schema'); // GraphQL的Schema
+const resolvers = require('./schema/resolvers'); // API方法
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  playground: { // 配置playground
+    settings: {
+			'editor.theme': 'light'
+		}
+  }
+});
+
+server.applyMiddleware({ app }); // 应用中间件，传递数据到express的app，必须位于`const app = express();`下方
+
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+)
+```
+
+**3. 添加 Schema**
+
+Apollo Server 中内置了 [gql](https://www.apollographql.com/docs/apollo-server/api/apollo-server/#gql) 模板字符串，新建schema/schema.js 目录，定义 GraphQL 的 Schema（类型系统）：
+
+```js
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
+	type Person {
+		id: String
+		name: String
+		age: Int
+		alive: Boolean
+	}
+	type Friend {
+		id: String
+		name: String
+		tel: String
+		email: String
+	}
+	type Query {
+		allPerson: [Person]
+		person(name: String!): Person
+	}
+`;
+
+module.exports = typeDefs;
+```
+
+**4. 添加返回数据的方法**
+
+[resolvers](https://www.apollographql.com/docs/tutorial/resolvers/#what-is-a-resolver) 用于定义 GraphQL 操作（Query、Mutation、Subscriptoin）返回的具体数据，在 /src/schema/resolvers.js 中添加：
+
+```js
+const Person = require('../models/person');
+
+const resolvers = {
+	Query: {
+		allPerson: () => {
+			return Person.find();
+		},
+		person: (parent, args) => {
+			return Person.findOne({name: args.name});
+		}
+	}
+};
+
+module.exports = resolvers;
+```
+
+**5. 在 playground 中测试 GraphQL API**
+
+![allPerson.png](/images/graphql:allPerson.png "所有人物信息")
+
+![person.png](/images/graphql:person.png" "通过姓名查询人物信息")
+
+### 客户端实现——Vue Apollo
+[Vue Apollo](https://vue-apollo.netlify.com/zh-cn/) 通过声明式查询将 Apollo 集成到 Vue 组件中，是 Vue 中使用 GraphQL 的官方实现方法。
+
+**1. 安装**
+
+[Vue CLI 3](https://cli.vuejs.org/) 中安装 Apollo 十分简单，直接添加插件即可：
+
+```s
+$ vue add apollo
+```
+建议可选项：
+
+```
+? Add example code? No
+? Add a GraphQL API Server? No
+? Configure Apollo Engine? No
+```
+
+当然你要是头铁（依赖项实在太多）也可以选择[手动安装](https://vue-apollo.netlify.com/zh-cn/guide/installation.html#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85)。
+
+
+**2. 配置 vue-apollo**
+
+生成目录中的 vue-apollo.js 是 apollo 的配置文件，需要做的有两点：
+
+- 由于服务端中没有设置 [WebSocket](https://www.ibm.com/developerworks/cn/java/j-lo-WebSocket/index.html) 端点，需要将配置文件中的 `wsEndpoint` 设置为`null`。
+- 设置 http 端点 `httpEndpoint` 为 Apollo 服务端中所设置的 GraphQL 请求入口 URL，由于我服务端并没有特殊配置入口 URL，此处无需改动。
+
+**3. 在 Vue 组件中使用 GraphQL 查询语句**
+
+在组件中使用 GraphQL 查询有三种方式，而使用 GraphQL API 返回的数据就和使用 data 中的数据一样简单：
+
+**方式一、**在组件中引入 gql 模板字符串语法，然后在组件中声明 apollo 查询来定义查询语句：
+
+```html
+<template>
+  <div>
+    <div v-for="person in allPerson" :key="person.id">
+      name: {{ person.name }}, 
+      age: {{ person.age }}, 
+      alive: {{ person.alive === true? "是":"否" }}
+    </div>
+  </div>
+</template>
+<script>
+import gql from "graphql-tag";
+
+export default {
+  name: "HelloWorld",
+  apollo: {
+    allPerson: gql`
+      query {
+        allPerson {
+          id
+          name
+          age
+        }
+      }
+    `
+  }
+};
+</script>
+```
+**方式二、**为了查询语句的可重用性和可维护性，建议采用引用公共 gql 语句的方式。新建 /src/graphql/ 目录，在目录下新建`.gql`文件来定义项目所需的 GraphQL 操作，然后在组件中引入并使用：
+
+```js
+// 文件位置：/src/graphql/allPerson.gql
+query allPerson{
+  allPerson{
+    id,
+    name,
+    age,
+    alive
+  }
+}
+```
+在组件中使用：
+```vue
+<script>
+import allPerson from '../graphql/allPerson.gql'
+
+export default {
+  name: "HelloWorld",
+  apollo: {
+    allPerson: allPerson
+  }
+};
+</script>
+```
+
+**方式三、**使用 [Apollo 组件](https://vue-apollo.netlify.com/zh-cn/guide/components/)也是一种办法，这种方式的优点在于可以脱离 Vue 组件的`<script>`标签，适用于在 Vue ..公共组件..中使用，但也太不优雅了🙃：
+
+```html
+<template>
+  <div class="hello">
+    <ApolloQuery 
+    :query="gql => gql`
+                      query {
+                        allPerson { 
+                          id
+                          name
+                        }
+                      }`"
+    >
+    <template v-slot="{ result: { loading, error, data } }">
+      <div v-if="data">
+        <div v-for="person in allPerson" :key="person.id">
+          name: {{ person.name }}, 
+          age: {{ person.age }}, 
+          alive: {{ person.alive === true? "是":"否" }}
+        </div>
+      </div>
+    </template>
+    </ApolloQuery>
+ </div>
+</template>
+```
+
+当然，这三种方式带来的结果是相同的：
+
+![vue-apollo-result.png](/images/graphql:vue-apollo-result.png "页面渲染数据")
+
 ## References & Resources
+
+**GraphQL & DataLoader：**
+
 1. [Zero to GraphQL in 30 Minutes | YouTube](https://www.youtube.com/watch?v=UBGzsb2UkeY&feature=youtu.be)
 
 2. [Avoiding n+1 requests in GraphQL, including within subscriptions | Medium](https://medium.com/slite/avoiding-n-1-requests-in-graphql-including-within-subscriptions-f9d7867a257d)
 
 3. [How to use Mongoose with GraphQL and DataLoader? | Stack Overflow](https://stackoverflow.com/questions/52783010/how-to-use-mongoose-with-graphql-and-dataloader)
+
+**Apollo：**
+
+1. [使用 NodeJS 创建一个 GraphQL 服务器 | 掘金](https://juejin.im/post/5c015a5af265da612577d89a)
+
+2. [Learn GraphQL with Vue Apollo in 20 minutes! | YouTube](https://www.youtube.com/watch?v=8JtmnsolNq8)
+
+3. [Using Apollo / GraphQL with Vue.js | Alligator](https://alligator.io/vuejs/vue-apollo-graphql/)

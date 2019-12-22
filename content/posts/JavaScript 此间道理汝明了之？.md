@@ -41,4 +41,4 @@ arr = [...new Set(arr)].sort((a, b) => a - b);
     1. [Set 和 Map 数据结构 | ECMAScript 6 入门(阮一峰)](http://es6.ruanyifeng.com/#docs/set-map#Set)
     2. [数组的扩展 | ECMAScript 6 入门(阮一峰)](http://es6.ruanyifeng.com/#docs/array#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6)
 
-    
+### 利用短路语法替代令人厌烦的条件语句

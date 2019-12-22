@@ -49,8 +49,8 @@ Vue.use(Vuelidate);
 |ipAddress|无|[IPv4地址](https://zh.wikipedia.org/wiki/IPv4)验证|
 |macAddress|分隔符，如`:`、`' '`|[MAC地址](https://zh.wikipedia.org/wiki/MAC%E5%9C%B0%E5%9D%80)验证|
 |sameAs|flag|验证与给定变量是否相等|
-|url|无|验证网址|
-|or|多个验证规则|通过给定的至少一个验证规则时通过|
+|url|无|网址验证|
+|or|多个验证规则|当通过给定的至少一个验证规则时通过|
 |and|多个验证规则|当通过所有的验证规则时通过|
 |not|验证规则|当不通过给定的验证规则时通过，常与 sameAs 合用|
 要使用这些内置的验证规则只需在组件中按需引入：
@@ -81,7 +81,7 @@ export default {
 ```
 **第二步、用 Vuelidate 的`$model`管理表单数据**
 
-`$model`相当于`v-model`的替代，是对原始 data 数据的引用，在其它地方使用该数据时无需改变什么，`this.$v.data.$model`的值与`this.data`完全相同。被`$model`管理的数据含有一个 Boolean 类型的标志`$dirty`来表示数据是否改变，很容易理解——如果数据改动了，那它就是肮脏的🤣，`$dirty`置为 true。当每当被验证的数据改变时 Vuelidate 都会验证一次数据是否通过验证规则。
+`$model`相当于`v-model`的替代，是对原始 data 数据的引用，在其它地方使用该数据时无需改变什么，`this.$v.data.$model`的值与`this.data`完全相同。被`$model`管理的数据含有一个 Boolean 类型的标志`$dirty`来表示数据是否改变，很容易理解——如果数据改动了，那它就是肮脏的🤣，`$dirty`置为 true。每当被验证的数据改变时 Vuelidate 都会验证一次数据是否通过验证规则。
 
 `$model`的`$touch()`方法可以将`$dirty`的值手动设为 true，怎么用呢？如果你不想把 Vue 中的`v-model="data"`改为 Vuelidate 的`v-model="$v.data.$model"`，那就可以为输入框添加 change 方法，在 change 方法中再调用`$touch()`方法，两种方式的处理结果是完全相同的。
 
