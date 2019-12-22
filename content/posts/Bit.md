@@ -1,8 +1,8 @@
 ---
-title: "Bit——组件管理工具"
+title: "Bit"
 date: "2019-11-19T20:18:00+08:00"
 tags: ["Bit"]
-discripion: "组件管理工具 Bit"
+description: "不知道能不能🔥起来的组件管理工具"
 keywords: ["Bit", "组件管理"]
 categories: ["Tech"]
 dropCap: false

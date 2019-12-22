@@ -1,8 +1,8 @@
 ---
-title: "GraphQL——用于 API 的查询语言"
+title: "GraphQL"
 date: "2019-11-28T13:04:32+08:00"
 tags: ["GraphQL"]
-discripion: "GraphQL学习笔记"
+description: "一种用于 API 的查询语言"
 keywords: ["GraphQL", "DataLoader", "Mongoose"]
 categories: ["Tech"]
 dropCap: true
