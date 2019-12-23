@@ -854,7 +854,7 @@ export default {
     >
     <template v-slot="{ result: { loading, error, data } }">
       <div v-if="data">
-        <div v-for="person in allPerson" :key="person.id">
+        <div v-for="person in data.allPerson" :key="person.id">
           name: {{ person.name }}, 
           age: {{ person.age }}, 
           alive: {{ person.alive === true? "是":"否" }}
