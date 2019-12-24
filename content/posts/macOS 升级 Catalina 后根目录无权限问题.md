@@ -2,8 +2,7 @@
 title: "macOS 升级 Catalina 后根目录无权限问题"
 date: 2019-10-30T13:31:18+08:00
 tags: ["macOS", "MongoDB", "debug"]
-discripion: "macOS升级Catalina后根目录无法创建文件和文件夹，权限为Read-only file system。"
-keywords: [macOS,Catalina,权限]
+keywords: ["macOS", "Catalina", "权限"]
 categories: ["Tech"]
 slug: "update-Catalina-bug"
 comments: true
@@ -47,10 +46,14 @@ mkdir: data: Read-only file system
     
 4. 重新创建文件夹
 
-***
+---
 
 > 因为使用 MongoDB 期间会更改 /data/db 文件，所以不能重新开启 SIP，否则还是会报错权限问题，而 SIP 一直处于关闭状态实际上会导致电脑有一定的安全隐患，详情请查阅[关于 Mac 上的系统完整性保护](https://support.apple.com/zh-cn/HT204899)，希望后续能有更好的解决途径吧。
 
 ***
 
-最后，*Catalina* 真香～
+~~最后，*Catalina* 真香～~~
+
+2019/12/24更：恕我直言，以上解决办法真的是弱爆了，因为每重启一次 Mac 就需要执行一遍权限获取的操作，苦不堪言。更好的解决办法是在执行启动 MongoDB 的命令时指定 /data/db 目录位置，但更一劳永逸的办法是[使用 Docker 启动 MongoDB](https://hub.docker.com/_/mongo)。
+
+*Catalina* 依然挺香的😎～
