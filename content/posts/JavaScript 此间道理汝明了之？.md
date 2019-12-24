@@ -2,8 +2,7 @@
 title: "JavaScript 此间道理汝明了之？"
 date: "2019-11-27T13:04:32+08:00"
 tags: ["JavaScript"]
-discripion: "前端开发中常遇到的错误写法总结"
-keywords: ["JavaScript", "前端", "踩坑"]
+keywords: ["JavaScript", "前端", "踩坑", "性能优化"]
 categories: ["Tech"]
 dropCap: true
 toc: true
@@ -38,7 +37,22 @@ arr = [...new Set(arr)].sort((a, b) => a - b);
 - 🤔：ES6 中的`Set`数据结构类似于数组，其内所有元素的值都是唯一的，不含重复值，扩展运算符`...`将 Set 实例转为了数组，然后再用数组排序方法`sort()`进行从小到大的排序。
 
 - 🔗：
-    1. [Set 和 Map 数据结构 | ECMAScript 6 入门(阮一峰)](http://es6.ruanyifeng.com/#docs/set-map#Set)
-    2. [数组的扩展 | ECMAScript 6 入门(阮一峰)](http://es6.ruanyifeng.com/#docs/array#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6)
+    1. [Set 和 Map 数据结构 | ECMAScript 6 入门 - 阮一峰](http://es6.ruanyifeng.com/#docs/set-map#Set)
+    2. [数组的扩展 | ECMAScript 6 入门 - 阮一峰](http://es6.ruanyifeng.com/#docs/array#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6)
 
-### 利用短路语法替代令人厌烦的条件语句
+### 利用短路语法替代简单的条件语句
+```js
+if (zander === 'developer') {
+  console.log('He is cool!');
+}
+// ⬇️
+zander === 'developer' && console.log('He is cool!');
+```
+```js
+const length = (zander || []).length;
+```
+- 🧐：`&&`运算保证第一个参数为 true 时才会执行后面的代码，`||`运算保证第一个参数为 false 时才会执行后面的代码。短路运算的效率略高于`if..else`语句，但只适用于简单的`if..else`语句优化，如参数验证、设置默认值等。
+
+- 🔗：
+    1. [逻辑运算符 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
+
