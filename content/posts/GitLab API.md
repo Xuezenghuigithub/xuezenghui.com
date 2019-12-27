@@ -202,7 +202,7 @@ GET https://gitlab.example.com/api/v4/prjects
 
 ## References & Resources
 
-1. [理解OAuth 2.0 | 阮一峰](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+1. [理解 OAuth 2.0 | 阮一峰](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 2. [OAuth 2.0的四种方式 | 阮一峰](http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)
 3. [OAuth 2.0协议入门 | 掘金](https://juejin.im/post/5b8659b8e51d4538a67aa484)
 
