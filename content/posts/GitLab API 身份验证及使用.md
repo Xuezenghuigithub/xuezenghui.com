@@ -22,7 +22,7 @@ API 的使用无非 CRUD，按照 GitLab API 清晰完整的文档来就可以�
 
 ### 1. [OAuth2 tokens](https://docs.gitlab.com/ee/api/README.html#oauth2-tokens)
 
-[OAuth](https://zh.wikipedia.org/wiki/%E5%BC%80%E6%94%BE%E6%8E%88%E6%9D%83) 即 OAuth 2.0版本，是一个关于授权的开放网络标准，也是目前应用最广泛的授权认证方式。它的运行流程是这样的：
+[OAuth2](https://zh.wikipedia.org/wiki/%E5%BC%80%E6%94%BE%E6%8E%88%E6%9D%83) 即 OAuth 2.0版本，是一个关于授权的开放网络标准，也是目前应用最广泛的授权认证方式。它的运行流程是这样的：
 
 [^1]![oauth-workflow.png](/images/gitlab:oauth-workflow.png "AOuth 2.0 Workflow")
 
