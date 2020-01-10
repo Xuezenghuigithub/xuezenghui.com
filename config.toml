@@ -1089,11 +1089,12 @@ uglyURLs = false
     ######################################
     #  Front Matter说明
     # slug      文章url     String
-    # toc       目录        Boolean
+    # toc       目录        false
     # gitinfo   文章Git信息  Boolean
-    # dropCap   首字下沉     Boolean
-    # displayCopyright 版权信息 Boolean
-    # align     位置        String ['normal', 'justify', 'center']
-    # comments  评论        Boolean
-    # badge     更新日期     Boolean
+    # dropCap   首字下沉     false
+    # displayCopyright 版权信息 false
+    # align     位置        'center' ['normal', 'justify', 'center']
+    # comments  评论        false
+    # badge     更新日期     true
     # meta      文章信息     Boolean
+    # indent    首行锁进     true

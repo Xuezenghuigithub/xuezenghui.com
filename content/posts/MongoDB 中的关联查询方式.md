@@ -2,7 +2,6 @@
 title: "MongoDB 中的关联查询"
 date: "2019-11-14T13:25:10+08:00"
 tags: ["MongoDB", "Mongoose"]
-discripion: "MongoDB 中的关联查询方式 aggregate 和 populate 的用法及适用场景"
 keywords: ["MongoDB", "Mongoose", "populate", "aggregate"]
 categories: ["Tech"]
 slug: "aggregation-population"
