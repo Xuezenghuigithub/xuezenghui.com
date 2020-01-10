@@ -1,5 +1,5 @@
 ---
-title: "MongoDB bulkWrite 实操"
+title: "MongoDB bulkWrite() 实操"
 date: "2020-01-10T09:17:05+08:00"
 tags: ["MongoDB", "Mongoose"]
 keywords: ["MongoDB", "Mongoose", "bulkWrite"]
@@ -111,7 +111,7 @@ Model.bulkWrite(
   ])
   ```
 
-参数二是一个对象，其中包含两个设置项，`writeConcern`和`ordered`，[`writeConcern`](https://docs.mongodb.com/manual/reference/write-concern/)写入关注用以设置 MongoDB 写入操作关注程度的高低，采用默认即可，[`ordered`](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#execution-of-operations)用来指定是否按照顺序执行参数一中的写入操作，默认为`true `，设置为无序 MongoDB 会对操作进行重排序以提高性能，具体应取决于你的写入操作是否是有序的。
+参数二是一个对象，其中包含两个设置项，`writeConcern`和`ordered`，[`writeConcern`](https://docs.mongodb.com/manual/reference/write-concern/)写入关注用以设置 MongoDB 写入操作关注程度的高低，采用默认即可。[`ordered`](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#execution-of-operations)用来指定是否按照顺序执行参数一中的写入操作，默认为`true `，若设置为无序，MongoDB 会对操作进行重排序以提高性能，具体应取决于你的写入操作是否是有序的。
 
 使用`bulkWrite()`完成上面的需求：
 
