@@ -4,3 +4,4 @@ resources
 videos
 .env
 .DS_Store
+.vscode
