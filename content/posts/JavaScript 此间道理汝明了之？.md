@@ -51,7 +51,7 @@ zander === 'developer' && console.log('He is cool!');
 ```js
 const length = (zander || []).length;
 ```
-- 🧐：`&&`运算保证第一个参数为 true 时才会执行后面的代码，`||`运算保证第一个参数为 false 时才会执行后面的代码。短路运算的效率略高于`if..else`语句，但只适用于简单的`if..else`语句优化，如参数验证、设置默认值等。
+- 🧐：`&&`运算保证第一个参数为 true 时才会执行后面的代码，`||`运算保证第一个参数为 false 时才会执行后面的代码。短路运算的效率略高于`if`条件语句，但只适用于简单的`if..do...`语句优化，如参数验证、设置默认值等。
 
 - 🔗：
     1. [逻辑运算符 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_Operators)

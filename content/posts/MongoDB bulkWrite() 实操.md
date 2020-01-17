@@ -49,6 +49,8 @@ for (let i = 0; i < data.length; i++) {
   )};
 ```
 
+---
+
 主角登场，[`bulkWrite()`](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/)是 [MongoDB v3.2](https://github.com/mongodb/docs/tree/v3.2)中加入的新功能，能以特定的顺序执行 MongoDB 的写入操作，而这里的[..写入操作..](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations)包括 insert、update、replace 等。使用方法：
 
 ```js
