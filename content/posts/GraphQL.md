@@ -658,7 +658,7 @@ const personType = new GraphQLObjectType({
 
 ### 服务端实现——Apollo Server
 
-Apollo Server 可以与流行的几个 Node.js 框架集成，包括 [Express]()、[Fastify]()、[Koa]()、和 [Hapi]()，下面介绍如何在 Express 中搭建 Apollo Server。
+Apollo Server 可以与流行的几个 Node.js 框架集成，包括 [Express](http://expressjs.com/)、[Fastify](https://www.fastify.io/)、[Koa](https://koa.bootcss.com/) 和 [Hapi](https://hapi.dev/)，下面介绍如何在 Express 中搭建 Apollo Server。
 
 **1. 设置项目**
 
@@ -694,7 +694,7 @@ app.listen({ port: 4000 }, () =>
 
 **3. 添加 Schema**
 
-Apollo Server 中内置了 [gql](https://www.apollographql.com/docs/apollo-server/api/apollo-server/#gql) 模板字符串，新建schema/schema.js 目录，定义 GraphQL 的 Schema（类型系统）：
+Apollo Server 中内置了 [gql](https://www.apollographql.com/docs/apollo-server/api/apollo-server/#gql) 模板字符串，新建 schema/schema.js 目录，定义 GraphQL 的 Schema（类型系统）：
 
 ```js
 const { gql } = require('apollo-server-express');
@@ -746,7 +746,7 @@ module.exports = resolvers;
 
 ![allPerson.png](/images/graphql:allPerson.png "所有人物信息")
 
-![person.png](/images/graphql:person.png" "通过姓名查询人物信息")
+![person.png](/images/graphql:person.png "通过姓名查询人物信息")
 
 ### 客户端实现——Vue Apollo
 [Vue Apollo](https://vue-apollo.netlify.com/zh-cn/) 通过声明式查询将 Apollo 集成到 Vue 组件中，是 Vue 中使用 GraphQL 的官方实现方法。

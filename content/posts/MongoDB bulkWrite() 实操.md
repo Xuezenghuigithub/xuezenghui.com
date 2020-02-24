@@ -22,7 +22,7 @@ dropCap: false
 const data = [{ "name": "Leon", "value_index": 500 }, { "name": "Paul", "value_index": 999 }, { "name": "Zander", "value_index": 100 }]
 ```
 ## 实现
-> 以下操作数据库的方法都是 MongoDB 提供的，[Mongoose](https://mongoosejs.com/) 进行了移植和支持，两者原理及实现方式相同，为究其本质、探其实操，实例代码使用的是 Mongoose。
+> 以下操作数据库的方法都是 MongoDB 提供的，[Mongoose](https://mongoosejs.com/) 实际是进行了移植和支持，两者原理及实现方式相同，为究其本质、探其实操，实例代码使用的是 Mongoose。
 
 你可能会想到使用[`updateMany()`](https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/#db.collection.updateMany)，它支持将多个 Document 的字段更新为..同一个值..或者按照..相同的条件..来更新：
 
