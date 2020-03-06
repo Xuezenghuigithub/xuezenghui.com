@@ -1,7 +1,7 @@
 ---
 title: "macOS 升级 Catalina 后根目录无权限问题"
 date: 2019-10-30T13:31:18+08:00
-tags: ["macOS", "MongoDB", "debug"]
+tags: ["macOS", "debug"]
 keywords: ["macOS", "Catalina", "权限"]
 categories: ["Tech"]
 slug: "update-Catalina-bug"

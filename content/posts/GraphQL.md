@@ -73,25 +73,25 @@ app.use('/graphql', graphqlHTTP({
 const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLBoolean, GraphQLList, GraphQLSchema } = require('graphql');
 
 const LaunchType = new GraphQLObjectType({
-    name: 'Launch',
-    description: '发射的相关数据💨',
-    fields: () => ({
-        flight_number: { type: GraphQLInt, description: '发射编号' },
-        mission_name: { type: GraphQLString, description: '任务代号' },
-        launch_date_local: { type: GraphQLString, description: '发射时间' },
-        launch_success: { type: GraphQLBoolean, description: '是否成功' },
-        rocket: { type: RocketType },
-    })
+  name: 'Launch',
+  description: '发射的相关数据💨',
+  fields: () => ({
+    flight_number: { type: GraphQLInt, description: '发射编号' },
+    mission_name: { type: GraphQLString, description: '任务代号' },
+    launch_date_local: { type: GraphQLString, description: '发射时间' },
+    launch_success: { type: GraphQLBoolean, description: '是否成功' },
+    rocket: { type: RocketType },
+  })
 });
 
 const RocketType = new GraphQLObjectType({
-    name: 'Rocket',
-    description: '火箭的相关数据🚀',
-    fields: () => ({
-        rocket_id: { type: GraphQLString },
-        rocket_name: { type: GraphQLString },
-        rocket_type: { type: GraphQLString }
-    })
+  name: 'Rocket',
+  description: '火箭的相关数据🚀',
+  fields: () => ({
+    rocket_id: { type: GraphQLString },
+    rocket_name: { type: GraphQLString },
+    rocket_type: { type: GraphQLString }
+  })
 });
 ```
 
@@ -136,21 +136,21 @@ module.exports = new GraphQLSchema({
 ```js
 // schema.js
 const RootQuery = new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-        ...
-        launch: { // 新的查询
-            type: LaunchType,
-            args: { // 添加参数
-                flight_number: {
-                    type: GraphQLInt
-                }
-            },
-            resolve(parent, args) {
-                return axios.get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`).then(res => res.data);
-            }
+  name: 'RootQueryType',
+  fields: {
+    ...
+    launch: { // 新的查询
+      type: LaunchType,
+      args: { // 添加参数
+        flight_number: {
+          type: GraphQLInt
         }
+      },
+      resolve(parent, args) {
+        return axios.get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`).then(res => res.data);
+      }
     }
+  }
 });
 ```
 
@@ -223,8 +223,8 @@ mongoose.connection.on('disconnected', function () {
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const authorSchema = new Schema({
-    "name": String,
-    "age": Number
+  "name": String,
+  "age": Number
 });
 
 module.exports = mongoose.model("Author", authorSchema, 'authors');
@@ -235,9 +235,9 @@ module.exports = mongoose.model("Author", authorSchema, 'authors');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bookSchema = new Schema({
-    "name": String,
-    "page": Number,
-    "authorId": { type: mongoose.Types.ObjectId }
+  "name": String,
+  "page": Number,
+  "authorId": { type: mongoose.Types.ObjectId }
 });
 
 module.exports = mongoose.model("Book", bookSchema, 'books');
@@ -468,30 +468,30 @@ module.exports = new GraphQLSchema({
 persons 数据：
 ```js
 {
-    "_id" : ObjectId("5df49a5856652a298949e313"),
-    "name" : "Zander",
-    "age" : 18,
-    "alive" : true,
-    "friends" : [ 
-        ObjectId("5df49a7556652a298949e31d"), 
-        ObjectId("5df49aa256652a298949e331")
-    ]
+  "_id" : ObjectId("5df49a5856652a298949e313"),
+  "name" : "Zander",
+  "age" : 18,
+  "alive" : true,
+  "friends" : [ 
+    ObjectId("5df49a7556652a298949e31d"), 
+    ObjectId("5df49aa256652a298949e331")
+  ]
 }
 ```
 
 friends 数据：
 ```js
 {
-    "_id" : ObjectId("5df49a7556652a298949e31d"),
-    "name" : "Tom",
-    "tel" : "120",
-    "email" : "tom@gmail.com"
+  "_id" : ObjectId("5df49a7556652a298949e31d"),
+  "name" : "Tom",
+  "tel" : "120",
+  "email" : "tom@gmail.com"
 }
 {
-    "_id" : ObjectId("5df49aa256652a298949e331"),
-    "name" : "Jerry",
-    "tel" : "110",
-    "email" : "jerry@gmail.com"
+  "_id" : ObjectId("5df49aa256652a298949e331"),
+  "name" : "Jerry",
+  "tel" : "110",
+  "email" : "jerry@gmail.com"
 }
 ```
 
@@ -540,26 +540,26 @@ const personQuery = new GraphQLObjectType({
 
 ```js
 resolve: (parent, arg) => {
-        return Person.findOne({name: arg.name});
-      }
+  return Person.findOne({name: arg.name});
+}
 ```
 
 第二步：对于 Zander 的 friends 数据，GraphQL 会拿着`friends`数组中的 id 去匹配 friends 集合的`_id`字段，执行的查询大概是这样：
 
 ```js
 resolve_1: (parent, arg) => {
-        return Friend.find({_id: parent.id_1});
-      }
+  return Friend.find({_id: parent.id_1});
+}
 
 resolve_2: (parent, arg) => {
-        return Friend.find({_id: parent.id_2});
-      }
+  return Friend.find({_id: parent.id_2});
+}
 
 ...
 
 resolve_n: (parent, arg) => {
-        return Friend.find({_id: parent.id_n});
-      }
+  return Friend.find({_id: parent.id_n});
+}
 ```
 
 如此，便产生了 对数据库的 N + 1次请求。
@@ -680,8 +680,8 @@ const server = new ApolloServer({
   resolvers,
   playground: { // 配置playground
     settings: {
-			'editor.theme': 'light'
-		}
+      'editor.theme': 'light'
+    }
   }
 });
 
@@ -700,22 +700,22 @@ Apollo Server 中内置了 [gql](https://www.apollographql.com/docs/apollo-serve
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-	type Person {
-		id: String
-		name: String
-		age: Int
-		alive: Boolean
-	}
-	type Friend {
-		id: String
-		name: String
-		tel: String
-		email: String
-	}
-	type Query {
-		allPerson: [Person]
-		person(name: String!): Person
-	}
+  type Person {
+    id: String
+    name: String
+    age: Int
+    alive: Boolean
+  }
+  type Friend {
+    id: String
+    name: String
+    tel: String
+    email: String
+  }
+  type Query {
+    allPerson: [Person]
+    person(name: String!): Person
+  }
 `;
 
 module.exports = typeDefs;
@@ -729,14 +729,14 @@ module.exports = typeDefs;
 const Person = require('../models/person');
 
 const resolvers = {
-	Query: {
-		allPerson: () => {
-			return Person.find();
-		},
-		person: (parent, args) => {
-			return Person.findOne({name: args.name});
-		}
-	}
+  Query: {
+    allPerson: () => {
+      return Person.find();
+    },
+    person: (parent, args) => {
+      return Person.findOne({name: args.name});
+    }
+  }
 };
 
 module.exports = resolvers;
