@@ -44,12 +44,12 @@ API 的使用无非 CRUD，按照 GitLab API 清晰完整的文档来就可以�
 
 ![authorization-code.png](/images/gitlab:eportal-login.png "Partol 中的授权按钮")
 
-点击 Portal 中 「GitLab 授权」按钮时请求授权码：
+点击 Portal 中 「GitLab 授权」按钮时使用 `location.href` 跳转至授权页面：
 
 ```
 https://gitlab.zander.com/oauth/authorize?client_id=4e1fe77ba1d43b151428d907574er866a48af8dbc8766ea839a84a88c6dace39&redirect_uri=http://localhost:8080/login&response_type=code&state=zander&scope=api
 ```
-请求 URI 中的参数包括：
+URI 中的参数包括：
 
 |参数|是否必须|含义|
 |:-:|:-:|:-:|
