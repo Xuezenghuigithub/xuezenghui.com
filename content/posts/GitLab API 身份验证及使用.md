@@ -1,8 +1,8 @@
 ---
-title: "GitLab API 身份验证及使用"
+title: "GitLab API 授权认证及使用"
 date: "2019-12-26T10:15:00+08:00"
 tags: ["GitLab", "OAuth 2.0"]
-keywords: ["GitLab API", "OAuth 2.0", "身份验证"]
+keywords: ["GitLab API", "OAuth 2.0", "授权认证"]
 categories: ["Tech"]
 dropCap: true
 toc: false
@@ -13,7 +13,7 @@ comments: true
 ## 前言
 通常，GitLab 的操作都是通过 Web 界面或命令行来完成的，但 GitLab 也提供了简单而强大的开放 API 来自动执行 GitLab 相关操作，查看项目信息、提交 Issues、合并分支……统统都在 [docs.gitlab.com](https://docs.gitlab.com/ee/api/README.html)，GitLab API 大多为 REST API，但也同样支持 [GraphQL API](https://docs.gitlab.com/ee/api/graphql/)，并且 v5 版本的 API 将全部基于 GraphQL API，*as Facebook does*.
 
-## 身份验证
+## 授权认证
 绝大多数的 GitLab API 都是需要身份验证的，这毋庸置疑，其它公司的内部数据不能随随便便就被获取到，即使是公司内部也会有各个 Group 或 Project 的权限设置。
 
 再以使用 GitLab API 的目的出发——主要是为了在公司 Portal 网站中..显示.. GitLab 中的项目信息、成员信息、Issues 等，这就要求在用户登录 Portal 网站时获取其 GitLab 内具体权限，以显示其权限对应的 GitLab 数据。问题出来了：Portal 网站如何经过 GitLab 的同意来获取用户数据？
@@ -71,7 +71,7 @@ http://localhost:8080/login?code=90792302acc2a0724d44c74f43d0fd77f005723c9ae5def
 
 **第四步、获取令牌 Token**
 
-既然拿到了 code，嘿嘿嘿😎，只需要一个 Post 请求就能拿到可任意调用 GitLab API 大军的虎符🐯—— Aceess Token。要注意的是，获取 Token 的操作是需要在第三方应用的..后台..完成的，以保证数据的安全性。
+既然拿到了 code，嘿嘿嘿😎，只需要一个 Post 请求就能拿到可任意调用 GitLab API 大军的虎符🐯—— Access Token。要注意的是，获取 Token 的操作是需要在第三方应用的..后台..完成的，以保证数据的安全性。
 
 ```
 POST https://gitlab.zander.com/oauth/token
