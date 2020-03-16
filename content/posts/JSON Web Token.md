@@ -180,6 +180,7 @@ Authorization: Bearer <token>
 然后服务端验证 JWT 是否合法且有效：
 
 ```js
+// 验证token方法
 function verifyJWT(token) {
   let decoded;
   try {
@@ -190,6 +191,7 @@ function verifyJWT(token) {
   return decoded;
 }
 
+// 根据用户名获取密码接口
 router.get('/password', async (req, res) => {
   const token = req.headers['authorization'];
   const { username } = req.query;
