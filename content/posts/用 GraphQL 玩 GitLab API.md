@@ -432,7 +432,7 @@ project(fullPath: "bel-star/mis/rd/eportal"){
 
 估计你也注意到了，上面 `avatarUrl` 的路径是不完整的，缺少 `fullPath`。不仅如此，所有的图片、文件、链接的路径都是不完整的，导致获取到数据后还需要做二次处理。
 
-比如我的开发内容中需要在页面渲染所有的 issue 评论，要用到 `notes` 中所有的 `bodyHtml` 字段（String 类型），就需要把所有的 `a` 标签的 `href` 属性拼接完整，所有 `img` 标签`src` 属性拼接完整……哦对了，`img` 标签返回的是 base64 编码，当然，也是不完整的🙂，要将 `data-src` 属性中的路径替换成 `src` 的路径再拼接完整。
+比如我的开发内容中需要在页面渲染所有的 issue 评论，要用到 `notes` 中所有的 `bodyHtml` 字段（String 类型），就需要把所有的 `a` 标签的 `href` 属性拼接完整，所有 `img` 标签`src` 属性拼接完整……哦对了，`img` 标签返回的是 base64 编码，当然，也是不完整的[^2]🙂，要将 `data-src` 属性中的路径替换成 `src` 的路径再拼接完整。
 
 **4. Access Token 过期处理**
 
@@ -489,3 +489,5 @@ const apolloClient = new ApolloClient({
 ---
 
 [^1]: request 已被[弃用](https://github.com/request/request#deprecated)，此处使用 [request-promise](https://github.com/request/request-promise)。
+
+[^2]: StackOverflow 上也有人提出[此问题](https://stackoverflow.com/questions/59249310/gitlab-api-post-base64-image)。
