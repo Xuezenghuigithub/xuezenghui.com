@@ -436,7 +436,7 @@ project(fullPath: "bel-star/mis/rd/eportal"){
 
 **4. Access Token 过期处理**
 
-GitLab GraphQL API 目前无法对非法或过期的 Access Token 做出对应的反应（如返回不同的状态码或返回错误），而只是让 API 返回的数据为 `null`，原因是 GraphQL 的 resolve 函数中只能相应 Type 的数据，除非是 GraphQL 类型的错误才可直接返回相应的 `error` 信息。
+GitLab GraphQL API 目前无法对非法或过期的 Access Token 做出对应的反应（如返回不同的状态码或返回错误），而只是让 API 返回的数据为 `null`，原因是 GraphQL 的 resolve 函数只能返回固定的 Type 的数据，除非是 GraphQL 类型的错误才可直接返回相应的 `error` 信息。
 
 因此解决方案只能从返回的数据入手了，比如判断是否为 `null`，是 `null` 则重新获取 Access Token。
 
@@ -480,7 +480,7 @@ const apolloClient = new ApolloClient({
 - `forward`：一个方法，可以传入 `operation`，表示重新执行这次错误的操作
 - `response`：接口返回的结果
 
-[官方示例](https://www.apollographql.com/docs/link/links/error/#retrying-failed-requests)中表示可以利用 `apollo-link-error` 检测出认证相关的错误并进行相关处理，但是我尝试了下，Access Token 非法或失效..并没有..被捕捉到并认定为 GraphQLErrors，所以我暂且将其归类到踩坑标题下，该模块还需要进一步学习从而完善本文。
+[官方示例](https://www.apollographql.com/docs/link/links/error/#retrying-failed-requests)中表示可以利用 `apollo-link-error` 检测出认证相关的错误并进行相关处理，但是我尝试了下，Access Token 非法或失效..并没有..被捕捉到并认定为 GraphQLErrors，所以我暂且将其归类到「踩坑」标题下，该模块还需要进一步学习从而完善本文。
 
 ---
 
