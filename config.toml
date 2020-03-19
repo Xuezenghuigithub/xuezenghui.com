@@ -29,7 +29,7 @@ footnoteReturnLinkContents = "↩"
 enableGitInfo = true
 
 # 是否生成 robots.txt 文件
-enableRobotsTXT = true
+enableRobotsTXT = false
 
 # 每一分页的文章数（仅对「文章摘要」首页布局有效）
 paginate = 5
@@ -98,6 +98,7 @@ uglyURLs = false
         name = "date"
         weight = 10
         pattern = "2006"
+
 
 # Atom 文件格式的媒体类型
 [mediaTypes."application/atom+xml"]
@@ -215,7 +216,9 @@ uglyURLs = false
     enableNavToggle = true
 
     # 菜单栏展开时的高度
-    navHeight = "10em"
+    navHeight = "9em"
+
+
     ######################################
     # 品牌栏（在顶栏内）
 
@@ -225,7 +228,7 @@ uglyURLs = false
     # 件内，并配置以下项。单位：px。
     siteBrandSVGWidth = 250
     siteBrandSVGHeight = 100
-    siteBrandSVGFill = "#000"
+    siteBrandSVGFill = "#fff"
     # 如果否，则会使用你的站点标题作为默认值，并
     # 以文字的形式显示，下方可配置字号和字色。字
     # 体请到底部的字体部分配置。单位：em。
@@ -294,7 +297,7 @@ uglyURLs = false
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
-    siteDescription = "技术, 分享, 独处时光"
+    siteDescription = "这是 Zander Hsueh 的前端技术博客，技术、分享、独处时光。"
     # 说明：用于 HTML 的头部元数据、JSON-LD、
     #      Open Graph、Atom、RSS
 
@@ -376,7 +379,7 @@ uglyURLs = false
     displayListTitle = true
 
     # 日期的格式
-    listDateFormat = "1 月 2 日"
+    listDateFormat = "2006-01-02"
     # 注意：请遵循格式 https://gohugo.io/functions/format/
 
     # 日期的位置
@@ -384,15 +387,15 @@ uglyURLs = false
     # 说明：left（左边）或 right（右边）
 
     # 是否按月份分隔列表
-    groupByMonth = true
+    groupByMonth = false
 
     # 是否开启十二生肖
     chineseZodiac = true
 
     # 是否翻译年份（仅对年份标题有效）
-    i18nYear = true
+    i18nYear = false
     # 是否翻译月份（仅对月份标题有效）
-    i18nMonth = true
+    i18nMonth = false
 
 
     ######################################
@@ -536,6 +539,27 @@ uglyURLs = false
 
 
     ######################################
+    # MathJax 公式支持（包括化学方程式）
+
+    # 是否开启（全局设置）
+    enableMathJax = false
+    # 说明：文章的 Front Matter 中的 `mathjax`
+    #      的优先级高于此处
+
+    # 是否禁用 MathJax 的右键菜单
+    disableMathJaxMenu = false
+
+
+    ######################################
+    # Mermaid (https://github.com/mermaid-js/mermaid)
+
+    # 是否开启（全局设置）
+    enableMermaid = false
+    # 说明：文章的 Front Matter 中的 `mermaid`
+    #      的优先级高于此处
+
+
+    ######################################
     # 评论
 
     # 说明：仅在生产环境（production）下渲染
@@ -566,6 +590,18 @@ uglyURLs = false
     avatarForce = false
     valineRecordIP = true # 记录评论者IP
     valineServerURLs = ""
+
+
+    ## Utterances
+    enableUtterances = false
+    utterancesRepo = ""
+    utterancesIssueTerm = "pathname"
+    utterancesTheme = "github-light"
+    utterancesThemeDark = "photon-dark"
+    utterancesLabel = ""
+    # 说明：https://utteranc.es/
+
+
     ######################################
     # Google Analytics
 
@@ -626,12 +662,12 @@ uglyURLs = false
     #      的优先级高于此处
 
     # 是否在首页开启
-    enablePostMetaInHome = true
+    enablePostMetaInHome = false
     # 说明：仅对「文章摘要」和「普通页面」
     #      首页布局有效
 
     # 日期格式
-    postMetaDateFormat = "2006/1/2"
+    postMetaDateFormat = "2006.1.2"
     # 注意：请遵循格式 https://gohugo.io/functions/format/
 
     # 是否显示发布时间
@@ -668,6 +704,13 @@ uglyURLs = false
 
 
     ######################################
+    # Markdown 相关
+
+    # 在新标签页打开外链？
+    hrefTargetBlank = true
+
+
+    ######################################
     # 文章目录
 
     # 是否开启（全局设置）
@@ -677,6 +720,11 @@ uglyURLs = false
 
     # 是否显示目录标题
     displayTOCTitle = true
+
+    # 是否显示数字（全局设置）
+    displayTOCNum = true
+    # 说明：文章的 Front Matter 中的 `tocNum`
+    #      的优先级高于此处
 
     # 是否链接文章的分节标题到目录
     linkHeadingsToTOC = true
@@ -820,6 +868,11 @@ uglyURLs = false
     fontSize = 16
 
     ######################################
+    ## 制表符的宽度
+
+    tabSize = 4
+
+    ######################################
     ## 行间距
 
     lineHeight = 2
@@ -830,6 +883,11 @@ uglyURLs = false
 
     # 是否开启
     enableParagraphIndent = true
+
+    # 是否缩进第一段（全局设置）
+    indentFirstParagraph = false
+    # 说明：文章的 Front Matter 中的 `indentFirstParagraph`
+    #      的优先级高于此处
 
     # 分段样式（全局设置）
     paragraphStyle = "margin"
@@ -959,6 +1017,29 @@ uglyURLs = false
 
 
     ######################################
+    # 文章分享
+
+    # 是否开启
+    enablePostShare = true
+
+    # 是否显示（全局设置）
+    displayPostShare = true
+    # 说明：文章的 Front Matter 中的 `share`
+    #      的优先级高于此处
+
+    shareOnTwitter = true
+    shareOnFacebook = true
+    shareOnLinkedIn = true
+    shareOnTelegram = true
+    shareOnWeibo = true
+    shareOnDouban = true
+    shareOnQQ = true
+    shareOnQzone = true
+
+    shareViaQRCode = true
+
+
+    ######################################
     # 相关文章
 
     # 是否开启
@@ -1019,6 +1100,9 @@ uglyURLs = false
     # 是否开启
     enableBackToTop = true
 
+    # 是否开启自动隐藏
+    enableBackToTopAutoHide = true
+
     # 是否在首页显示
     displayBackToTopInHome = false
 
@@ -1031,8 +1115,9 @@ uglyURLs = false
 
     # 是否开启
     enableFooter = true
-    # 说明：「诗意人生」和「视频片段」首页布局
-    #      的首页没有页脚
+
+    # 是否在首页显示
+    displayFooterInHome = true
 
     # 是否显示版权符号（©）
     displayCopyrightSymbol = true
@@ -1056,7 +1141,16 @@ uglyURLs = false
     # 自定义页脚（支持 Markdown）
     customFooter = "🤨"
 
+    displayBusuanziSiteUVAndPV = false
+    busuanziSiteUVText = "本站访客数"
+    busuanziSiteUVIcon = "user"
+    busuanziSitePVText = "本站访问量"
+    busuanziSitePVIcon = "eye"
+    # 说明：仅在生产环境（production）下渲染
+    #      文本或图标，留空（""）则无
+    #      https://busuanzi.ibruce.info/
 
+    
     ######################################
     # 多语言
 
@@ -1067,7 +1161,7 @@ uglyURLs = false
     hideLangToggleInHome = false
 
     # 是否自动隐藏多语言按钮
-    autoHideLangToggle = false
+    autoHideLangToggle = true
     # 说明：即仅当该文章有相应的翻译版本时才显
     #      示按钮
 
@@ -1101,8 +1195,23 @@ uglyURLs = false
 
     # 是否开启
     enableForceHTTPS = true
+    
+    
+    ######################################
+    # 平滑滚动
+
+    # 是否开启
+    enableSmoothScroll = true
+    # 说明：https://github.com/cferdinandi/smooth-scroll
 
 
+    ######################################
+    # Instant Page
+
+    enableInstantPage = true
+    # 说明：https://github.com/instantpage/instant.page
+   
+   
     ######################################
     # 404 页面
 
@@ -1127,3 +1236,4 @@ uglyURLs = false
     # meta      文章信息     Boolean
     # indent    首行锁进     Boolean
     # share     文章分享     Boolean
+    # tocNum    目录是否显示数字  Boolean
