@@ -150,12 +150,18 @@ uglyURLs = false
 
 [menu]
     ## 菜单栏
+    # [[menu.main]]
+    #     url = "/"
+    #     name = "首页"
+    #     weight = 1
+    #     pre = "internal"
+    #     post = "home"
     [[menu.main]]
-        url = "/"
-        name = "首页"
-        weight = 1
-        pre = "internal"
-        post = "home"
+        weight = 6
+        identifier = "theme-switcher"
+    [[menu.main]]
+        weight = 7
+        identifier = "lang-switcher"
     [[menu.main]]
         url = "/posts/"
         name = "文章"
@@ -196,7 +202,20 @@ uglyURLs = false
     # 是否在首页显示
     displayHeaderInHome = true
 
+    # 顶栏背景
+    headerBackground = "linear-gradient(90deg, #f795331a 0, #f370551a 15%, #ef4e7b1a 30%, #a166ab1a 44%, #5073b81a 58%, #1098ad1a 72%, #07b39b1a 86%, #6dba821a 100%)"
 
+    # 布局方式（center or flex）
+    headerLayout = "flex"
+    
+    # 宽度
+    headerFallbackWidth = "36em"
+    
+    # 在窄视图下隐藏菜单栏并显示一个按钮？
+    enableNavToggle = true
+
+    # 菜单栏展开时的高度
+    navHeight = "10em"
     ######################################
     # 品牌栏（在顶栏内）
 
@@ -206,12 +225,12 @@ uglyURLs = false
     # 件内，并配置以下项。单位：px。
     siteBrandSVGWidth = 250
     siteBrandSVGHeight = 100
-    siteBrandSVGFill = "#fff"
+    siteBrandSVGFill = "#000"
     # 如果否，则会使用你的站点标题作为默认值，并
     # 以文字的形式显示，下方可配置字号和字色。字
     # 体请到底部的字体部分配置。单位：em。
-    siteBrandFontSize = 5
-    siteBrandFontColor = "#fff"
+    siteBrandFontSize = 2
+    siteBrandFontColor = "#000"
 
     # 背景色
     # siteBrandBackgroundColor = "hsl(240, 8%, 12%)"
@@ -1098,12 +1117,13 @@ uglyURLs = false
     ######################################
     #  Front Matter说明
     # slug      文章url     String
-    # toc       目录        false
+    # toc       目录        Boolean
     # gitinfo   文章Git信息  Boolean
-    # dropCap   首字下沉     false
-    # displayCopyright 版权信息 false
+    # dropCap   首字下沉     Boolean
+    # displayCopyright 版权信息 Boolean
     # align     位置        'center' ['normal', 'justify', 'center']
-    # comments  评论        false
-    # badge     更新日期     true
+    # comments  评论        Boolean
+    # badge     更新日期     Boolean
     # meta      文章信息     Boolean
-    # indent    首行锁进     true
+    # indent    首行锁进     Boolean
+    # share     文章分享     Boolean
