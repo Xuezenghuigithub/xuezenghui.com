@@ -4,7 +4,6 @@ date: "2020-03-12T10:26:14+08:00"
 tags: ["GraphQL", "GitLab"]
 keywords: ["GitLab API", "GraphQL", "Vue Apollo"]
 categories: ["Tech"]
-dropCap: true
 toc: true
 slug: "gitlab-graphql-api"
 ---
