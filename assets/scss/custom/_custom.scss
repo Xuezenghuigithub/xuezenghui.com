@@ -1,3 +1,68 @@
+// 主页诗句
 .home .poetry {
   padding: 13em 1em;
+}
+
+//表格样式调整
+.table-container {
+  margin: 0 0;
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 96%;
+  margin: 1em auto;
+  border: 1px solid #81C7D4;
+  text-align: justify;
+}
+
+thead {
+  color: white;
+  background: #0089A7;
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+table>tbody>tr {
+  background-color: transparent;
+}
+
+
+th {
+  font-weight: bold;
+}
+
+td {
+  border: 1px double #81C7D4;
+}
+
+th,
+td {
+  display: table-cell;
+  vertical-align: inherit;
+  border: 1px double #81C7D4;
+  padding: 0.3em 0.2em 0.3em 0.5em;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-left: 2em;
 }
