@@ -1219,7 +1219,9 @@ uglyURLs = false
 
     # 是否开启复制
     enableCopy = true
-
+    
+    # 是否开启自动隐藏
+    enableCopyAutoHide = true
 
     ######################################
     # 文件指纹和子资源完整性（SRI）
