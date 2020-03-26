@@ -212,7 +212,39 @@ uglyURLs = false
         weight = 7
         identifier = "lang-switcher"
 
+    ## 社交栏
+    [[menu.socials]]
+        url = "https://github.com/xuezenghuigithub"
+        name = "GitHub"
+        weight = 1
+        pre = "external"
+    [[menu.socials]]
+        url = "https://t.me/zander"
+        name = "Telegram"
+        weight = 2
+        pre = "external"
+    [[menu.socials]]
+        url = "https://twitter.com/zander"
+        name = "Twitter"
+        weight = 3
+        pre = "external"
 
+    ## 链接栏
+    # [[menu.links]]
+    #     url = "/"
+    #     name = "Home"
+    #     weight = 1
+    #     pre = "internal"
+    # [[menu.links]]
+    #     url = "/tags/"
+    #     name = "Tags"
+    #     weight = 2
+    #     pre = "internal"
+    # [[menu.links]]
+    #     url = "/coldplay/"
+    #     name = "Coldplay"
+    #     weight = 3
+    #     pre = "internal"
 
 ##########################################
 # 主题配置
@@ -265,18 +297,18 @@ uglyURLs = false
     # 以文字的形式显示，下方可配置字号和字色。字
     # 体请到底部的字体部分配置。单位：em。
     siteBrandFontSize = 2
-    siteBrandFontColor = "#000"
+    siteBrandFontColor = "var(--color-contrast-high)"
 
 
     ######################################
     # 菜单栏
 
     # 是否开启
-    enableMenu = true
+    enableMenu = false
     # 说明：对弹性布局的顶栏无效
 
     # 是否在首页显示
-    displayMenuInHome = true
+    displayMenuInHome = false
     # 说明：对弹性布局的顶栏无效
 
     # 是否按文章分区高亮当前菜单项
@@ -442,7 +474,7 @@ uglyURLs = false
     # 说明：分区的名字即站点的 content 目录下
     #      的文件夹的名字。
 
-    # mainSections = ["posts"]
+    mainSections = ["posts"]
 
 
     ######################################
@@ -513,7 +545,7 @@ uglyURLs = false
 
     jsonLD = true
     openGraph = true
-    twitterCards = false
+    twitterCards = true
     # 注意：如果你设置 twitterCards 为 `true`，
     #      请务必开启 openGraph。否则，网页的
     #      Twitter Cards 信息将会不完整。
