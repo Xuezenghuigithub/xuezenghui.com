@@ -65,7 +65,7 @@ $ brew install bit
 
 1⃣️ Bit 可追踪的依赖项只包含使用 NPM 安装的依赖和安装/使用的 Bit 组件，就是说项目中直接通过绝对/相对路径引入的本地组件..不被包含..在依赖项内，如 `import Utils from './utils.js'`，那如果组件在另一个项目中使用不就找不到引入的文件了吗🤔️？当然，Bit 从根本上避免了这种情况的产生——需要将引入的本地组件与主组件同步追踪才可发布👍。
 
-2⃣️ 如果要发布的组件中使用了第三方 UI 框架（如 Vuetify 中特有的标签 `v-card` 等），Bit 并不会自动分析出它依赖了这个 UI 框架，可以直接发布，但是在使用此组件的项目中需要安装对应的 UI 框架才能正确显示 Bit 组件。
+2⃣️ 如果要发布的组件中使用了第三方 UI 框架（如 Vuetify 中特有的标签 `v-card` 等），Bit 并不会自动分析出它依赖了这个 UI 框架，而是可以直接发布，但在使用此组件的项目中需要安装对应的 UI 框架才能正确显示 Bit 组件。
 
 ---
 
@@ -90,16 +90,13 @@ $ bit init
 
 **2. 跟踪组件**
 
-跟踪将本地的一段源代码转换为了 Bit 组件，然后保存上面提到的三个元素。
+跟踪操作将本地项目中的一个或多个文件转换为了 Bit 组件，然后会保存上面提到的三个元素。如：`$ bit add src/components/HelloWorld.vue --id my-hello`
 
 ```s
 $ bit add <file_path> --id <component_id>
 ```
 
-> 如：`$ bit add src/components/HelloWorld.vue --id my-hello`
-
-
-如果一个组件引入了另一个组件只需将它们一同跟踪，Bit 会自动分析它们之间的依赖关系：
+如果一个文件内通过 `require` 或 `import` 引入了另一个文件，只需将它们一同跟踪，Bit 会自动分析他们之间的依赖关系：
 
 ```s
 $ bit add src/components/father.vue src/components/son.vue --id father-son
@@ -110,6 +107,7 @@ $ bit add src/components/father.vue src/components/son.vue --id father-son
 ```s
 $ bit add src/components/* --namespace hello
 ```
+添加 `--namespace hello` 选项意为使用 hello 作为 `src/components/` 目录下所有跟踪组件的父级目录，即生成的组件名为 `hello/filename1`、`hello/filename2`。
 
 **3. 设置组件版本**
 
@@ -117,9 +115,7 @@ $ bit add src/components/* --namespace hello
 $ bit tag --<component_id> <version>
 ```
 
-> 如：`$ bit tag --my-hello 1.0.0`
-
-执行此操作后 Bit 会锁定该组件的依赖项版本，运行编译并测试该组件（可使用 `--verbose` 选项查看组件测试结果），如果无误会设置组件的版本并自动标记依赖于该组件的组件。
+执行此操作后 Bit 会锁定该组件的依赖项版本，运行编译并测试该组件（可使用 `--verbose` 选项查看组件测试结果），如果编译测试通过则会设置组件的版本并自动标记依赖于该组件的组件。如：`$ bit tag --my-hello 1.0.0`
 
 使用 `$ bit untag <component_id> <version>` 命令可取消设置的版本号。
 
@@ -208,15 +204,13 @@ export default {
 
 导入组件指将远程组件的所有信息下载到本地，包括组件的源代码、依赖项等，导入的文件位于配置文件 `package.json` 中 `componentsDefaultDirectory` 项定义的目录中。
 
-> 在其它项目中要想使用发布在 Bit Server 中的组件只能..导入组件..，而不能使用 NPM or Yarn 的方式。
+> 在其它项目中要想使用发布在 Bit Server 中的组件只能..导入组件..，而不能使用 NPM or Yarn 的方式。如果是在新项目中第一次..导入.. Bit 组件需先运行 `$ bit init` 命令。
 
 ```s
 $ bit import <user_name>.<collection_name>/<component_id>
 ```
 
 可加入组件固定版本，如 `$ bit import zander.hello/my-hello@1.0.1`，不加则默认导入最新版本。
-
-> 如果是在新项目中第一次导入 Bit 组件需先运行 `$ bit init` 命令。
 
 同样的，使用组件的方式还是引入再使用，不过不能直接引入组件的路径，引入组件的全名即可（`package.json` 中的名字）：
 
@@ -277,6 +271,7 @@ TODO:..
 |[`bit list`](https://docs.bit.dev/docs/apis/cli-all#list-1)|显示远程和本地所有组件||
 |[`bit status`](https://docs.bit.dev/docs/apis/cli-all#status)|查看工作区中被跟踪组件的状态||
 |[`bit add <file_path> --id <component_id>`](https://docs.bit.dev/docs/apis/cli-all#add)|追踪组件|`--id`：指定组件 ID<br>`--namespace`：设置命名空间<br>`--exclude`：排除文件|
+|[`bit untrack <component_id>`](https://docs.bit.dev/docs/apis/cli-all#untag)|取消追踪组件||
 |[`bit show <component_id>`](https://docs.bit.dev/docs/apis/cli-all#show)|查看组件的依赖关系||
 |[`bit diff <component_id>`](https://docs.bit.dev/docs/apis/cli-all#diff)|比较更改前后组件的变化||
 |[`bit log <component_id>`](https://docs.bit.dev/docs/apis/cli-all#log)|查看组件各版本信息||
@@ -294,7 +289,7 @@ TODO:..
 
 但是，以 Bit 目前的知名度和普及度来看，它还有很长的路要走，这也不是没有原因的：
 	
-1. bit.dev 不开源，这点真的是太失望了🙍‍♂️。
+1. bit.dev 不开源，自行搭建的 Bit Server 功能实在是太有限了，这点真的是太失望了🙍‍♂️……
 
 2. Bit 没有像 GitHub、GitLab 这样的可以以项目为单位管理组织代码的机制，以至于看起来像是 Codepen 这样的交流社区。
 
