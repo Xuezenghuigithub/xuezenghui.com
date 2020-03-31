@@ -219,11 +219,15 @@ import myHello from "@bit/zander.hello.my-hello";
 ```
 
 ### 更新组件
-更新组件有两个角度，一是远程组件更新了，使用组件的项目需要同步更新；二是使用组件的项目需要对组件进行更改并上传至远程。
+更新组件有两个角度，一种是远程的组件更新了，使用该组件的项目需要同步更新；另一种是在使用组件的项目中需要对导入的组件进行更改并上传至远程。
 
 **1. 更新本地组件**
 
-本地的组件要想同步远程的更新比较简单，直接使用导入命令 `$ bit import <component_id>` 即可。
+本地的组件要想同步远程的更新直接使用导入命令即可，组件的最新版本会被自动导入：
+
+```s
+$ bit import <component_id>
+```
 
 **2. 修改组件并更新至远程**
 
@@ -232,7 +236,7 @@ import myHello from "@bit/zander.hello.my-hello";
 当修改组件后运行 `$ bit status` 命令会提示 modified components 的相关信息，此时可为组件设置新的版本：
 
 ```s
-$ bit tag <component_id> <version>
+$ bit tag <component_id> <new_version>
 ```
 
 然后将其重新导出到远程集合中：
@@ -245,7 +249,7 @@ $ bit export <user_name>.<collection_name>
 
 **1. 弃用该组件**
 
-弃用组件意味着 Bit 会将其标记为“已过时”，不会影响组件正常使用。
+弃用组件意味着 Bit 会将其标记为“已过时”，但不会影响组件正常使用。
 
 ```s
 $ bit bit deprecate <user_name>.<collection>/<component_id> --remote

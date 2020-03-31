@@ -1244,9 +1244,9 @@ uglyURLs = false
     enableHighlight = true
 
     # 是否开启竖直滚动
-    enableOverflowY = true
+    enableOverflowY = false
     # 最大高度
-    maxHeight = 20
+    maxHeight = 30
     # 单位：em
 
     # 是否开启复制
