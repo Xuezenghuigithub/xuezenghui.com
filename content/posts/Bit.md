@@ -247,7 +247,7 @@ $ bit export <user_name>.<collection_name>
 ### 弃用或删除组件
 当不使用一个组件的时候有两种选择：
 
-**1. 弃用该组件**
+**1. 弃用组件**
 
 弃用组件意味着 Bit 会将其标记为“已过时”，但不会影响组件正常使用。
 
@@ -264,7 +264,7 @@ $ bit remove <user_name>.<collection>/<component_id> --remote
 ```
 
 ### Bit Server
-TODO:..
+[Bit Server](https://docs.bit.dev/docs/bit-server) 就是 bit.dev 的代替工具了，且是超低配版，它能提供的功能只有作为“远程仓库”来..存储..组件，本地通过 SSH 来与 Bit Server 通信，发布和导入组件就相当于 Bit Server 的存和取操作了。相对的，功能不健全但成本也相对较低，要使用 Bit Server 只需要一个服务器就够了。
 
 ### 常用命令
 |Command|Function|Options|
