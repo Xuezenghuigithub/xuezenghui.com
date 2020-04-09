@@ -8,7 +8,7 @@ comments: false
 displayCopyright: false
 badge: false
 meta: false
-share: false
+share: true
 ---
 
 <center>*Hey, buddy ! Welcome to my blog~*</center>
