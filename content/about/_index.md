@@ -11,7 +11,7 @@ meta: false
 share: true
 ---
 
-<center>*Hey, buddy ! Welcome to my blog~*</center>
+<center> *Hey, buddy ! Welcome to my blog~* </center>
 
 ---
 

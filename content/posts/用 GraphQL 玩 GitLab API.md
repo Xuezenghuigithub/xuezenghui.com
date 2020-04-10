@@ -19,7 +19,7 @@ Vue Apollo 的开发者 [Guillaume Chau](https://github.com/Akryum) 制作的 [V
 
 **2. Apollo Boost**
 
-```
+```s
 $ npm install --save vue-apollo graphql apollo-boost
 ```
 
