@@ -9,7 +9,6 @@ displayCopyright: false
 badge: false
 meta: false
 share: true
-indent: true
 ---
 
 <center><em>Hey, buddy ! Welcome to my blog~</em></center>

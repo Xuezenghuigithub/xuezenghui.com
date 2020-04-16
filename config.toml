@@ -1320,6 +1320,6 @@ uglyURLs = false
     # comments  评论        Boolean
     # badge     更新日期     Boolean
     # meta      文章信息     Boolean
-    # indent    首行锁进     Boolean
+    # indent    首行缩进     Boolean
     # share     文章分享     Boolean
     # tocNum    目录是否显示数字  Boolean
