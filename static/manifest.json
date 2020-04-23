@@ -2,8 +2,8 @@
   "name": "Zander Hsueh",
   "short_name": "Zander",
   "icons": [{
-    "src": "./icons/android-chrome-512x512.png",
-    "sizes": "512x512",
+    "src": "./icons/android-chrome-140x140.png",
+    "sizes": "140x140",
     "type": "image/png"
   }],
   "theme_color": "#fff",
