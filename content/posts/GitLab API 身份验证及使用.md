@@ -56,7 +56,7 @@ URI 中的参数包括：
 |client_id|true|注册 GitLab 应用成功后的 Application Id|
 |redirect_uri|true|注册应用时设置的重定向 URI|
 |response_type|true|返回的类型，授权码模式即为`code`|
-|state|false|用于确认请求和回调的状态，OAuth 建议以此来防止 [CSRF 攻击](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))[^3]|
+|state|false|用于确认请求和回调的状态，OAuth 建议以此来防止 [CSRF 攻击](https://owasp.org/www-community/attacks/csrf)[^3]|
 |scope|false|权限设置，范围不得超出创建应用时的配置，以空格分隔|
 
 **第三步、用户授权**
