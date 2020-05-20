@@ -241,6 +241,57 @@ export default {
 };
 </script>
 ```
+
+**4. 数组类型的验证**
+
+是的，通过一段时间的实践运用，我觉得有必要也记录一下数组类型表单的验证。也就是说在 Vue 中使用 `v-for` 渲染的表单，要验证数组中每一个对象的某个属性的 value，就需要用到一个新的指令 `$each`，意思显而易见——“每一项”，看实例：
+
+```vue
+<div v-for="(item, index) in arr" :key="index">
+  <div>{{ item.name }}</div>
+  <input :error-messages="arrErrors" v-model.trim="item.age" />
+</div>
+
+<script>
+export default {
+  validations: {
+    arrCount: {
+      $each: {
+        age: { required, numeric }
+      }
+    }
+  },
+  data() {
+    return {
+      arr: [
+        {
+          name: "Zander",
+          age: ""
+        },
+        {
+          name: "Chris",
+          age: ""
+        }
+      ]
+    }
+  },
+  computed: {
+    arrErrors() {
+      const errors = [];
+      for (let i = 0; i < this.arr.length; i++) { // 因为是数组，所以要循环判断每一项是否通过验证
+        if (!this.$v.arr.$each[i].age.$dirty) return errors;
+        !this.$v.arr.$each[i].age.required && errors.push("不能为空");
+        !this.$v.arr.$each[i].age.numeric && errors.push("请输入数字");
+      }
+      return errors;
+    }
+  }
+};
+</script>
+```
+
+但是在 Vuetify 中使用该方法有一个小瑕疵，如果数组中只有一项不通过验证，那么错误反馈会应用到数组表单中的每个要验证的属性，比如上面例子中的两个 `age` 的 `<input>` 标签都会提示错误，而不是只提示不通过验证的这一项。
+
 ---
 
 Vuelidate 的功能远远不止于此，这里就只列举一些常见的用法和范例了。话说回来，其实项目中整体使用下来觉得 Vuelidate 也没有多么糟糕，具体情境具体考虑嘛！但个人觉得相对而言 [Vee-validate](https://logaretm.github.io/vee-validate/) 更为轻量，且验证的写法也更为简洁（Star 也更多😌）。当然，自身技术允许的话，撸一个 Vue 表单验证工具针对性地用于具体的项目是最好不过了。
