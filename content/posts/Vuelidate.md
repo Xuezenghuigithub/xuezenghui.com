@@ -244,12 +244,12 @@ export default {
 
 **4. 数组类型的验证**
 
-是的，通过一段时间的实践运用，我觉得有必要也记录一下数组类型表单的验证。也就是说在 Vue 中使用 `v-for` 渲染的表单，要验证数组中每一个对象的某个属性的 value，就需要用到一个新的指令 `$each`，意思显而易见——“每一项”，看实例：
+是的，通过一段时间的实践运用，我觉得有必要也记录一下数组类型表单的验证。也就是在 Vue 中使用 `v-for` 渲染的表单，要验证数组中每一个对象的某个属性的 value，就需要用到一个新的指令 `$each`，意思显而易见——“每一项”，看实例：
 
 ```vue
-<div v-for="(item, index) in arr" :key="index">
-  <div>{{ item.name }}</div>
-  <input :error-messages="arrErrors" v-model.trim="item.age" />
+<div v-for="(item, index) in $v.arr.$each.$iter" :key="index">
+  <div>{{ item.$model.name }}</div>
+  <input :error-messages="arrErrors" v-model.trim="item.age.$model" />
 </div>
 
 <script>
@@ -290,7 +290,16 @@ export default {
 </script>
 ```
 
-但是在 Vuetify 中使用该方法有一个小瑕疵，如果数组中只有一项不通过验证，那么错误反馈会应用到数组表单中的每个要验证的属性，比如上面例子中的两个 `age` 的 `<input>` 标签都会提示错误，而不是只提示不通过验证的这一项。
+要用 Vuelidate 使用数据双向绑定的方式管理数组确实是有点繁琐了哈...所以，替代的便易办法是使用 `change` 事件监听输入框内容的变化，在变化的时候执行 `touch()` 方法让其对内容进行验证，在要验证的表单中添加 Vuelidate 的 `@input` 或 `@blur` 实现：
+
+```html
+<div v-for="(item, index) in arr" :key="index">
+  <div>{{ item.name }}</div>
+  <input :error-messages="arrErrors" @input="$v.arr.$touch()" v-model.trim="item.age" />
+</div>
+```
+
+但是在 Vuetify 中使用该方法有一个..小瑕疵..，如果数组中只有一项不通过验证，那么错误反馈会应用到数组表单中的每个要验证的属性，比如上面例子中的两个 `age` 的 `<input>` 标签都会提示错误，而不是只提示不通过验证的这一项。
 
 ---
 
