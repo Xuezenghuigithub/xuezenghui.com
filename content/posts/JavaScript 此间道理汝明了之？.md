@@ -67,3 +67,16 @@ toDecimalMark(19971122.05); // '19,971,122.05'
 
 - 🔗：
     1. [Number.prototype.toLocaleString() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)
+
+### 根据对象的 Value 获取对应的 Key
+```js
+function getKey(obj, value, compare = (a, b) => a === b) {
+  return Object.keys(obj).find(element => compare(obj[element], value));
+}
+```
+
+- 🧐：要通过 Value 找到 Key 是离不开遍历的，先使用 `Object.keys()` 方法返回对象可枚举属性组成的数组，数组的 `find()` 方法可在遍历时完成键值的匹配。但这只针对无相同 Value 的对象，否则只会返回匹配到的第一个 Key，如果没有匹配到的 Key 则返回 `undefined`。
+
+- 🔗：
+    1. [Object.keys() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+    2. [Array.prototype.find() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
