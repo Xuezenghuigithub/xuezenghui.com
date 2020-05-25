@@ -1,8 +1,8 @@
 ---
 title: "ECS 服务器配置及部署实践"
 date: "2020-04-13T16:24:34+08:00"
-tags: ["服务器", "Vue.js", "Node.js"]
-keywords: ["ECS 服务器", "CentOS 8", "部署"]
+tags: ["Linux", "Vue.js", "Node.js"]
+keywords: ["Linux", "CentOS 8", "部署"]
 categories: ["Tech"]
 toc: true
 slug: "ecs-server"
