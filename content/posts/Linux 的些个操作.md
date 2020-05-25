@@ -1,15 +1,15 @@
 ---
-title: "Linux/SSH 的些个操作"
+title: "Linux 的些个操作"
 date: "2020-05-25T13:28:59+08:00"
 tags: ["Linux"]
 keywords: ["Linux", "CentOS 8", "部署"]
 categories: ["Tech"]
 dropCap: false
 toc: true
-slug: "linux-or-ssh-tips"
+slug: "linux-tips"
 ---
 
-记录使用 Linux 时的些个操作，多与 SSH 有关。
+记录使用 Linux 时的些个操作。
 
 ### 配置非 root 用户
 直接使用 root 权限操作 Linux 是极为不安全的，也是非常不提倡的，应该为不同的角色配置不同的用户身份，可为用户配置一定的管理权限，在需要执行管理操作时输入 `sudo` 前缀即可拥有 root 的管理权限，具体步骤：
@@ -82,4 +82,23 @@ $ sudo nano /etc/ssh/ssh_config
 ClientAliveInterval 60
 ClientAliveCountMax 10
 ```
+### 配置 Docker 命令不需加 `sudo`
+Docker 守护进程默认由 root 用户掌管，其他用户使用 Docker 命令时必须加 `sudo` 才可成功执行。可添加配置 docker 用户组使得组内用户使用 Docker 时不需加 `sudo` 命令。
 
+**1. 添加 docker 用户组**
+
+```s
+$ sudo groupadd docker
+```
+
+**2. 将用户加入用户组**
+
+```s
+$ sudo usermod -aG docker username
+```
+
+**3. 重新登录，或切换用户组以更新权限**
+
+```s
+$ newgrp docker
+```
