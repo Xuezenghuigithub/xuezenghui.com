@@ -623,12 +623,13 @@ uglyURLs = false
     valineAvatar = "monsterid" # 用户头像
     valineMeta = ["nick", "mail", "link"]
     valinePageSize = 10
-    valineLang = "zh-cn"
+    valineLang = "zh-CN"
     valineVisitor = false # 文章阅读数
     valineHighlight = true
     avatarForce = false
     valineRecordIP = true # 记录评论者IP
     valineServerURLs = ""
+    valineRequiredFields = ['nick','mail'] # 必填项
     # 说明：https://valine.js.org/
 
     ## Utterances
