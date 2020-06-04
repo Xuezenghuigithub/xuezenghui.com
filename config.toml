@@ -614,8 +614,8 @@ uglyURLs = false
 
     ## Valine
     enableValine = true
-    valineAppId = "WOGsi7UjLASjAxr91Rx1og8E-gzGzoHsz"
-    valineAppKey = "fEB3S9O1FdXgYII2pWyyydiB"
+    valineAppId = "mYnSfAhtMXGV6ihrRUGNEoqA-gzGzoHsz"
+    valineAppKey = "aersv2bwoySIrnzNhWa2zDzR"
     valinePlaceholder = "能饮一杯无？"
     valineNotify = true # 邮件通知
     valineVerify = true # 评论验证码
