@@ -1,7 +1,7 @@
 ---
 title: '"Updating Homebrew..."'
 date: "2020-06-05T09:30:55+08:00"
-tags: ["MacOS"]
+tags: ["MacOS", "debug"]
 keywords: ["Homebrew", "MacOS"]
 categories: ["Tech"]
 dropCap: false
@@ -9,7 +9,7 @@ toc: false
 slug: "updating-homebrew"
 ---
 ## 问题
-[Homebrew](https://brew.sh/index_zh-cn) 是 MacOS 下一个极为方便的包管理工具，但是国内在使用的时候往往因为**网络环境**的原因会出现这么一个问题——在执行 `$ brew update` 或 `$ brew upgrade` 等操作时，终端会卡死在 `Updating Homebrew...` 状态，导致无法更新/下载 Homebrew 和本地软件。
+[Homebrew](https://brew.sh/index_zh-cn) 是 MacOS 下一个极为方便的包管理工具，但是国内在使用的时候往往由于**网络环境**的原因会出现这么一个问题——在执行 `$ brew update` 或 `$ brew upgrade` 等操作时，终端会卡死在 `Updating Homebrew...` 状态，导致无法更新/下载 Homebrew 和本地软件。
 
 ## 解决
 和大多数网络问题导致的此类情况解决方法类似——要么..换源..，要么..科学上网..。
@@ -54,7 +54,7 @@ $ git remote set-url origin https://github.com/Homebrew/homebrew-cask.git
 ### 配置终端科学上网
 一般只更换上述的三个源就可以解决 Homebrew 软件的下载和更新问题了，但是这并不是一劳永逸的办法。你是否在执行 `$ git clone` 时每秒几 kb 的下载速度？你是否在使用 Npm / Yarn 安装依赖时等得头大……
 
-并且，即使主机使用了代理工具可以科学上网，但因为终端只支持 HTTP 代理，而主机使用的是 Sock 代理。[Privoxy](https://www.privoxy.org/) 代理工具可实现终端的 HTTP 代理，具体配置步骤：
+并且，因为终端只支持 HTTP 代理，而主机使用的是 Sock 代理，即便主机使用了代理工具可以科学上网，但终端的网络环境还是一样的糟糕，这时，就需要配置终端科学上网😎。[Privoxy](https://www.privoxy.org/) 代理工具可实现终端的 HTTP 代理，具体配置步骤：
 
 > 在进行以下步骤前，请确保本机可以科学上网，因为 Privoxy 是一个..客户端代理工具..，单独不能进行翻墙。
 
@@ -137,6 +137,6 @@ function proxy_off(){
 
 然后使用 `$ source ~/.zshrc` 命令执行更改。
 
-> Oh My Zsh 这么棒的工具你不会没安装吧？Alright，如果没安装，使用的是默认的终端，配置 `$ nano ~/.bash_profile`，内容无异，`source` 的文件路径也作相应更改即可。
+> Oh My Zsh 这么棒的工具你不会没安装吧？Alright，如果没安装，使用的是默认的终端，配置 `$ nano ~/.bash_profile`，内容无异，`source` 命令的文件路径也作相应更改即可。
 
 Bingo～现在，在终端输入 `$ proxy_on` 即可打开终端代理功能，`$ proxy_off` 即关闭🤟，问题得解～
