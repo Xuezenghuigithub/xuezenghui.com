@@ -116,7 +116,7 @@ GitLab Web 界面中进入 Seting ➡️ Access Tokens，输入**名字**和**�
 ## 使用
 有了 Token，就有了使用 GitLab API 的🔑，但是不同 Token 的使用方式也不同：
 
-1. AOuth 2.0获取的 Token 类型是 [bearer-tokens](https://oauth.net/2/bearer-tokens/)，需要在 GitLab API 请求中加入 Key 为`Authorization`，Value 为 `Bearar <Token>`的 Header。
+1. AOuth 2.0获取的 Token 类型是 [bearer-tokens](https://oauth.net/2/bearer-tokens/)，需要在 GitLab API 请求中加入 Key 为`Authorization`，Value 为 `Bearer <Token>`的 Header。
 
 2. Personal access tokens 获取的是 Private-Token，需要加入 Key 为`Private-Token`、Value 为 Token 值的请求 Header。
 
