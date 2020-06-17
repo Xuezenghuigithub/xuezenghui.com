@@ -255,7 +255,7 @@ $ npm install pm2 -g
 
 ```s
 # 项目的父级目录下执行
-$ scp -r scp -r deploy-node root@<公网 IP 地址>:/opt/node-test
+$ scp -r deploy-node root@<公网 IP 地址>:/opt/node-test
 ```
 
 进入服务器的项目目录下安装依赖：
