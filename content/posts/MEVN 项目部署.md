@@ -11,7 +11,7 @@ slug: "deploy-mevn-project"
 ## 前言
 有一个计划已经躺在我的 [Microsoft To Do](https://todo.microsoft.com/tasks/) 里许久了——“完成一个图片合成工具”，解释一下，这个工具的作用是**合成图片**（???还用你解释）。哈哈哈，因为在阅读技术文章的时候发现很多文章的配图为**多个技术的 Logo 组成的架构图**，尤其 [Medium](https://medium.com/) 中的文章，比如[这个](https://medium.com/@shrikarvk/creating-a-docker-container-for-spring-boot-app-d5ff1050c14f)，[这个](https://medium.com/swlh/how-to-create-your-first-mern-mongodb-express-js-react-js-and-node-js-stack-7e8b20463e66)，当然了，谁让我又偏爱 Medium 的风格呢，所以还有[这个](https://xuezenghui.com/posts/graphql/#graphql--nodejs--mongodb)。那有没有一个方便的方式可以快速地生成这样瘠薄（技术博主）常用的图片呢？没找到……那就自己写一个罢。
 
-功能开发上并不难，图片合成使用 canvas 实现，剩下就是各技术 Logo 的管理了，相当于一个简单的图床。5天，基本功能实现，传送门——[Psoon](http://47.93.234.220/)，名字是 Picture synthesis soon，意为快速地 Ps 😳，技术架构为 MEVN[^1]，源码见我的 [GitHub](https://github.com/Xuezenghuigithub/psoon)。
+功能开发上并不难，图片合成使用 canvas 实现，剩下就是各技术 Logo 的管理了，相当于一个简单的图床。5天，基本功能实现，传送门——[Psoon]()，名字是 Picture synthesis soon，意为快速地 Ps 😳，技术架构为 MEVN[^1]，源码见我的 [GitHub](https://github.com/Xuezenghuigithub/psoon)。
 
 因为自己平常与开发以外的环节接触不多，Linux 和 Docker 也都只学了皮毛，整个项目下来问题就几乎都出在了部署上，比如 Vue 项目的部署问题：
 
@@ -221,7 +221,7 @@ ERROR: Service 'psoon' failed to build: The command '/bin/sh -c npm install' ret
   $ docker build . --network host
   ```
 
-2. 使用 Docker Compose 构建，则需要[更改 docker-compose.yml 文件](https://docs.docker.com/compose/networking/)：
+2. 使用 Docker Compose 构建，则需要更改 docker-compose.yml 文件：
 
 ```yml
 version: "3.4"              # Compose file 版本
@@ -254,8 +254,8 @@ services:
 ## References & Resources
 1. [Dockerising a Node.js and MongoDB App | Medium](https://medium.com/statuscode/dockerising-a-node-js-and-mongodb-app-d22047e2806f)
 2. [Complete Node js Project Setup from Docker to Testing | Medium](https://medium.com/@nur_islam/complete-node-js-project-setup-from-docker-to-testing-docker-restfull-apis-with-node-js-9f384e06734a)
-3. [
-npm install error - getaddrinfo EAI_AGAIN registry.npmjs.org:443 | GitHub](https://github.com/StefanScherer/dockerfiles-windows/issues/270)
+3. [npm install error - getaddrinfo EAI_AGAIN registry.npmjs.org:443 | GitHub](https://github.com/StefanScherer/dockerfiles-windows/issues/270)
+4. [Building Efficient Dockerfiles - Node.js | bitJudo](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/)
 
 
 [^1]: MongoDB + Express.js + Vue.js + Node.js 技术架构。
