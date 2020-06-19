@@ -30,8 +30,6 @@ slug: "deploy-mevn-project"
 ## 环境安装
 环境主要是 Docker 工具集的安装，这里介绍如何在 CentOS 8 中安装 Docker 及 [Docker Compose](https://docs.docker.com/compose/)，Docker Compose 是用于定义和运行多个容器的一个 Docker 子工具，多用于有关联关系的容器之间的联调部署，譬如 Express 应用和 MongoDB 之间的..通信互联..。
 
-> 相信我，要用就用 CentOS 8，各种应用的安装不要太简便好伐，至少目前看来是百利而无一害的✌️。
-
 ### 安装 Docker
 Docker 分为社区版 Docker CE 和企业版 Docker EE，这里安装的为社区版。
 
