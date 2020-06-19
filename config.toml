@@ -617,19 +617,21 @@ uglyURLs = false
     valineAppId = "WOGsi7UjLASjAxr91Rx1og8E-gzGzoHsz"
     valineAppKey = "fEB3S9O1FdXgYII2pWyyydiB"
     valinePlaceholder = "能饮一杯无？"
-    valineNotify = false # 邮件通知
-    valineVerify = true # 评论验证码
-    valinePath = ""
-    valineAvatar = "monsterid" # 用户头像
+    valinePath = "window.location.pathname"
+    valineAvatar = "mp"
     valineMeta = ["nick", "mail", "link"]
     valinePageSize = 10
-    valineLang = "zh-ch"
-    valineVisitor = false # 文章阅读数
+    valineLang = "zh-CN"
+    valineVisitor = false
     valineHighlight = true
-    avatarForce = false
-    valineRecordIP = true # 记录评论者IP
+    valineAvatarForce = false
+    valineRecordIP = true
     valineServerURLs = ""
-    # valineRequiredFields = ['nick','mail'] # 必填项
+    valineEmojiCDN = ""
+    valineEmojiMaps = {}
+    valineEnableQQ = false
+    valineRequiredFields = ['nick','mail']
+
     # 说明：https://valine.js.org/
 
     ## Utterances
