@@ -627,7 +627,7 @@ uglyURLs = false
     valineAvatarForce = false
     valineRecordIP = true
     valineServerURLs = ""
-    valineEmojiCDN = "https://www.jsdelivr.com/package/gh/xaoxuu/cdn-assets@master/emoji/valine/"
+    valineEmojiCDN = "https://www.jsdelivr.com/package/gh/xaoxuu/cdn-assets/emoji/valine/"
     valineEmojiMaps = {"aru_1"="aru/aru-1.gif","aru_2"="aru/aru-2.gif","aru_3"="aru/aru-3.gif","aru_4"="aru/aru-4.gif","aru_5"="aru/aru-5.gif","aru_6"="aru/aru-6.gif","aru_7"="aru/aru-7.gif","aru_8"="aru/aru-8.gif","aru_9"="aru/aru-9.gif"}
     valineEnableQQ = false
     valineRequiredFields = ['nick','mail']
