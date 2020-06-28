@@ -627,8 +627,8 @@ uglyURLs = false
     valineAvatarForce = false
     valineRecordIP = true
     valineServerURLs = ""
-    valineEmojiCDN = "https://www.jsdelivr.com/package/gh/xaoxuu/cdn-assets/emoji/valine/"
-    valineEmojiMaps = {"aru_1"="aru/aru-1.gif","aru_2"="aru/aru-2.gif","aru_3"="aru/aru-3.gif","aru_4"="aru/aru-4.gif","aru_5"="aru/aru-5.gif","aru_6"="aru/aru-6.gif","aru_7"="aru/aru-7.gif","aru_8"="aru/aru-8.gif","aru_9"="aru/aru-9.gif"}
+    valineEmojiCDN = "https://cdn.jsdelivr.net/gh/track23/blog-static/alu/"
+    valineEmojiMaps = {"吐"="吐.png", "喷血"="喷血.png", "狂汗"="狂汗.png", "不说话"="不说话.png", "汗"="汗.png", "坐等"="坐等.png", "献花"="献花.png", "不高兴"="不高兴.png", "中刀"="中刀.png", "害羞"="害羞.png", "皱眉"="皱眉.png", "小眼睛"="小眼睛.png", "中指"="中指.png", "尴尬"="尴尬.png", "瞅你"="瞅你.png", "想一想"="想一想.png", "中枪"="中枪.png", "得意"="得意.png", "肿包"="肿包.png", "扇耳光"="扇耳光.png", "亲亲"="亲亲.png", "惊喜"="惊喜.png", "脸红"="脸红.png", "无所谓"="无所谓.png", "便便"="便便.png", "愤怒"="愤怒.png", "蜡烛"="蜡烛.png", "献黄瓜"="献黄瓜.png", "内伤"="内伤.png", "投降"="投降.png", "观察"="观察.png", "看不见"="看不见.png", "击掌"="击掌.png", "抠鼻"="抠鼻.png", "邪恶"="邪恶.png", "看热闹"="看热闹.png", "口水"="口水.png", "抽烟"="抽烟.png", "锁眉"="锁眉.png", "装大款"="装大款.png", "吐舌"="吐舌.png", "无奈"="无奈.png", "长草"="长草.png", "赞一个"="赞一个.png", "呲牙"="呲牙.png", "无语"="无语.png", "阴暗"="阴暗.png", "不出所料"="不出所料.png", "咽气"="咽气.png", "期待"="期待.png", "高兴"="高兴.png", "吐血倒地"="吐血倒地.png", "哭泣"="哭泣.png", "欢呼"="欢呼.png", "黑线"="黑线.png", "喜极而泣"="喜极而泣.png", "喷水"="喷水.png", "深思"="深思.png", "鼓掌"="鼓掌.png", "暗地观察"="暗地观察.png"}
     valineEnableQQ = false
     valineRequiredFields = ['nick','mail']
 
