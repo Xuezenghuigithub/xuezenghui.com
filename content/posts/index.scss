@@ -1,0 +1,14 @@
+.artice {
+  &__body {
+    padding: 10px;
+  }
+  &__button {
+    width: 20px;
+    &--primary {
+      background-color: blue;
+    }
+    &--success {
+      background-color: green;
+    }
+  }
+}
