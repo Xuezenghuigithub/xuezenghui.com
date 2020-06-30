@@ -2,3 +2,10 @@
 .home .poetry {
   padding: 13em 1em;
 }
+
+// 评论头像旋转
+img.vimg:hover {
+  transform: rotate(666turn);
+  transition-duration: 59s;
+  transition-timing-function: cubic-bezier(0.34, 0, 0.84, 1);
+}
