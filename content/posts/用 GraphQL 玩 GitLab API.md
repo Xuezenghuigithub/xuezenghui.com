@@ -7,7 +7,6 @@ categories: ["Tech"]
 toc: true
 slug: "gitlab-graphql-api"
 ---
-## 前言
 其实这篇文章的题目让我纠结了许久，在我浅显地看了 [GraphQL](https://xuezenghui.com/posts/graphql/) 和 [GitLab API](https://xuezenghui.com/posts/use-gitlab-api/) 之后我司终于布置了相关的开发任务，这才发觉「纸上得来终觉浅」。没错，这更偏向于是一篇 GraphQL + GitLab API 的实践，也算是 Vue Apollo 的一个进阶和 GitLab API 的一次扩展。总之，这次实践既打破了自己之前文章中的一些观点（打脸），也是对之前知识点的一个补充，更是记录自己第一次的 GraphQL 从理论到实战🤟。
 ## 项目初始化
 ### 客户端
