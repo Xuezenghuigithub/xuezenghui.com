@@ -359,7 +359,7 @@ uglyURLs = false
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
-    siteDescription = "这是 Zander Hsueh 的前端技术博客，技术、分享、独处时光。"
+    siteDescription = "Zander Hsueh 的个人博客。"
     # 说明：用于 HTML 的头部元数据、JSON-LD、
     #      Open Graph、Atom、RSS
 
@@ -368,7 +368,7 @@ uglyURLs = false
     # 注意：请保持此格式，更改数字
 
     # 站点的推特帐号
-    siteTwitter = "Zander"
+    siteTwitter = "Zander Hsueh"
     # 说明：用于 Twitter Cards
 
 
