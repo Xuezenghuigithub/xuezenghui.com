@@ -8,7 +8,7 @@ dropCap: true
 toc: true
 slug: "principle-of-vue-two-way-data-binding"
 ---
-> 我猜测这篇文章的访问量在博客 Analytics 页面访问量榜单里应该是列位不低的，因为——我标题党了😳。
+> 我猜测这篇文章的访问量在博客 Analytics 的页面访问量榜单里应该是列位不低的，因为——我标题党了😳。
 
 双向数据绑定一直被认为是各 MVVM 框架的核心特性，在开发中也是无时不刻都在使用。而我一直也是作为一个看客去了解别人博文中的 Vue 双向数据绑定，没有自己去深究并手动实现过（反省）。这篇文章，我将从..设计模式..、 ..技术原理..、 ..原生实现..等多个方面去解析 Vue 中的双向数据绑定，当然了，在 Vue3 发布之际，也应了解下 Vue3 下的双向数据绑定。
 
@@ -32,7 +32,7 @@ slug: "principle-of-vue-two-way-data-binding"
 
 真实世界中的发布订阅模式例子非常之多，比如你（订阅者）订阅了我的博客（目标对象），就毋需每次打开我的博客站点来查看是否更新了新博文，而我（发布者）会在每次发布新文章时都通过 RSS 在 RSS Feed Reader 等订阅工具上通知你。
 
-换置到双向数据绑定中，订阅者就是一个用来操作各 DOM 节点的公共方法，需要观察数据的改动来改动自己（作出反应），数据就是被观察的目标对象，那发布者是谁呢？~~是尤大啊~~！哈哈哈，其实是实现数据劫持的 `Object.defineProperty()` 方法。
+换置到双向数据绑定中，订阅者就是一个用来操作各 DOM 节点的公共方法，需要观察数据的改动来改动自己（作出反应），数据就是被观察的目标对象，那发布者是谁呢？~~是尤大啊~~哈哈哈，其实是实现数据劫持的 `Object.defineProperty()` 方法。
 
 ## 技术原理
 ### Object.defineProperty()
@@ -472,15 +472,15 @@ const vm = new ZVue({
 });
 ```
 
-![result.gif](/images/two-way-data-binding:result.gif "实现双向数据绑定")
+![result.gif](/images/two-way-data-binding:result.gif "双向数据绑定较完整实现")
 
 ## Vue3 扩展
 > "Bye Object.defineProperty!"[^2]
 
-Vue3 在数据劫持上选择了比 Object.defineProperty 效率更高、性能更优的 [Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。Proxy 对象的专属功能就是属性的查找、赋值、函数调用等，实例化时需要两个参数：
+Vue3 在数据劫持上选择了比 Object.defineProperty() 效率更高、性能更优的 [Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。Proxy 对象的专属功能就是属性的查找、赋值、函数调用等，实例化时需要两个参数：
 
-- **target**：目标对象，可以是 Object、Array、Function 类型等。
-- **handler**：处理函数对象，包含一系列操作目标对象时触发的钩子函数。
+- **target**：目标对象，可以是 Object、Array、Function 等类型。
+- **handler**：由处理函数组成的对象，处理函数是一系列操作目标对象时触发的钩子函数。
 
 简单使用 Proxy 实现数据劫持：
 
@@ -495,11 +495,11 @@ const obj = {
 }
 
 const proxy = new Proxy(obj, {
-  get(target, propertyKey, receiver){ // 分别为需要取值的目标对象、需要获取的值的键值、proxy 实例
+  get(target, propertyKey, receiver){ // 分别为需要取值的目标对象、需要获取的键值、当前 proxy 实例（可选）
     console.log(`读取了${propertyKey}属性的值`);
     return Reflect.get(target, propertyKey, receiver); // 通过函数调用实现取值，详见 MDN
   },
-  set(target, propertyKey, value, receiver){ // 分别为设置属性的目标对象、属性名称、设置的值、proxy 实例
+  set(target, propertyKey, value, receiver){ // 分别为设置属性的目标对象、属性名称、设置的值、当前 proxy 实例（可选）
     console.log(`设置了${propertyKey}属性的值`);
     Reflect.set(target, propertyKey, value, receiver);
   }
@@ -512,11 +512,11 @@ proxy.hobbies.game = 'MineSweeper'; // log: 读取了hobbies属性的值
 
 Proxy 的一些妙处：
 
-1. Proxy 的监听目标是..整个对象..，而 Object.defineProperty 一次只能操作..一个对象的一个属性..，要监听整个对象需要多层的迭代和递归。
+1. Proxy 的监听目标是..整个对象..，而 Object.defineProperty() 一次只能操作..一个对象的一个属性..，要监听整个对象需要多层的迭代和递归。
 
-2. Object.defineProperty 无法监听数组类型属性的变化[^3]，但 Proxy 🉑️。
+2. Object.defineProperty() 无法监听..数组类型..属性的变化[^3]，但 Proxy 🉑️。
 
-3. 可操作的钩子函数有 13 个之多。
+3. 可操作的钩子函数有 ..13.. 个之多。
 
 ## References & Resources
 
