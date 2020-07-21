@@ -10,7 +10,7 @@ slug: "principle-of-vue-two-way-data-binding"
 ---
 > 我猜测这篇文章的访问量在博客 Analytics 的页面访问量榜单里应该是列位不低的，因为——我标题党了😳。
 
-双向数据绑定一直被认为是各 MVVM 框架的核心特性，在开发中也是无时不刻都在使用。而我一直也是作为一个看客去了解别人博文中的 Vue 双向数据绑定，没有自己去深究并手动实现过（反省）。这篇文章，我将从..设计模式..、 ..技术原理..、 ..原生实现..等多个方面去解析 Vue 中的双向数据绑定，当然了，在 Vue3 发布之际，也应了解下 Vue3 下的双向数据绑定。
+双向数据绑定一直被认为是各 MVVM 框架的核心特性，在开发中也是无时不刻都在使用。而我一直是作为一个看客去了解别人博文中的 Vue 双向数据绑定，没有自己去深究并手动实现过（反省）。这篇文章，我将从..设计模式..、 ..技术原理..、 ..原生实现..等多个方面去解析 Vue 中的双向数据绑定，当然了，在 Vue3 发布之际，也应了解下 Vue3 下的双向数据绑定。
 
 ## 概述
 在 MVVM 架构下，数据层 Model 和视图层 View 通过 View Model 层进行连接和交互，这个 ViewModel 即为连接视图和数据的桥梁，作数据和逻辑处理工作，指的正是**双向数据绑定**。
@@ -525,6 +525,6 @@ Proxy 的一些妙处：
 
 [^1]: 将 HTML 模板转换为 [AST](https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E8%AA%9E%E6%B3%95%E6%A8%B9) 的过程，比如解析 Vue 中的 `{{}}` 语法。
 
-[^2]: 见尤玉溪 Vue3.0 Updates 主题演讲 [PPT](https://docs.google.com/presentation/d/1yhPGyhQrJcpJI2ZFvBme3pGKaGNiLi709c37svivv0o/edit#slide=id.g42acc26207_0_129)。
+[^2]: 见尤雨溪 Vue3.0 Updates 主题演讲 [PPT](https://docs.google.com/presentation/d/1yhPGyhQrJcpJI2ZFvBme3pGKaGNiLi709c37svivv0o/edit#slide=id.g42acc26207_0_129)。
 
 [^3]: Vue2 中的解决方法是重写数组的操作方法，详见 [Github](https://github.com/vuejs/vue/blob/dev/src/core/observer/array.js)，但通过下标修改数组的情况仍无法监测。
