@@ -56,6 +56,6 @@ Markdown 没有 RTF 格式[^1]复杂的语法，也没有 HTML 繁琐的 `<>` �
 
 ![typora.png](/images/markdown:typora.png "Typora Newsprint 主题")
 
-Typora 还有效避免了缺少空行导致的排版问题，它会在隔离的 Markdown 符号上下都自动加入空行，但这种处理方式又导致要实现上面的问题1会特麻烦……总之还是上面总结的几点 Markdown 语言的问题导致的。
+Typora 还有效避免了缺少空行导致的排版问题，它会在隔离的 Markdown 符号上下都自动加入空行，但这种处理方式又导致要实现上面的「列表下编辑代码段」会特麻烦……总之还是上面总结的几点 Markdown 语言的问题导致的。
 
 [^1]: Rich Text Format，富文本格式。
