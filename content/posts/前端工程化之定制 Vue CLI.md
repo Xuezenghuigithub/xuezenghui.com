@@ -61,7 +61,7 @@ $ vue create --preset gitlab:<my-gitlab-server.com>:<group>/<project_name> --clo
 > ```
 
 ### 添加预定义文件
-preset.json 是使用 `$ vue create` 命令时自动生成的预定义选项的 JSON 文件，MacOS 中位于 `~/.vuerc`。文件中定义的内容在命令行中不再提示，比如执行 `$ rm ~/.vuerc` 删除该文件后执行 `$ vue create hello` 会提示是否使用淘宝的 NPM 镜像提升下载速度及使用 Yarn or NPM 作为包管理工具，创建完项目后查看 .vuerc 文件的内容会显示选择的内容：
+preset.json 是使用 `$ vue create` 命令时自动生成的预定义选项的 JSON 文件，MacOS 中位于 `~/.vuerc`。文件里定义的内容在命令行中不进行交互提示，比如执行 `$ rm ~/.vuerc` 删除该文件后执行 `$ vue create hello` 会提示是否使用淘宝的 NPM 镜像提升下载速度及使用 Yarn or NPM 作为包管理工具，创建完项目后查看 .vuerc 文件的内容会显示选择的内容：
 
 ```json
 {
@@ -70,7 +70,7 @@ preset.json 是使用 `$ vue create` 命令时自动生成的预定义选项的 
 }
 ```
 
-并且之后创建项目时采用该预定义项，不再进行提示。所以可根据自己的需求来定义需要添加哪些插件，以及一些简单的配置项：
+之后创建项目时就会采用该预定义项，不再进行提示。所以可根据需求来在 preset.json 中定义需要添加哪些插件，以及一些简单的配置项：
 
 ```json
 {
@@ -89,9 +89,10 @@ preset.json 是使用 `$ vue create` 命令时自动生成的预定义选项的 
   }
 }
 ```
+
 ### 定义模板文件
 
-`template/` 目录用来定义使用脚手架创建 Vue 项目后生成的目录结构，即模板，比如我们团队的要求的目录是这样的：
+`template/` 目录用来定义使用脚手架创建 Vue 项目后生成的目录结构，即模板，比如我们团队 Guideline 要求的目录是这样的：
 
 ```
 .
@@ -120,13 +121,13 @@ preset.json 是使用 `$ vue create` 命令时自动生成的预定义选项的 
 ├── .gitignore          # Git 忽略文件配置
 ├── .prettierrc.js      # Prettier 代码风格配置
 ├── babel.config.js     # Babel 配置
-├── README.md
-└── vue.config.js       # Webpack 配置
+├── vue.config.js       # Webpack 配置
+└── README.md     
 ```
 
-template 目录下定义的目录和需要的目录一致即可，有几点需要注意：
+可以先简单地将 template 下定义的目录和需要的目录保持一致，但有几点需要注意：
 
-1. 如果模板中没有定义 Vue CLI 本身就会生成的文件，则默认采用原来的，如 `view/` 目录下的 Home.vue 和 About.vue 等（也可以选择删除所有默认生成的文件，下面会说到）
+1. 如果模板中没有定义 Vue CLI 本身就会生成的文件，则默认采用原来的，如 `view/` 目录下的 Home.vue 和 About.vue 等
 2. 以 `.` 开头的模板文件需要将 `.` 改为 `_`，以 `_` 开头的模板文件要定义成 `__`，否则无法正确渲染[^1]
 3. 空文件夹不会被正确渲染
 
@@ -169,12 +170,10 @@ new Vue({
 ```
 
 ### 扩展依赖包
-genarator.js 文件用来为项目添加其它依赖，比如 UI 框架、工具类库等等，渲染 template 模板的操作也需要在该文件内完成。
-
-文件内需要导出一个函数，包含三个参数：
+genarator.js 文件用来为项目添加其它依赖，比如 UI 框架、工具类库等等，渲染 template 模板的操作也需要在该文件内完成。该文件需要导出一个函数，包含三个参数：
 
 - api：[generator 实例](https://cli.vuejs.org/dev-guide/generator-api.html)，函数中可以操作该实例，比如扩展依赖、检查插件、查看版本等
-- options：定制 Vue CLI 时与交互式命令行结合使用，接收答案参数
+- options：定制 Vue CLI 时与交互式命令行结合使用，用来接收答案参数
 - rootOptions：预定义的所有内容，也就是 preset.json 中的所有内容，并且包含项目名称、src/main.js 中配置的说明等：
 
   ```js
@@ -238,7 +237,7 @@ module.exports = (api, options, rootOptions) => {
 
 **3. 修改主文件**
 
-使用 API 同样可以实现对主文件 main.js 内容的修改，但……实在是有些复杂呢🤪，感兴趣的可参考[官方文档](https://cli.vuejs.org/zh/dev-guide/plugin-dev.html#%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%96%87%E4%BB%B6)，个人觉得还是按上面的方式在模板里更改更方便，推荐🎉。
+使用 API 同样可以实现对主文件 main.js 内容的修改，但……实在是有些复杂呢🤪，感兴趣的可参考[官方文档](https://cli.vuejs.org/zh/dev-guide/plugin-dev.html#%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%96%87%E4%BB%B6)，个人更推荐按上面的方式在模板里更改或继续往下看使用 EJS 的语法更改🎉。
 
 ### 交互式命令行
 很多命令行操作都涉及对话的情境，比如 Git 操作、各种 CLI 操作，看起来是比较 Geek 的，其实现原理是 Node.js 的交互式命令行 [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)。要想自定义 Vue CLI 的对话内容需要用到 prompts.js 文件，该文件内应导出一个与 `inquirer.prompt()` 参数相同数据结构的..数组..，数组内每一个对象都作为一个命令行中的问题[^2]：
@@ -314,7 +313,7 @@ new Vue({
 
 ---
 
-其实能自定义的内容还有很多，比如二次封装 axios、添加 NPM 私服的依赖等等，这也是我还正在做的事情，🚩后续将补充到此处~
+其实能自定义的内容还有很多，比如二次封装 axios、添加 NPM 私服的依赖等等，这也是我正在做的事情，🚩后续将补充到此处~
 
 ## References & Resources
 1. [github.com/cklwblove/vue-cli3-template | GitHub](https://github.com/cklwblove/vue-cli3-template)
