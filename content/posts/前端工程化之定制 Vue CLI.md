@@ -194,7 +194,7 @@ genarator.js 文件用来为项目添加其它依赖，比如 UI 框架、工具
 
 **1. 添加依赖项**
 
-为项目添加脚本和依赖项需要使用 generator 实例的 [extendPackage()](https://cli.vuejs.org/dev-guide/generator-api.html#extendpackage) 方法，内容和 package.json 无异，根据依赖的类型声明 NPM 包名和版本即可，创建项目时会自行安装声明的依赖项：
+为项目添加脚本和依赖项需要使用 generator 实例的 [`extendPackage()`](https://cli.vuejs.org/dev-guide/generator-api.html#extendpackage) 方法，内容和 package.json 无异，根据依赖的类型声明 NPM 包名和版本即可，创建项目时会自行安装声明的依赖项：
 
 ```js
 module.exports = (api, options, rootOptions) => {
@@ -224,7 +224,7 @@ module.exports = (api, options, rootOptions) => {
 
 **2. 渲染模板**
 
-使用 [render()](https://cli.vuejs.org/dev-guide/generator-api.html#render) 方法来渲染 template 中定义的模板，该方法实际使用 EJS 进行渲染，可以传入一个相对路径的字符串，会将原本的目录直接替换，也可以传入 hash 对象，文件对应文件来渲染（不能是文件夹），写多个 rander 函数的话依次执行：
+使用 [`render()`](https://cli.vuejs.org/dev-guide/generator-api.html#render) 方法来渲染 template 中定义的模板，该方法实际使用 EJS 进行渲染，可以传入一个相对路径的字符串，会将原本的目录直接替换。也可以传入 Hash 对象，文件对应文件来渲染（不能是文件夹），写多个 `rander()` 的话会依次执行：
 
 ```js
   api.render('./template');
@@ -240,7 +240,7 @@ module.exports = (api, options, rootOptions) => {
 使用 API 同样可以实现对主文件 main.js 内容的修改，但……实在是有些复杂呢🤪，感兴趣的可参考[官方文档](https://cli.vuejs.org/zh/dev-guide/plugin-dev.html#%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%96%87%E4%BB%B6)，个人更推荐按上面的方式在模板里更改或继续往下看使用 EJS 的语法更改🎉。
 
 ### 交互式命令行
-很多命令行操作都涉及对话的情境，比如 Git 操作、各种 CLI 操作，看起来是比较 Geek 的，其实现原理是 Node.js 的交互式命令行 [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)。要想自定义 Vue CLI 的对话内容需要用到 prompts.js 文件，该文件内应导出一个与 `inquirer.prompt()` 参数相同数据结构的..数组..，数组内每一个对象都作为一个命令行中的问题[^2]：
+很多命令行操作都涉及对话的情境，比如 Git 操作、各种 CLI 操作，看起来比较 Geek，实现原理是 Node.js 的交互式命令行 [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)。要想自定义 Vue CLI 的对话内容需要用到 prompts.js 文件，该文件内应导出一个与 `inquirer.prompt()` 参数相同数据结构的..数组..，数组内每一个对象都作为一个命令行中的问题[^2]：
 
 ```js
 module.exports = [
@@ -249,25 +249,25 @@ module.exports = [
     name: "vuex", // 存储答案的 key
     message: "是否使用 vuex 进行全局状态管理?", // 问题的内容
     default: false, // 未选择时的默认值
-    choices: [
+    choices: [ // 可选项
       {
         name: '是', // 选项
-        value: true // 选项对应的 value
+        value: true // 选项对应的值
       },
       {
         name: '否', // 选项
-        value: false // 选项对应的 value
+        value: false // 选项对应的值
       }
     ]
   }
 ]
 ```
 
-在命令行创建项目时 Preset options 阶段会进行交互式的对话：
+在命令行创建项目时 Invoking 阶段会进行交互式的对话：
 
 ![prompt.png](/images/vue-cli:prompt.png "交互式命令行")
 
-当然，完成对话后应该按照不同的答案执行不同的操作，上面 genarator.js 文件中的函数的 `options` 参数就起到作用了，可以在函数中打印 options 参数，答案以 Key-value 的形式保存在一个对象内：
+当然，完成对话后应该按照不同的答案执行不同的操作，上面 genarator.js 文件中的函数的 `options` 参数就起到作用了，可以在函数中打印 `options`，答案以 Key-value 的形式保存在一个对象内：
 
 ```json
 { vuex: true }
@@ -283,18 +283,19 @@ if (options.vuex) {
     }
   })
 
-  api.injectImports(api.entryFile, `import store from './store'`); // main.js 中导入
-
   api.render({'./src/store/index.js': './template/store/index.js'}); // 渲染 store 文件
+
+  api.injectImports(api.entryFile, `import store from './store'`); // main.js 中导入
 }
 
 api.render('./template/default'); // 默认渲染的内容
 ```
 
-此时虽然使用 `injectImports()` 方法导入了 store 到 main.js，但还没有注册到 Vue 实例中。因为 render() 的实质是通过 EJS 来渲染，所以可以在文件中使用 EJS 的语法实现更细粒度的控制：
+此时虽然使用 `injectImports()` 方法导入了 store 到 main.js，但还没有注册到 Vue 实例中。因为 `render()` 的实质是通过 EJS 来渲染，所以可以在文件中使用 EJS 的语法实现更细粒度的控制：
 
 ```js
 // 路径：template/default/src/main.js
+
 import Vue from 'vue';
 import App from './App.vue';
 
@@ -313,7 +314,7 @@ new Vue({
 
 ---
 
-其实能自定义的内容还有很多，比如二次封装 axios、添加 NPM 私服的依赖等等，这也是我正在做的事情，🚩后续将补充到此处~
+其实能自定义的内容还有很多，比如二次封装 axios、添加 NPM 私服的依赖、自定义默认的布局等等，这也是我正在做的事情了~
 
 ## References & Resources
 1. [github.com/cklwblove/vue-cli3-template | GitHub](https://github.com/cklwblove/vue-cli3-template)
