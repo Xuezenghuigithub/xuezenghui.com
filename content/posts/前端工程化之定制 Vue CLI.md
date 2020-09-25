@@ -1,7 +1,7 @@
 ---
 title: "前端工程化之定制 Vue CLI"
 date: "2020-09-22T15:12:22+08:00"
-tags: ["Vue", "前端工程化"]
+tags: ["Vue.js", "前端工程化"]
 discripion: "定制Vue CLI，添加需要的依赖项，自行组织页面等"
 keywords: ["定制化", "自定义", "Vue CLI"]
 categories: ["Tech"]
@@ -104,7 +104,7 @@ preset.json 是使用 `$ vue create` 命令时自动生成的预定义选项的 
 │   ├── assets/
 │   │   ├── fonts/      # 字体文件
 │   │   ├── images/     # 图片文件
-│   │   └── styles/     # reset 样式，及定义的常量文件等
+│   │   └── styles/     # reset 样式及定义的常量文件
 │   ├── components/     # 共用组件
 │   │   └── base/       # 全局注册组件
 │   ├── layout/         # 整体布局组件
