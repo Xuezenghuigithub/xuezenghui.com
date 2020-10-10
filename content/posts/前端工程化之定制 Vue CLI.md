@@ -314,7 +314,7 @@ new Vue({
 
 ---
 
-其实能自定义的内容还有很多，比如二次封装 axios、添加 NPM 私服的依赖、自定义默认的布局等等，这也是我正在做的事情了~
+当然，能自定义的内容还有很多，比如二次封装 Axios、~~添加 NPM 私服的依赖~~、自定义默认的布局等等，结合以上步骤依据具体情境添加即可。
 
 ## References & Resources
 1. [github.com/cklwblove/vue-cli3-template | GitHub](https://github.com/cklwblove/vue-cli3-template)
