@@ -138,7 +138,7 @@ server {
     # 监听 ipv6 端口
     listen [::]:80;
 
-    # 项目文件根目录
+    # 项目文件根目录
     root /var/www/zander/html;
     # 默认显示页
     index index.html index.htm index.nginx-debian.html;
