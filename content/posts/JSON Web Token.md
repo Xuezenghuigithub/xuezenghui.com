@@ -85,7 +85,7 @@ JWT = `${Header}.${Payload}.${Signature}`;
 ## NodeJS 中实现 JWT
 JWT 在各种语言中都有实现，如 java-jwt、angular2-jwt、go-jwt-middleware 等，更多的实现可在 [auth0-docs](https://auth0.com/docs/) 中查看，此处以 NodeJS 中的实现 [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) 为例进行用户的认证。
 
-### 初始化项目
+### 初始化项目
 先使用 [express-generator](https://github.com/expressjs/generator) 创建项目，安装需要的依赖：
 
 ```s
