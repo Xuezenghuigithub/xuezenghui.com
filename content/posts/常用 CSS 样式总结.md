@@ -192,7 +192,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    isShowLeftLine: { // 是否显示时间轴
+    isShowLeftLine: { // 是否显示时间轴
       type: Boolean,
       value: true
     },
