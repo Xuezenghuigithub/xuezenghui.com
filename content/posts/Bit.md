@@ -198,7 +198,7 @@ export default {
 </script>
 ```
 
-![use.png](/images/bit:use.png "页面成功显示组件内容")
+![use.png](/images/bit:use.png "页面成功显示组件内容")
 
 **2. 导入组件**
 
@@ -229,7 +229,7 @@ import myHello from "@bit/zander.hello.my-hello";
 $ bit import <component_id>
 ```
 
-**2. 修改组件并更新至远程**
+**2. 修改组件并更新至远程**
 
 项目中如果修改了通过 `$ bit import` 导入的组件就需要将组件更新至远程，这样其它使用者才可同步此修改。
 
