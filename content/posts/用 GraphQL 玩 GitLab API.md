@@ -197,7 +197,7 @@ router.post('/token', async (req, res) => {
 
 **1. 获取 Access Token**
 
-首先 Access Token 是存于 localStorage 中的，需要判断其是否存在。优先考虑不存在的情况，也就是用户第一次进入页面时，需要在 `mounted` 钩子函数中判断，但是——只判断有没有 Token 就够了吗？如果用户完成了 GitLab 授权自动返回的页面（Redirect URI）还是此页面，那还没等用返回的 code 换 Token 呢就又被拉去授权了，就会陷入死循环，所以判断有没有 Token 的同时还需判断有没有 code，总结一下：
+首先 Access Token 是存于 localStorage 中的，需要判断其是否存在。优先考虑不存在的情况，也就是用户第一次进入页面时，需要在 `mounted` 钩子函数中判断，但是——只判断有没有 Token 就够了吗？如果用户完成了 GitLab 授权自动返回的页面（Redirect URI）还是此页面，那还没等用返回的 code 换 Token 呢就又被拉去授权了，就会陷入死循环，所以判断有没有 Token 的同时还需判断有没有 code，总结一下：
 
 1. 有 Token，发请求，拿数据（已经授权过了也存入 Token 了）
 2. 没 Token 也没 code，去授权，拿 code，换 Token（第一次进入页面）
@@ -276,7 +276,7 @@ const httpLink = createHttpLink({
 
 **1. 编写 gql 查询**
 
-`src` 目录下新建 `/graphql/queries.js` 文件，引入 gql，使用模板字符串语法编写查询语句：
+`src` 目录下新建 `/graphql/queries.js` 文件，引入 gql，使用模板字符串语法编写查询语句：
 
 ```js
 import gql from 'graphql-tag' //引入graphql
