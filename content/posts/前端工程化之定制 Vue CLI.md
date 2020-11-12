@@ -2,7 +2,6 @@
 title: "前端工程化之定制 Vue CLI"
 date: "2020-09-22T15:12:22+08:00"
 tags: ["Vue.js", "前端工程化"]
-discripion: "定制Vue CLI，添加需要的依赖项，自行组织页面等"
 keywords: ["定制化", "自定义", "Vue CLI"]
 categories: ["Tech"]
 slug: "custom-vue-cli"
@@ -240,7 +239,7 @@ module.exports = (api, options, rootOptions) => {
 使用 API 同样可以实现对主文件 main.js 内容的修改，但……实在是有些复杂呢🤪，感兴趣的可参考[官方文档](https://cli.vuejs.org/zh/dev-guide/plugin-dev.html#%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%96%87%E4%BB%B6)，个人更推荐按上面的方式在模板里更改或继续往下看使用 EJS 的语法更改🎉。
 
 ### 交互式命令行
-很多命令行操作都涉及对话的情境，比如 Git 操作、各种 CLI 操作，看起来比较 Geek，实现原理是 Node.js 的交互式命令行 [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)。要想自定义 Vue CLI 的对话内容需要用到 prompts.js 文件，该文件内应导出一个与 `inquirer.prompt()` 参数相同数据结构的..数组..，数组内每一个对象都作为一个命令行中的问题[^2]：
+很多命令行操作都涉及对话的情境，比如 Git 操作、各种 CLI 操作，看起来比较 Geek，实现原理是 Node.js 的交互式命令行 [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)。要想自定义 Vue CLI 的对话内容需要用到 prompts.js 文件，该文件内应导出一个与 `inquirer.prompt()` 参数相同数据结构的..数组..，数组内每一个对象都作为一个命令行中的问题[^3]：
 
 ```js
 module.exports = [
@@ -314,7 +313,7 @@ new Vue({
 
 ---
 
-当然，能自定义的内容还有很多，比如二次封装 Axios、~~添加 NPM 私服的依赖~~、自定义默认的布局等等，结合以上步骤依据具体情境添加即可。
+当然，能自定义的内容还有很多，比如二次封装 Axios、~~添加 NPM 私服的依赖~~、自定义默认的布局等等，结合以上步骤依据具体情境添加即可。
 
 ## References & Resources
 1. [github.com/cklwblove/vue-cli3-template | GitHub](https://github.com/cklwblove/vue-cli3-template)
