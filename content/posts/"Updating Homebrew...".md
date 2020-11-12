@@ -9,7 +9,7 @@ toc: false
 slug: "updating-homebrew"
 ---
 ## 问题
-[Homebrew](https://brew.sh/index_zh-cn) 是 MacOS 下一个极为方便的包管理工具，但是国内在使用的时候往往由于**网络环境**的原因会出现这么一个问题——在执行 `$ brew update` 或 `$ brew upgrade` 等操作时，终端会卡死在 `Updating Homebrew...` 状态，导致无法更新/下载 Homebrew 和本地软件。
+[Homebrew](https://brew.sh/index_zh-cn) 是 MacOS 下一个极为方便的包管理工具，但是国内在使用的时候往往由于**网络环境**的原因会出现这么一个问题——在执行 `$ brew update` 或 `$ brew upgrade` 等操作时，终端会卡死在 `Updating Homebrew...` 状态，导致无法更新/下载 Homebrew 和本地软件。
 
 ## 解决
 和大多数网络问题导致的此类情况解决方法类似——要么..换源..，要么..科学上网..。
