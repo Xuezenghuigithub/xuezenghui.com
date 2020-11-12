@@ -218,7 +218,7 @@ server {
 }
 ```
 
-`server_name` 仍保持默认则会..覆盖..之前的网站内容，即现在还是通过公网 IP 地址来访问部署的 Vue 项目。重启 Nginx 服务后部署成功，熟悉的页面😉：
+`server_name` 仍保持默认则会..覆盖..之前的网站内容，即现在还是通过公网 IP 地址来访问部署的 Vue 项目。重启 Nginx 服务后部署成功，熟悉的页面😉：
 
 ![deploy-vue.png](/images/ecs-server:deploy-vue.png "部署成功的 Vue 项目")
 
