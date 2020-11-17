@@ -2,7 +2,6 @@
 title: "将 Hexo 博客部署至 Netlify"
 date: "2019-10-06T23:04:22+08:00"
 tags: ["Netlify", "Hexo"]
-discripion: "将基于 Hexo 搭建的个人博客部署到 Netlify 中。"
 keywords: ["Netlify", "Hexo", "个人博客"]
 categories: ["Tech"]
 slug: "Hexo-deploy-to-Netlify"
