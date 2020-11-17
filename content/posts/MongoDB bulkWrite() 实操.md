@@ -19,7 +19,20 @@ dropCap: false
 能为此次数据库操作提供的数据是这样的：
 
 ```js
-const data = [{ "name": "Leon", "value_index": 500 }, { "name": "Paul", "value_index": 999 }, { "name": "Zander", "value_index": 100 }]
+const data = [
+  {
+    name: 'Leon',
+    value_index: 500
+  },
+  {
+    name: 'Paul',
+    value_index: 999
+  },
+  {
+    name: 'Zander',
+    value_index: 100
+  }
+];
 ```
 ## 实现
 > 以下操作数据库的方法都是 MongoDB 提供的，[Mongoose](https://mongoosejs.com/) 实际是进行了移植和支持，两者原理及实现方式相同，为究其本质、探其实操，实例代码使用的是 Mongoose。
