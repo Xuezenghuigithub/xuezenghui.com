@@ -1,6 +1,6 @@
 ---
 title: "前端工程化之 CI/CD"
-description: "GitLab 上实现项目的持续继承与持续部署"
+description: "GitLab CI/CD 实践"
 date: "2020-11-17T15:20:01+08:00"
 tags: ["GitLab", "前端工程化", "CI/CD"]
 keywords: ["GitLab", "CI/CD", "前端工程化"]
@@ -29,7 +29,7 @@ CD 有两种含义，Continuous Delivery 持续交付和 Continuous Deployment �
 ![cd.png](/images/gitlab-ci-cd_cd.png "持续部署")
 
 ## GitLab CI/CD 实践
-CI/CD 是 GitLab 的内置工具，不需要第三方工具就可以拿来即用。GitLab CI/CD 会根据用户创建的特定 YAML 文件使用 GitLab Runner 自动执行脚本，文件中的脚本既是我们需要执行的操作，如添加依赖项、构建、单元测试等等。
+CI/CD 是 GitLab 的内置工具，不需要第三方工具就可以拿来即用。GitLab CI/CD 会根据用户创建的特定 YAML 文件使用 GitLab Runner 自动执行脚本，文件中的脚本即是我们需要执行的操作，如添加依赖项、构建、单元测试等等。
 
 ### 配置 GitLab Runner
 存放脚本的 YAML 文件是关键，但首先需要有执行脚本的工具 [GitLab Runner](https://docs.gitlab.com/runner/)，每个要实行 CI/CD 的项目都必须指定一个特定的 Runner，Runner 是一个使用 Go 语言编写的类似终端的工具，可以运行在 Linux、Docker、maocOS 等众多环境中，可以选择配置三种不同类型的 Runner：
@@ -38,7 +38,7 @@ CI/CD 是 GitLab 的内置工具，不需要第三方工具就可以拿来即用
 - **Shared Runners**：由 GitLab 管理员安装、注册的可用于所有项目的 Runner
 - **Group Runners**：同样由 GitLab 管理员来安装，不同的是可以给特定的 Group 设置特定的 Runner
 
-因为需要进行持续**部署**，部署的目标服务器需要和 GitLab 中的代码仓库通信，符合“需要执行有特定要求”，先来创建一个 Specific Runners。此处以要部署 Vue 项目的云服务器（Ubuntu 18.04.5）为例，分为安装和注册两个步骤，注册即将安装的 Runner 与 GitLab 绑定以让其可通过 API 通信：
+因为需要进行持续**部署**，部署的目标服务器需要和 GitLab 中的代码仓库通信，符合“需要执行有特定要求”，先来创建一个 Specific Runners。此处以要部署 Vue 项目的云服务器（Ubuntu 18.04.5）为例，分为安装和注册两个步骤，注册即将安装的 Runner 与 GitLab 绑定以使其可通过 API 通信：
 
 **1. 添加 GitLab 官方存储库**
 
@@ -54,7 +54,7 @@ $ export GITLAB_RUNNER_DISABLE_SKEL=true; sudo -E apt-get install gitlab-runner
 
 **3. 获取 URL 和 token**
 
-进入要添加 CI/CD 的 GitLab 项目的 `Setting` ➡️ `CI/CD` 页面（前提是你要有该项目的 Maintainer 权限），展开 Runners 面板，在 Specific Runners 找到 GitLab URL 和 token。
+进入要添加 CI/CD 的 GitLab 项目的 `Setting` ➡️ `CI/CD` 页面（前提是你要有该项目的 Maintainer 权限），展开 Runners 面板，在 Specific Runners 找到 **GitLab URL** 和 **token**。
 
 ![runner-token.png](/images/gitlab-ci-cd_runner-token.png "Runner Token")
 
@@ -123,7 +123,7 @@ deploy_site:
 
 按思路，build 阶段应执行打包产生一个 dist 目录，再在接下来的 deploy 阶段挂载到 NGINX 的目录上就完成了项目部署，但管道的设定是每个 Job 启动时都会同步仓库中的 `.gitignore` 文件并自动删除其中声明的文件——dist 目录在 deploy 阶段开始的时候就没了。
 
-所以脚本文件中需要使用到另一个参数 [`artifacts`](https://docs.gitlab.com/ee/ci/yaml/README.html#artifacts)，我将它译为“**产物**”，表示**在当前 Job 执行成功/失败后可以将指定的文件或目录保存到 GitLab**，这样就可以在下面的 Jobs 中使用了，上面还指定了产物的过期时间。dependencies 用于在后面的 Jobs 中接收前面的产物，默认前面的所有 Jobs 里的产物都会往后传递。
+所以脚本文件中需要使用到另一个参数 [`artifacts`](https://docs.gitlab.com/ee/ci/yaml/README.html#artifacts)，我将它译为“**产物**”，表示**在当前 Job 执行成功/失败后可以将指定的文件或目录保存到 GitLab**，这样就可以在下面的 Jobs 中使用了，上面还指定了产物的过期时间。dependencies 用于在当前的 Job 中接收前面的产物，默认前面的所有 Jobs 里的产物都会往后传递，设为空数组则不接收任何产物。
 
 push 之前还需要设定一下 `/var/www` 目录的权限，该目录默认属于 root 用户，而 Runner 运行时的用户是 gitlab-runner，权限交接：
 
