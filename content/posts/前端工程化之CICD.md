@@ -94,9 +94,12 @@ stages:
 build_site:
   stage: build
   script:
-    - echo "Start build"  # 打印内容
+    # 打印内容
+    - echo "Start build"
+    # 安装依赖
     - rm -fr ./node_modules && npm install --registry=https://registry.npm.taobao.org
-    - npm run build       # 打包构建
+    # 打包构建
+    - rm -fr ./dist && npm run build
     - echo "Build done"
   only: 
     - master              # 只在 master 分支代码发生变化时才执行该 Job
@@ -112,7 +115,7 @@ deploy_site:
   script:
     - echo "Start deploy"
     # 将构建好后的 dist 目录拷贝到 NGINX 的挂载目录上
-    - rm -fr /var/www/cicd-test
+    - rm -rf /var/www/cicd-test
     - cp -r ./dist /var/www/cicd-test
   only:
     - master
