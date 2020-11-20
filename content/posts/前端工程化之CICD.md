@@ -112,7 +112,8 @@ deploy_site:
   script:
     - echo "Start deploy"
     # 将构建好后的 dist 目录拷贝到 NGINX 的挂载目录上
-    - cp -fr ./dist /var/www/cicd-test
+    - rm -fr /var/www/cicd-test
+    - cp -r ./dist /var/www/cicd-test
   only:
     - master
   dependencies:
@@ -138,6 +139,8 @@ $ chown -hR gitlab-runner:gitlab-runner /var/www/
 点击单独的 Job 也可查看详细的执行情况，UI 上的操作就不多介绍了，当管道内所有的阶段都执行完毕后，Vue 项目即部署成功：
 
 ![deploy-success.png](/images/gitlab-ci-cd_deploy-success.png "部署成功")
+
+还有一点值得一提，我在将新的 dist 目录拷贝到 NGINX 挂载目录时先是用的 `cp` 命令结合 `-fr` 参数，表示复制并..覆盖..原有的目录。出现的问题是每次管道运行完成后都不能及时地更新应用的内容，后[查询得知](https://cloud.tencent.com/developer/article/1179348)是由 `cp` 命令的底层原理导致的，简单来说就是 **`cp -fr` 并不能保证安全地替换原有文件**，遂使用了 `rm` + `cp` 命令，一切正常🎉。
 
 ## References & Resources
 1. [GitLab CI/CD | GitLab](https://docs.gitlab.com/ee/ci/) 
