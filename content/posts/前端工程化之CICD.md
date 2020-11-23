@@ -99,7 +99,7 @@ build_site:
     # 安装依赖
     - rm -fr ./node_modules && npm install --registry=https://registry.npm.taobao.org
     # 打包构建
-    - rm -fr ./dist && npm run build
+    - npm run build
     - echo "Build done"
   only: 
     - master              # 只在 master 分支代码发生变化时才执行该 Job
