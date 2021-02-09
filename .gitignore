@@ -5,3 +5,4 @@ videos
 .env
 .DS_Store
 .vscode
+*/.DS_Store
