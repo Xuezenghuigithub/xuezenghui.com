@@ -80,3 +80,22 @@ function getKey(obj, value, compare = (a, b) => a === b) {
 - 🔗：
     1. [Object.keys() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
     2. [Array.prototype.find() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
+### 最平滑之滚动
+
+```js
+const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, c - c / 8);
+  }
+}
+```
+
+- 🧐：`scrollTop` 获取了当前滚动条距离顶部的垂直距离，如果这个距离大于 0，调用神奇的 `requestAnimationFrame` API，它传入一个回调函数，让..浏览器..根据其重绘周期和屏幕帧数来执行回调、一帧一帧地更新动画，使动画更平滑，而这里的动画就是 `scrollTo`——滚动事件。（注：使用此方法需考虑[兼容性问题](https://caniuse.com/?search=requestAnimationFrame)）
+
+- 🔗：
+    1. [Element.scrollTop | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop)
+    2. [window.requestAnimationFrame | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)
+    3. [requestAnimationFrame 详解以及无线页面优化 | 前端开发博客](http://caibaojian.com/requestanimationframe.html)
