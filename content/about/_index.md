@@ -22,7 +22,7 @@ share: true
 <br>
 <br>
 
-执着于技术，热爱着开源，深处茫茫猿海妄想散发点滴光热，不求照亮世界改变未来，但有执念分享拙见交流进步。是记录，也是历练；是爱好，也是消遣。
+执着于技术，热爱着开源，深处茫茫猿海妄想散发点滴光热，不求照亮世界改变未来，但有执念分享拙见交流进步。是记录，也是历练；是爱好，也是消遣。
 
 我是 *Zander* ，理性主义者，百事可乐派，坚定的 IOS & MacOS 拥护者，咖啡☕️和茶🍵同样喜爱。好捕光捉影，然学而未精，Instagram：[@zander_hsueh](https://www.instagram.com/zander_hsueh/)。目前职业是~~前端开发工程师~~浮层像素老黄牛。个人邮箱：[xuezenghui6@gmail.com](mailto:xuezenghui6@gmail.com)，欢迎通过 [Atom](https://xuezenghui.com/atom.xml) / [RSS](https://xuezenghui.com/rss.xml) 订阅本博客，另外，博客也是一个 [PWA](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps/Introduction) 站点，欢迎点击浏览器地址栏的 ➕号安装体验。
 
