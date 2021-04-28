@@ -19,7 +19,7 @@ toc: true
 - 复用性：与 npm 公共库一样便于下载传播
 - 版本管理：统一管理组件库版本，语义化版本号
 
-再综合考虑其它因素如搭建复杂度、框架量级、业务场景，我们选择使用 [Verdaccio](https://verdaccio.org/) 来搭建公共组件仓库。
+再综合考虑其它因素如搭建复杂度、框架量级、业务场景，我们选择了使用 [Verdaccio](https://verdaccio.org/) 来搭建公共组件仓库。
 
 ## Verdaccio 介绍
 Verdaccio 是一个基于 Node.js 的轻量化私有 npm proxy registry，proxy registry 对应的便是 npm 官方的 public registry，具体概念见 [registry | npm](https://docs.npmjs.com/cli/v7/using-npm/registry)。简而言之，Verdaccio 的本质作用是管理发布上来的 npm 包，并且使之与官方包隔离，易用性主要体现在这些地方：
@@ -31,7 +31,7 @@ Verdaccio 是一个基于 Node.js 的轻量化私有 npm proxy registry，proxy 
 ## 搭建组件仓库
 
 ### 安装 Verdaccio
-私有的组件仓库要能被其他开发人员访问，就要放在服务器上了。确保安装好 Node 环境后，全局安装 Verdaccio：
+私有的组件仓库要能被其他开发人员访问，就要放在服务器上了。确保服务器安装好 Node 环境后，全局安装 Verdaccio：
 
 ```s
 $ npm install -g verdaccio
@@ -55,11 +55,11 @@ warn --- Plugin successfully loaded: verdaccio-audit             # 审核依赖�
 warn --- http address - http://localhost:4873/ - verdaccio/5.0.1 # 服务入口
 ```
 
-此时浏览器访问服务器的 4873 端口（云服务需确保在安全组开启该端口）可进入仓库的 Web 界面，当然了，目前还是比较简陋的。
+此时浏览器访问服务器的 4873 端口（云服务器需确保在安全组开启该端口）可进入私有仓库的 Web 界面，当然了，目前还是比较简陋的。
 
 ### 配置 Verdaccio
 
-Web 界面、插件、权限等基本配置都在启动时日志显示的配置文件中修改，编辑该文件为：
+Web 界面、插件、权限等配置都在启动时日志显示的配置文件中修改，编辑该文件为：
 
 ```yaml
 # /root/.config/verdaccio/config.yaml
@@ -115,7 +115,7 @@ logs:
 
 本地注册用户需执行 `$ npm adduser --registry <IP 地址:4873>` 并按提示输入用户名、密码和邮箱，完成后可在 Web 界面进行登陆查看仓库内容，也才能在本地发布/使用私有的 npm 包。
 
-但我们不能允许任何人都可以注册用户，所以通常需要设置配置文件中的 `max_users` 属性为 -1 禁止自行注册，需要注册时建议使用官方工具 [Htpasswd Generator](https://hostingcanada.org/htpasswd-generator/) 创建密钥信息，由管理员添加进`htpasswd`文件中。
+但我们不能允许任何人都可以注册用户，所以通常需要设置配置文件中的 `max_users` 属性为 -1 禁止自行注册，需要注册时可使用官方工具 [Htpasswd Generator](https://hostingcanada.org/htpasswd-generator/) 创建密钥信息，由管理员添加进`htpasswd`文件中，避免反复打开/关闭配置文件中的属性。
 
 **2. 项目文件及配置**
 
@@ -139,7 +139,7 @@ requireComponent.keys().forEach(fileName => {
 });
 ```
 
-将 Vuetify 配置一并导出，确保仓库中的组件与本地穿着同样的「衣服👔」：
+将 Vuetify 配置一并导出，确保仓库中的组件与组件仓库里穿着同样的「衣服👔」：
 
 ```js
 import Vue from 'vue';
@@ -211,7 +211,7 @@ $ npm publish --registry <IP 地址>
 
 当然了，组件库应该设置一定的读写权限来**控制包的使用和发布权限**，Verdaccio 中包的使用权限逻辑默认是这样的：
 
-如果你配置了账户，那么你就能登入 Web 界面查看库中软件包的详细信息，有了包名和 registry 地址，你就能安装使用了。
+如果你配置了账户，那么你就能登入 Web 界面查看库中软件包的详细信息，有了包名和 registry 地址，你就能安装使用了。也就是说，**有无账户体现在对包的可见性**。
 
 权限在配置文件的`packages`下添加：
 
