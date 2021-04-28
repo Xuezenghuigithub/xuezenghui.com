@@ -22,7 +22,7 @@ toc: true
 再综合考虑其它因素如搭建复杂度、框架量级、业务场景，我们选择使用 [Verdaccio](https://verdaccio.org/) 来搭建公共组件仓库。
 
 ## Verdaccio 介绍
-Verdaccio 是一个基于 Node.js 的轻量化私有 npm proxy registry，proxy registry 对应的便是 npm 官方的 public registry，具体概念见 [registry | npm](https://docs.npmjs.com/cli/v7/using-npm/registry)。简而言之，Verdaccio 的本质作用是管理发布上来的 npm 包，并且使之和官方包隔离，。易用性主要体现在这些地方：
+Verdaccio 是一个基于 Node.js 的轻量化私有 npm proxy registry，proxy registry 对应的便是 npm 官方的 public registry，具体概念见 [registry | npm](https://docs.npmjs.com/cli/v7/using-npm/registry)。简而言之，Verdaccio 的本质作用是管理发布上来的 npm 包，并且使之与官方包隔离，易用性主要体现在这些地方：
 
 - 配置方式简单
 - 权限控制清晰
