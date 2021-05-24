@@ -38,7 +38,7 @@ CI/CD 是 GitLab 的内置工具，不需要第三方工具就可以拿来即用
 - **Shared Runners**：由 GitLab 管理员安装、注册的可用于所有项目的 Runner
 - **Group Runners**：同样由 GitLab 管理员来安装，不同的是可以给特定的 Group 设置特定的 Runner
 
-因为需要进行持续**部署**，部署的目标服务器需要和 GitLab 中的代码仓库通信，符合“需要执行有特定要求”，先来创建一个 Specific Runners。此处以要部署 Vue 项目的云服务器（Ubuntu 18.04.5）为例，分为安装和注册两个步骤，注册即将安装的 Runner 与 GitLab 绑定以使其可通过 API 通信：
+因为需要进行持续**部署**，部署的目标服务器需要和 GitLab 中的代码仓库通信，符合“需要执行有特定要求的项目”，先来创建一个 Specific Runners。此处以部署 Vue 项目为例，在云服务器（Ubuntu 18.04.5）上要做..安装..和..注册..两个步骤，注册即将安装的 Runner 与 GitLab 绑定以使其可通过 API 通信：
 
 **1. 添加 GitLab 官方存储库**
 
