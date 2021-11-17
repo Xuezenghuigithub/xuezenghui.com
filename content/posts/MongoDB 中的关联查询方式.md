@@ -11,7 +11,7 @@ comments: true
 ## 前言
 数据库设计中数据之间的关联关系是极其常见的：一对一、一对多、多对多，作为 NoSQL 领头羊的 MongoDB 中常用做法无非「内嵌」和「引用」两种，因为 Document 有 16MB 的大小限制[^1]且「内嵌」不适合复杂的多对多关系，「引用」是用得更广泛的关联方式，所以 MongoDB 官方称其为“Normalized Data Models”——..标准化数据模型..。
 
-[^2]![bakedsvg.svg](https://docs.mongodb.com/manual/_images/data-model-normalized.bakedsvg.svg "引用式关联")
+[^2]![bakedsvg.svg](/images/aggregate-populate:data-model-normalized.svg "引用式关联")
 引用式的关联其实很简单，指文档与文档之间通过`_id`字段的引用来进行关联。在需要 user 集合中“123xyz”的所有信息时只需要再..多查..两个表就可以得到。而本文要阐述的重点就在于**如何去多查这两个表**——aggregate 与 populate。
 
 ## 剖析
