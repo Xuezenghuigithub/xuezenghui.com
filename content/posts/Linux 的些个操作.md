@@ -102,3 +102,30 @@ $ sudo usermod -aG docker username
 ```s
 $ newgrp docker
 ```
+
+## 添加 root 权限用户
+
+**1. 添加用户**
+
+```s
+$ useradd username
+```
+
+**2. 修改密码**
+
+```s
+$ passwd username
+```
+
+**3. 修改 sudoers 文件**
+
+```s
+$ visudo
+```
+
+添加以下内容：
+
+```yml
+# 用户/组 主机=(允许切换到哪些用户或组) 允许执行的命令
+username ALL=(ALL) ALL
+```
