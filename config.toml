@@ -1215,7 +1215,7 @@ uglyURLs = false
     displaySiteCopyright = true
 
     # 自定义页脚（支持 Markdown）
-    customFooter = "🤨"
+    customFooter = "[陕ICP备19020925号-1](https://beian.miit.gov.cn/)"
 
     displayBusuanziSiteUVAndPV = false
     busuanziSiteUVText = "本站访客数"
