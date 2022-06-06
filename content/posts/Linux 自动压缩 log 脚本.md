@@ -179,7 +179,7 @@ log
 ++      if [ -f ${service_path}/${date_dir}.tar.gz ]; then
 # 删除源文件夹
 ++        rm -rf ${service_path}/${date_dir}
-        fi
+++      fi
       fi
     done
 ```
