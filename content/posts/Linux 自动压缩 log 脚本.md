@@ -98,7 +98,7 @@ do
 done
 ```
 
-> 在 service 里重新 `cd $base_dir` 而不直接 `cd $service` 的目的是防止下次循环在该 service 目录直接去 `cd` 下一个 service 目录导致报错。
+> 在 service 目录里重新 `cd $base_dir` 而不直接 `cd $service` 的目的是防止下次循环在该 service 目录直接去 `cd` 下一个 service 目录导致报错。
 
 此时执行 `sh java-log-compress.sh` 的打印：
 
@@ -130,7 +130,7 @@ date_dir: 2022-06-03
     done
 ```
 
-> 日期为今天的文件夹还在持续写入 log，因此不执行压缩。不为今天日期的目录都执行代表可将存量数据完成压缩。
+> 日期为今天的文件夹还在持续写入 log，因此不执行压缩。而判断处理不为今天日期的目录可在第一次执行脚本时将存量数据完成压缩。
 
 此时执行 `sh java-log-compress.sh` 后的目录结构如下，..日期不为今天..的 log 目录都被压缩完成，可使用 `tar -zxvf *.tar.gz` 解压查看 log 内容是否正常。
 
